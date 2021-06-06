@@ -14,8 +14,8 @@ const WordsFading = () => {
 		enter: { opacity: 1 },
 		leave: { opacity: 0 },
 		reverse: toggle,
-		delay: 100,
-		duration: 600,
+		delay: 50,
+		duration: 100,
 		config: config.molasses,
 		onRest: () => set(!toggle)
 	});

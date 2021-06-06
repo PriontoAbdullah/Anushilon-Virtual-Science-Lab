@@ -18,7 +18,11 @@ module.exports = {
 					300: '#00719E',
 					200: '#0095B2',
 					100: '#00B9BA',
-					50: '#55DCB8'
+					50: '#55DCB8',
+					'accent-100': '#F9F6FA'
+				},
+				dark: {
+					blue: '#003857'
 				},
 				red: {
 					'50': '#ffebee',
@@ -327,6 +331,8 @@ module.exports = {
 				'30': '.3'
 			},
 			boxShadow: {
+				'3xl': '0px 8px 25px rgba(0, 0, 0, 0.06)',
+				'4xl': '0px 8px 25px rgba(0, 0, 0, 0.04);',
 				outline: '0 0 0 3px rgba(101, 31, 255, 0.4)'
 			}
 		}

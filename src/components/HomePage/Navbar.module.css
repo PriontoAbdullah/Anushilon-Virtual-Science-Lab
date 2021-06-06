@@ -13,19 +13,7 @@ header {
 
 .active {
 	position: relative;
-	color: #ff4a57;
-	font-weight: 800;
-	border-bottom: 2px solid #ff4a57;
-}
-
-.active::after {
-	content: '';
-	position: absolute;
-	left: 50%;
-	bottom: -10px;
-	width: 20px;
-	height: 4px;
-	transform: translateX(-50%);
-	background-color: #d50000;
-	border-radius: 30px;
+	color: #003857;
+	font-weight: 700;
+	border-bottom: 2px solid #00486e;
 }

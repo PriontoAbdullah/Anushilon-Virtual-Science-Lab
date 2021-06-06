@@ -55,7 +55,7 @@ const Nav = () => {
 							<ul className="items-center hidden space-x-8 lg:flex">
 								<li>
 									<Link
-										to="/"
+										to="simulation"
 										spy={true}
 										smooth={true}
 										delay={100}
@@ -71,7 +71,7 @@ const Nav = () => {
 								</li>
 								<li>
 									<Link
-										to="/"
+										to="features"
 										spy={true}
 										smooth={true}
 										delay={100}
@@ -214,7 +214,7 @@ const Nav = () => {
 											<ul className="space-y-4">
 												<li>
 													<Link
-														to="/"
+														to="simulation"
 														spy={true}
 														smooth={true}
 														delay={100}
@@ -228,7 +228,7 @@ const Nav = () => {
 												</li>
 												<li>
 													<Link
-														to="/"
+														to="features"
 														spy={true}
 														smooth={true}
 														delay={100}
@@ -256,7 +256,7 @@ const Nav = () => {
 												</li>
 												<li>
 													<Link
-														to="/"
+														to="about"
 														spy={true}
 														smooth={true}
 														delay={100}
@@ -270,7 +270,7 @@ const Nav = () => {
 												</li>
 												<li>
 													<Link
-														to="about"
+														to="/"
 														spy={true}
 														smooth={true}
 														delay={100}

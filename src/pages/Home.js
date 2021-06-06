@@ -1,8 +1,11 @@
 import React from 'react';
 import bgBanner from '../assets/images/background/header-bg.png';
 import About from '../components/HomePage/About';
+import Features from '../components/HomePage/Features';
 import Header from '../components/HomePage/Header';
 import Nav from '../components/HomePage/Nav';
+import Simulation from '../components/HomePage/Simulation';
+
 
 const Home = () => {
 	return (
@@ -17,6 +20,8 @@ const Home = () => {
 				<Header />
 			</div>
 			<About />
+			<Features />
+			<Simulation />	
 		</>
 	);
 };

@@ -1,12 +1,12 @@
 import React from 'react';
-import bgBannerFeature from '../../assets/images/background/features-2.png';
-import FeaturesImage1 from '../../assets/images/features/features-img-1.png';
-import FeaturesImage2 from '../../assets/images/features/features-img-2.png';
-import FeaturesImage3 from '../../assets/images/features/features-img-3.png';
-import FeaturesImage4 from '../../assets/images/features/features-img-4.png';
-import PathImage from '../../assets/images/features/path.png';
-import Card from './Card';
-import SectionTitle from './SectionTitle';
+import bgBannerFeature from '../../../assets/images/background/features-2.png';
+import FeaturesImage1 from '../../../assets/images/features/features-img-1.png';
+import FeaturesImage2 from '../../../assets/images/features/features-img-2.png';
+import FeaturesImage3 from '../../../assets/images/features/features-img-3.png';
+import FeaturesImage4 from '../../../assets/images/features/features-img-4.png';
+import PathImage from '../../../assets/images/features/path.png';
+import Card from '../MicroComponent/Card';
+import SectionTitle from '../MicroComponent/SectionTitle';
 
 function Features() {
 	return (
@@ -21,7 +21,8 @@ function Features() {
 			<div className="px-4 py-16 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
 				<SectionTitle
 					title="আমাদের বৈশিষ্ট্য সমূহ"
-					description=" ওয়েব ব্রাউজার ব্যবহার করে শিক্ষার্থীরা প্রত্যন্ত অবস্থান থেকে পরীক্ষা-নিরীক্ষা করতে পারে এবং এই পরিবেশটি শিক্ষার্থীদের নমনীয় উপায়ে শেখার সম্ভাবনা তৈরী করে।"
+					description=" ওয়েব ব্রাউজার ব্যবহার করে শিক্ষার্থীরা প্রত্যন্ত অবস্থান থেকে পরীক্ষা-নিরীক্ষা করতে পারে এবং এই ইন্টারেক্টিভ প্রযুক্তিগুলি শিক্ষার্থীদের অভিনব ও আনন্দায়ক উপায়ে বিজ্ঞান শেখার সম্ভাবনা তৈরী করে।"
+					space="mb-12"
 				/>
 				<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 relative font-body">
 					<div style={{ zIndex: '-1' }} className="hidden xl:block 2xl:hidden path absolute w-full">

@@ -1,5 +1,5 @@
 import React from 'react';
-import logoBanner from '../../assets/images/banner/logo-banner.png';
+import logoBanner from '../../../assets/images/banner/logo-banner.png';
 
 const About = () => {
 	return (

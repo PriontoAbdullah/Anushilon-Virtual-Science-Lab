@@ -1,10 +1,12 @@
 import React from 'react';
 import bgBanner from '../assets/images/background/header-bg.png';
-import About from '../components/HomePage/About';
-import Features from '../components/HomePage/Features';
-import Header from '../components/HomePage/Header';
-import Nav from '../components/HomePage/Nav';
-import Simulation from '../components/HomePage/Simulation';
+import About from '../components/HomePage/Content/About';
+import Features from '../components/HomePage/Features/Features';
+import Footer from '../components/HomePage/Footer/Footer';
+import Hero from '../components/HomePage/Header/Hero';
+import Nav from '../components/HomePage/Header/Nav';
+import Simulation from '../components/HomePage/Simulation/Simulation';
+import Testimonial from '../components/HomePage/Testimonial/Testimonial';
 
 
 const Home = () => {
@@ -17,11 +19,13 @@ const Home = () => {
 				}}
 			>
 				<Nav />
-				<Header />
+				<Hero />
 			</div>
 			<About />
 			<Features />
 			<Simulation />	
+			<Testimonial />
+			<Footer />
 		</>
 	);
 };

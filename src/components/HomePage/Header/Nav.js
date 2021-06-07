@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import React, { useEffect, useState } from 'react';
 import { animateScroll as scroll, Link } from 'react-scroll';
-import textLogo from '../../assets/images/text-logo.png';
+import textLogo from '../../../assets/images/text-logo.png';
 import classes from './Navbar.module.css';
 
 const Nav = () => {
@@ -87,7 +87,7 @@ const Nav = () => {
 								</li>
 								<li>
 									<Link
-										to="/"
+										to="testimonial"
 										spy={true}
 										smooth={true}
 										delay={100}
@@ -242,7 +242,7 @@ const Nav = () => {
 												</li>
 												<li>
 													<Link
-														to="/"
+														to="testimonial"
 														spy={true}
 														smooth={true}
 														delay={100}

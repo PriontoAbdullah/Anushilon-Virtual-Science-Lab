@@ -327,11 +327,14 @@ module.exports = {
 			height: {
 				'1/2': '50%'
 			},
+			width: {
+				'90': '22rem'
+			},
 			scale: {
 				'30': '.3'
 			},
 			boxShadow: {
-				'3xl': '0px 8px 25px rgba(0, 0, 0, 0.06)',
+				'3xl': '0px 8px 25px rgba(0, 0, 0, 0.07)',
 				'4xl': '0px 8px 25px rgba(0, 0, 0, 0.04);',
 				outline: '0 0 0 3px rgba(101, 31, 255, 0.4)'
 			}

@@ -4,6 +4,8 @@
 	box-sizing: border-box;
 }
 
+/* For Scroll bar Customization */
+
 html {
 	--scrollbarBG: #e8eaf6;
 	--thumbBG: #2a2a57;
@@ -30,4 +32,25 @@ body::-webkit-scrollbar-thumb {
 	background-color: var(--thumbBG);
 	border-radius: 6px;
 	border: 3px solid var(--scrollbarBG);
+}
+
+/* For Swiper Slide Customization */
+
+.swiper-button-next,
+.swiper-button-prev {
+	color: #2a2a57 !important;
+}
+
+.swiper-pagination-bullet-active {
+	background-color: #2a2a57 !important;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+	font-size: 24px !important;
+}
+
+.swiper-container {
+	width: 100% !important;
+	padding-bottom: 40px !important;
 }

@@ -19,6 +19,7 @@ const WordsFading = () => {
 		config: config.molasses,
 		onRest: () => set(!toggle)
 	});
+	
 	return transitions(
 		({ opacity }, item) =>
 			item ? (

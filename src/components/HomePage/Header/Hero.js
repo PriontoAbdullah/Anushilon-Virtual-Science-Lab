@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import WordsFading from './WordsFading';
+import WordsFading from '../MicroComponent/WordsFading';
 
 const Wrapper = styled.div`
-	width: 195px;	
+	width: 195px;
 	display: inline-block;
 	text-align: center;
 	transition: 0.2s ease-out;
@@ -12,23 +12,25 @@ const Wrapper = styled.div`
 		width: 100%;
 	}
 	@media (max-width: 1023px) {
-		width: 122px;	
+		width: 122px;
 		font-size: 30px;
 		line-height: 45px;
 	}
 `;
 
-const Header = () => {
+const Hero = () => {
 	return (
-		<div className="px-5 py-20 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-32">
+		<section className="px-5 py-20 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-32">
 			<div className="max-w-xl sm:mx-auto lg:max-w-7xl">
 				<div className="flex flex-col text-center">
 					<div className="max-w-xl my-14 md:mx-auto lg:max-w-4xl md:my-28">
 						<h2 className="max-w-2xl mb-10 lg:mb-20 font-display text-3xl font-bold leading-10 lg:leading-normal tracking-wide text-white lg:text-5xl mx-auto">
-							বাংলাদেশের <span className="relative">
-							<Wrapper>
-								<WordsFading />
-							</Wrapper> </span>
+							বাংলাদেশের{' '}
+							<span className="relative">
+								<Wrapper>
+									<WordsFading />
+								</Wrapper>{' '}
+							</span>
 							<br /> ভার্চুয়াল সাইন্স ল্যাবে স্বাগতম
 							<span className="font-normal">!</span>
 						</h2>
@@ -48,8 +50,8 @@ const Header = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 
-export default Header;
+export default Hero;

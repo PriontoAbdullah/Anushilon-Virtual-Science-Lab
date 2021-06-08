@@ -4,7 +4,7 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				display: [ 'CharukolaUltraLight', 'sans-serif' ],
+				display: [ 'CharukolaUltraLight', 'Atma', 'sans-serif' ],
 				body: [ 'Hind Siliguri', 'sans-serif' ]
 			},
 			colors: {
@@ -328,7 +328,7 @@ module.exports = {
 				'1/2': '50%'
 			},
 			width: {
-				'90': '22rem'
+				'90': '22.5rem'
 			},
 			scale: {
 				'30': '.3'

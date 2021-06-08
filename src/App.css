@@ -39,6 +39,7 @@ body::-webkit-scrollbar-thumb {
 .swiper-button-next,
 .swiper-button-prev {
 	color: #2a2a57 !important;
+	top: 55% !important;
 }
 
 .swiper-pagination-bullet-active {
@@ -53,4 +54,11 @@ body::-webkit-scrollbar-thumb {
 .swiper-container {
 	width: 100% !important;
 	padding-bottom: 40px !important;
+}
+
+@media (max-width: 768px) {
+	.swiper-button-prev,
+	.swiper-button-next {
+		top: 25px !important;
+	}
 }

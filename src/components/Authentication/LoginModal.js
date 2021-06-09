@@ -1,3 +1,5 @@
+import { faEnvelope, faLock, faUnlock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import Slide from 'react-reveal/Slide';
 import loginLoader from '../../assets/images/loader/login.gif';
@@ -15,7 +17,7 @@ const LoginModal = (props) => {
 				<div
 					className={`relative w-full mt-16 ${!props.newUser
 						? 'lg:mt-12 2xl:mt-14'
-						: 'lg:mt-8 2xl:mt-10'} lg:mt-8 2xl:mt-10 flex max-w-sm md:max-w-lg lg:max-w-4xl 2xl:max-w-5xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl`}
+						: 'lg:mt-4 2xl:mt-6'} flex max-w-sm md:max-w-lg lg:max-w-4xl 2xl:max-w-5xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl`}
 				>
 					<div className="hidden lg:block lg:w-1/2 bg-brand-900">
 						{!props.newUser ? (
@@ -35,29 +37,33 @@ const LoginModal = (props) => {
 
 					<div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
 						<button
-							className="p-1 ml-auto bg-transparent border-0 text-brand-900 hover:text-deep-purple-accent-700 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+							className="p-1 transition-colors duration-200 transform rounded-md hover:bg-opacity-25 hover:bg-deep-purple-100 focus:outline-none
+							ml-auto bg-transparent border-0 text-brand-900 hover:text-deep-purple-accent-700 float-right text-3xl leading-none font-semibold outline-none"
+							type="button"
 							onClick={handleCloseModal}
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
-								className="h-6 w-6"
-								fill="none"
+								className="icon icon-tabler icon-tabler-circle-x"
+								width="24"
+								height="24"
 								viewBox="0 0 24 24"
+								strokeWidth="1.5"
 								stroke="currentColor"
+								fill="none"
+								strokeLinecap="round"
+								strokeLinejoin="round"
 							>
-								<path
-									strokeLinecap="round"
-									strokeLinejoin="round"
-									strokeWidth={2}
-									d="M6 18L18 6M6 6l12 12"
-								/>
+								<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+								<circle cx="12" cy="12" r="9" />
+								<path d="M10 10l4 4m0 -4l-4 4" />
 							</svg>
 						</button>
 
 						{!props.newUser ? (
 							<div>
 								<div>
-									<h2 className="text-2xl ml-4 mb-1 font-display text-center font-bold text-brand-900">
+									<h2 className="text-2xl ml-4 mb-2 font-display text-center font-bold text-brand-900">
 										অনুশীলন
 									</h2>
 									<p className="text-lg font-body text-center text-gray-600 ">
@@ -109,12 +115,18 @@ const LoginModal = (props) => {
 										>
 											ইমেইল
 										</label>
-										<input
-											id="LoggingEmailAddress"
-											className="block w-full px-4 py-2 text-brand-900 text-base font-medium bg-white border border-gray-300 rounded-md placeholder-gray-400 focus:border-deep-purple-accent-700 focus:outline-none"
-											placeholder="আপনার ইমেইল প্রদান করুন"
-											type="email"
-										/>
+										<div class="relative flex w-full flex-wrap items-stretch mb-3">
+											<span class="login-icon">
+												<FontAwesomeIcon icon={faEnvelope} className="text-gray-500" />
+											</span>
+											<input
+												id="LoggingEmailAddress"
+												name="email"
+												type="email"
+												className="login-input"
+												placeholder="আপনার ইমেইল প্রদান করুন"
+											/>
+										</div>
 									</div>
 
 									<div className="mt-4 font-body">
@@ -129,17 +141,22 @@ const LoginModal = (props) => {
 												পাসওয়ার্ড ভুলে গেছেন?
 											</span>
 										</div>
-
-										<input
-											id="loggingPassword"
-											className="block w-full px-4 py-2 text-brand-900 text-base font-medium bg-white border border-gray-300 rounded-md placeholder-gray-400  focus:border-deep-purple-accent-700 focus:outline-none"
-											placeholder="আপনার পাসওয়ার্ড প্রদান করুন "
-											type="password"
-										/>
+										<div class="relative flex w-full flex-wrap items-stretch mb-3">
+											<span class="login-icon">
+												<FontAwesomeIcon icon={faLock} className="text-gray-500" />
+											</span>
+											<input
+												id="loggingPassword"
+												name="password"
+												type="password"
+												className="login-input"
+												placeholder="আপনার পাসওয়ার্ড প্রদান করুন "
+											/>
+										</div>
 									</div>
 
 									<div className="mt-8">
-										<button className="w-full px-4 py-2 font-semibold font-body text-base tracking-wide text-gray-50 focus-within:transition-colors duration-200 transhtmlForm bg-brand-900 rounded hover:bg-deep-purple-accent-700 focus:outline-none focus:bg-deep-purple-900">
+										<button className="w-full px-4 py-2 font-semibold font-body text-base tracking-wide text-gray-50 focus-within:transition-colors duration-200 bg-brand-900 rounded hover:bg-deep-purple-accent-700 focus:outline-none focus:bg-deep-purple-900">
 											লগ ইন
 										</button>
 									</div>
@@ -160,7 +177,7 @@ const LoginModal = (props) => {
 						) : (
 							<div>
 								<div>
-									<h2 className="text-2xl ml-4 mb-1 font-display text-center font-bold text-brand-900">
+									<h2 className="text-2xl ml-4 mb-2 font-display text-center font-bold text-brand-900">
 										অনুশীলন
 									</h2>
 									<p className="text-lg font-body text-center text-gray-600 ">
@@ -169,19 +186,52 @@ const LoginModal = (props) => {
 								</div>
 
 								<Slide bottom>
-									<div className="mt-4 font-body">
+									<div className="mt-3 mb-0 font-body flex flex-wrap justify-center items-center">
+										<label className="inline-flex items-center">
+											<span className="text-base text-gray-700 font-body mr-3 font-medium">
+												আমি একজন{' '}
+											</span>
+										</label>
+										<label className="inline-flex items-center cursor-pointer">
+											<input
+												type="radio"
+												className="form-radio ring-brand-900 text-brand-900"
+												name="accountType"
+												value="student"
+												checked
+											/>
+											<span className=" text-gray-700 ml-2 font-body">শিক্ষার্থী</span>
+										</label>
+										<label className="inline-flex items-center ml-3 cursor-pointer">
+											<input
+												type="radio"
+												className="form-radio ring-brand-900"
+												name="accountType"
+												value="teacher"
+											/>
+											<span className=" text-gray-700 ml-2 font-body"> শিক্ষক </span>
+										</label>
+									</div>
+
+									<div className="mt-1 font-body">
 										<label
 											className="block mb-2 text-base font-medium text-gray-700"
 											htmlFor="SignInUserName"
 										>
 											নাম
 										</label>
-										<input
-											id="SignInUserName"
-											className="block w-full px-4 py-2 text-brand-900 text-base font-medium bg-white border border-gray-300 rounded-md placeholder-gray-400 focus:border-deep-purple-accent-700 focus:outline-none"
-											placeholder="আপনার নাম প্রদান করুন"
-											type="email"
-										/>
+										<div class="relative flex w-full flex-wrap items-stretch mb-3">
+											<span class="login-icon">
+												<FontAwesomeIcon icon={faUser} className="text-gray-500" />
+											</span>
+											<input
+												id="SignInUserName"
+												name="name"
+												type="text"
+												className="login-input"
+												placeholder="আপনার নাম প্রদান করুন"
+											/>
+										</div>
 									</div>
 
 									<div className="mt-4 font-body">
@@ -191,12 +241,18 @@ const LoginModal = (props) => {
 										>
 											ইমেইল
 										</label>
-										<input
-											id="SignInEmailAddress"
-											className="block w-full px-4 py-2 text-brand-900 text-base font-medium bg-white border border-gray-300 rounded-md placeholder-gray-400 focus:border-deep-purple-accent-700 focus:outline-none"
-											placeholder="আপনার ইমেইল প্রদান করুন"
-											type="email"
-										/>
+										<div class="relative flex w-full flex-wrap items-stretch mb-3">
+											<span class="login-icon">
+												<FontAwesomeIcon icon={faEnvelope} className="text-gray-500" />
+											</span>
+											<input
+												id="SignInEmailAddress"
+												name="email"
+												type="email"
+												className="login-input"
+												placeholder="আপনার ইমেইল প্রদান করুন"
+											/>
+										</div>
 									</div>
 
 									<div className="mt-4 font-body">
@@ -208,13 +264,18 @@ const LoginModal = (props) => {
 												পাসওয়ার্ড
 											</label>
 										</div>
-
-										<input
-											id="SignInPassword"
-											className="block w-full px-4 py-2 text-brand-900 text-base font-medium bg-white border border-gray-300 rounded-md placeholder-gray-400  focus:border-deep-purple-accent-700 focus:outline-none"
-											placeholder="আপনার পাসওয়ার্ড প্রদান করুন"
-											type="password"
-										/>
+										<div class="relative flex w-full flex-wrap items-stretch mb-3">
+											<span class="login-icon">
+												<FontAwesomeIcon icon={faLock} className="text-gray-500" />
+											</span>
+											<input
+												id="SignInPassword"
+												name="password"
+												type="password"
+												className="login-input"
+												placeholder="আপনার পাসওয়ার্ড প্রদান করুন "
+											/>
+										</div>
 									</div>
 
 									<div className="mt-4 font-body">
@@ -226,17 +287,22 @@ const LoginModal = (props) => {
 												পাসওয়ার্ড যাচাই
 											</label>
 										</div>
-
-										<input
-											id="SignInPasswordAgain"
-											className="block w-full px-4 py-2 text-brand-900 text-base font-medium bg-white border border-gray-300 rounded-md placeholder-gray-400  focus:border-deep-purple-accent-700 focus:outline-none"
-											placeholder="আপনার পাসওয়ার্ড পুনরায় প্রদান করুন"
-											type="password"
-										/>
+										<div class="relative flex w-full flex-wrap items-stretch mb-3">
+											<span class="login-icon">
+												<FontAwesomeIcon icon={faUnlock} className="text-gray-500" />
+											</span>
+											<input
+												id="SignInPasswordAgain"
+												name="password"
+												type="password"
+												className="login-input"
+												placeholder="আপনার পাসওয়ার্ড পুনরায় প্রদান করুন"
+											/>
+										</div>
 									</div>
 
 									<div className="mt-8">
-										<button className="w-full px-4 py-2 font-semibold font-body text-base tracking-wide text-gray-50 focus-within:transition-colors duration-200 transhtmlForm bg-brand-900 rounded hover:bg-deep-purple-accent-700 focus:outline-none focus:bg-deep-purple-900">
+										<button className="w-full px-4 py-2 font-semibold font-body text-base tracking-wide text-gray-50 focus-within:transition-colors duration-200 bg-brand-900 rounded hover:bg-deep-purple-accent-700 focus:outline-none focus:bg-deep-purple-900">
 											নিবন্ধন করুন
 										</button>
 									</div>

@@ -59,6 +59,6 @@ body::-webkit-scrollbar-thumb {
 @media (max-width: 768px) {
 	.swiper-button-prev,
 	.swiper-button-next {
-		top: 25px !important;
+		top: 70% !important;
 	}
 }

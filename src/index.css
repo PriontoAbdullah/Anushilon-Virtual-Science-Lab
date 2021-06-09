@@ -1,3 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.maateen.me/charukola-ultra-light/font.css');
+@import url('https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.deep-button {
+	@apply inline-flex items-center justify-center h-12 px-8 md:h-16 md:px-10 font-bold text-base md:text-xl tracking-wider text-gray-200 transition duration-200 rounded shadow-md hover:text-deep-purple-900 bg-brand-900 hover:bg-deep-purple-100 focus:shadow-outline focus:outline-none cursor-pointer;
+}
+
+.nav-link-general {
+	@apply transition-colors duration-200 font-medium tracking-wide cursor-pointer;
+}
+
+.nav-link-deep {
+	@apply text-brand-900 hover:text-deep-purple-accent-700;
+}
+
+.nav-link-light {
+	@apply text-gray-50 hover:text-cyan-200;
+}
+
+.nav-link-mobile {
+	@apply font-medium tracking-wide text-brand-900 transition-colors duration-200 hover:text-deep-purple-900;
+}
+
+.join-button-general {
+	@apply inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide cursor-pointer transition duration-200 rounded shadow-md focus:shadow-outline focus:outline-none;
+}
+
+.join-button-mobile {
+	@apply inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-brand-900 hover:bg-deep-purple-900 focus:shadow-outline focus:outline-none;
+}
+
+.login-icon {
+	@apply z-10 h-full leading-snug font-normal text-center absolute bg-transparent rounded text-base items-center justify-center w-8 pl-3 py-3;
+}
+
+.login-input {
+	@apply relative pl-10 block w-full px-4 py-2 text-brand-900 text-base font-medium bg-white border border-gray-300 rounded-md placeholder-gray-400 focus:border-deep-purple-accent-700 focus:shadow-4xl focus:outline-none;
+}
+
+.simulation-cross-button {
+	@apply p-1 transition-colors duration-200 transform rounded-md hover:bg-opacity-25 hover:bg-deep-purple-100 focus:outline-none ml-auto bg-transparent border-0 text-brand-900 hover:text-deep-purple-accent-700 float-right text-3xl leading-none font-semibold outline-none;
+}
+
+.simulation-class-list {
+	@apply mb-2 mr-2 last:mr-0 flex-auto text-center;
+}
+
+.simulation-class-name {
+	@apply text-lg font-semibold uppercase px-5 py-3 shadow-lg rounded block leading-normal;
+}
+
+.simulation-item-outer {
+	@apply px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-10 lg:px-6 lg:py-6;
+}
+
+.simulation-item-inner {
+	@apply grid gap-10 mx-auto lg:grid-cols-2 lg:max-w-screen-xl;
+}
+
+.footer-info {
+	@apply transition-colors duration-300 text-gray-50 hover:text-cyan-200;
+}
+
+.footer-category {
+	@apply text-indigo-50 transition-colors duration-300 hover:text-cyan-200 cursor-pointer;
+}
+
+.footer-icon {
+	@apply text-indigo-50 transition-colors duration-300 hover:text-cyan-200;
+}
+
+.footer-terms {
+	@apply text-sm font-medium text-gray-400 transition-colors duration-300 hover:text-cyan-200;
+}

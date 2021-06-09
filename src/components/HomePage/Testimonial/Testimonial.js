@@ -7,37 +7,13 @@ import 'swiper/swiper-bundle.min.css';
 import bgBannerTestimonial from '../../../assets/images/background/header-white-bg.png';
 import AllReviews from '../../../data/testimonials';
 import SectionTitle from '../MicroComponent/SectionTitle';
+import useWindowDimensions from '../MicroComponent/useWindowDimensions';
 import Review from './Review';
 
 SwiperCore.use([ Navigation, Pagination, Scrollbar, A11y, Autoplay, Virtual ]);
 
-// For getting window size & set slider number to show
-
-function getWindowDimensions() {
-	const { innerWidth: width } = window;
-	return {
-		width
-	};
-}
-
-function useWindowDimensions() {
-	const [ windowDimensions, setWindowDimensions ] = useState(getWindowDimensions());
-
-	useEffect(() => {
-		function handleResize() {
-			setWindowDimensions(getWindowDimensions());
-		}
-
-		window.addEventListener('resize', handleResize);
-		return () => window.removeEventListener('resize', handleResize);
-	}, []);
-
-	return windowDimensions;
-}
-
 const Testimonial = () => {
 	const [ reviews, SetReviews ] = useState([]);
-	const [ sliderNumber, SetSliderNumber ] = useState(3);
 	const { width } = useWindowDimensions();
 
 	useEffect(
@@ -45,19 +21,6 @@ const Testimonial = () => {
 			SetReviews(AllReviews);
 		},
 		[ reviews ]
-	);
-
-	useEffect(
-		() => {
-			if (width > 1280) {
-				SetSliderNumber(3);
-			} else if (width > 960) {
-				SetSliderNumber(2);
-			} else {
-				SetSliderNumber(1);
-			}
-		},
-		[ width ]
 	);
 
 	return (
@@ -78,27 +41,26 @@ const Testimonial = () => {
 					/>
 				</Fade>
 				<Slide bottom>
-				<div className="w-full flex flex-col md:flex-row gap-4 mb-8 md:mb-0 flex-between items-center p-5">
-					<Swiper
-						spaceBetween={0}
-						slidesPerView={sliderNumber}
-						centeredslide="true"
-						navigation
-						pagination={{ clickable: true }}
-						autoplay={true}
-						key={reviews.length}
-					>
-						{reviews &&
-							reviews.map((reviews, index) => (
-								<SwiperSlide key={index}>
-									<Review reviews={reviews} />
-								</SwiperSlide>
-							))}
-					</Swiper>
-				</div>
+					<div className="w-full flex flex-col md:flex-row gap-4 mb-8 md:mb-0 flex-between items-center p-5">
+						<Swiper
+							spaceBetween={0}
+							slidesPerView={width > 1280 ? 3 : width > 960 ? 2 : 1}
+							centeredslide="true"
+							navigation
+							pagination={{ clickable: true }}
+							autoplay={true}
+							key={reviews.length}
+						>
+							{reviews &&
+								reviews.map((reviews, index) => (
+									<SwiperSlide key={index}>
+										<Review reviews={reviews} />
+									</SwiperSlide>
+								))}
+						</Swiper>
+					</div>
 				</Slide>
 			</div>
-		
 		</section>
 	);
 };

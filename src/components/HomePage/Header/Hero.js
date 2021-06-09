@@ -58,7 +58,7 @@ const Hero = () => {
 								<Link
 									to="features"
 									smooth={true}
-									className="inline-flex items-center justify-center h-12 px-8 md:h-16 md:px-10 font-bold text-base md:text-xl tracking-wider text-gray-200 transition duration-200 rounded shadow-md hover:text-deep-purple-900 bg-brand-900 hover:bg-deep-purple-100 focus:shadow-outline focus:outline-none cursor-pointer"
+									className="deep-button"
 								>
 									আমাদের যা আছে
 								</Link>

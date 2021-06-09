@@ -81,8 +81,8 @@ const Nav = () => {
 								>
 									<span
 										className={`${scrolled
-											? 'text-brand-900 hover:text-deep-purple-accent-700'
-											: 'text-gray-50 hover:text-cyan-200'} text-3xl font-display font-black tracking-wider cursor-pointer`}
+											? 'nav-link-deep'
+											: 'nav-link-light'} text-3xl font-display font-black tracking-wider cursor-pointer`}
 									>
 										অনুশীলন
 									</span>
@@ -98,8 +98,8 @@ const Nav = () => {
 											duration={500}
 											activeClass={`${classes.active}`}
 											className={`${scrolled
-												? 'text-brand-900 hover:text-deep-purple-accent-700'
-												: 'text-gray-50 hover:text-cyan-200'} transition-colors duration-200 font-medium tracking-wide cursor-pointer`}
+												? 'nav-link-deep'
+												: 'nav-link-light'} nav-link-general`}
 										>
 											আমাদের সিমুলেশন
 										</Link>
@@ -114,8 +114,8 @@ const Nav = () => {
 											duration={500}
 											activeClass={`${classes.active}`}
 											className={`${scrolled
-												? 'text-brand-900 hover:text-deep-purple-accent-700'
-												: 'text-gray-50 hover:text-cyan-200'} transition-colors duration-200 font-medium tracking-wide cursor-pointer`}
+												? 'nav-link-deep'
+												: 'nav-link-light'} nav-link-general`}
 										>
 											আমাদের বৈশিষ্ট্য
 										</Link>
@@ -130,8 +130,8 @@ const Nav = () => {
 											duration={500}
 											activeClass={`${classes.active}`}
 											className={`${scrolled
-												? 'text-brand-900 hover:text-deep-purple-accent-700'
-												: 'text-gray-50 hover:text-cyan-200'} transition-colors duration-200 font-medium tracking-wide cursor-pointer`}
+												? 'nav-link-deep'
+												: 'nav-link-light'} nav-link-general`}
 										>
 											লোকেরা যা বলছে
 										</Link>
@@ -146,8 +146,8 @@ const Nav = () => {
 											duration={500}
 											activeClass={`${classes.active}`}
 											className={`${scrolled
-												? 'text-brand-900 hover:text-deep-purple-accent-700'
-												: 'text-gray-50 hover:text-cyan-200'} transition-colors duration-200 font-medium tracking-wide cursor-pointer`}
+												? 'nav-link-deep'
+												: 'nav-link-light'} nav-link-general`}
 										>
 											আমাদের সম্পর্কে
 										</Link>
@@ -164,8 +164,8 @@ const Nav = () => {
 										offset={0}
 										duration={500}
 										className={`${scrolled
-											? 'text-brand-900 hover:text-deep-purple-accent-700'
-											: 'text-gray-50 hover:text-cyan-200'} transition-colors duration-200 font-medium tracking-wide cursor-pointer`}
+											? 'nav-link-deep'
+											: 'nav-link-light'} nav-link-general`}
 										onClick={handleDesktopLogin}
 									>
 										লগ ইন
@@ -176,7 +176,7 @@ const Nav = () => {
 										to="/"
 										className={`${scrolled
 											? 'text-gray-50  hover:text-deep-purple-50 bg-brand-900 hover:bg-deep-purple-accent-700'
-											: 'text-gray-50  hover:text-deep-purple-900 bg-brand-900 hover:bg-deep-purple-50'} inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide cursor-pointer transition duration-200 rounded shadow-md focus:cursor-pointer focus:shadow-outline focus:outline-none`}
+											: 'text-gray-50  hover:text-deep-purple-900 bg-brand-900 hover:bg-deep-purple-50'} join-button-general`}
 										spy={true}
 										smooth={true}
 										delay={100}
@@ -258,7 +258,7 @@ const Nav = () => {
 															offset={0}
 															duration={500}
 															activeClass={`${classes.active}`}
-															className="font-medium tracking-wide text-brand-900 transition-colors duration-200 hover:text-deep-purple-900"
+															className="nav-link-mobile"
 														>
 															আমাদের সিমুলেশন
 														</Link>
@@ -272,7 +272,7 @@ const Nav = () => {
 															offset={0}
 															duration={500}
 															activeClass={`${classes.active} text-deep-purple-900 font-bold`}
-															className="font-medium tracking-wide text-brand-900 transition-colors duration-200 hover:text-deep-purple-900"
+															className="nav-link-mobile"
 														>
 															আমাদের বৈশিষ্ট্য
 														</Link>
@@ -286,7 +286,7 @@ const Nav = () => {
 															offset={0}
 															duration={500}
 															activeClass={`${classes.active} text-deep-purple-900 font-bold`}
-															className="font-medium tracking-wide text-brand-900 transition-colors duration-200 hover:text-deep-purple-900"
+															className="nav-link-mobile"
 														>
 															লোকেরা যা বলছে
 														</Link>
@@ -300,7 +300,7 @@ const Nav = () => {
 															offset={0}
 															duration={500}
 															activeClass={`${classes.active}`}
-															className="font-medium tracking-wide text-brand-900 transition-colors duration-200 hover:text-deep-purple-900"
+															className="nav-link-mobile"
 														>
 															আমাদের সম্পর্কে
 														</Link>
@@ -313,7 +313,7 @@ const Nav = () => {
 															delay={100}
 															offset={0}
 															duration={500}
-															className="font-medium tracking-wide text-brand-900 transition-colors duration-200 hover:text-deep-purple-900"
+															className="nav-link-mobile"
 															onClick={handleMobileLogin}
 														>
 															লগ ইন
@@ -322,7 +322,7 @@ const Nav = () => {
 													<li>
 														<Link
 															to="/"
-															className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-brand-900  hover:bg-deep-purple-900 focus:shadow-outline focus:outline-none"
+															className="join-button-mobile"
 															spy={true}
 															smooth={true}
 															delay={100}

@@ -22,7 +22,12 @@ module.exports = {
 					'accent-100': '#F9F6FA'
 				},
 				dark: {
-					blue: '#003857'
+					blue: '#003857',
+					'brand-400': '#94A3B8',
+					'brand-600': '#475569',
+					'brand-700': '#334155',
+					'brand-800': '#1E293B',
+					'brand-900': '#0F172A'
 				},
 				red: {
 					'50': '#ffebee',

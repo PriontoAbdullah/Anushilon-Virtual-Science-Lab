@@ -5,7 +5,7 @@ import studentGIF from '../../../assets/images/banner/student.gif';
 import biology from '../../../assets/images/icon/biology.png';
 import chemistry from '../../../assets/images/icon/chemistry.png';
 import physics from '../../../assets/images/icon/physics.png';
-import useWindowDimensions from '../MicroComponent/useWindowDimensions';
+import useWindowDimensions from '../../../utils/useWindowDimensions';
 import ViewAllSimulation from './ViewAllSimulation';
 
 const Simulation = () => {

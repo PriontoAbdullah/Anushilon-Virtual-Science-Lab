@@ -6,8 +6,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.min.css';
 import bgBannerTestimonial from '../../../assets/images/background/header-white-bg.png';
 import AllReviews from '../../../data/testimonials';
+import useWindowDimensions from '../../../utils/useWindowDimensions';
 import SectionTitle from '../MicroComponent/SectionTitle';
-import useWindowDimensions from '../MicroComponent/useWindowDimensions';
 import Review from './Review';
 
 SwiperCore.use([ Navigation, Pagination, Scrollbar, A11y, Autoplay, Virtual ]);

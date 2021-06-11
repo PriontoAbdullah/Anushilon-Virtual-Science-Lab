@@ -24,7 +24,7 @@ const App = () => {
 							<Route exact path="/">
 								<Home />
 							</Route>
-							<Route exact path="/dashboard">
+							<Route exact path="/simulation-phy">
 								<Dashboard />
 							</Route>
 						</Switch>

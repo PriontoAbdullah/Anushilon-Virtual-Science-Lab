@@ -62,3 +62,32 @@ body::-webkit-scrollbar-thumb {
 		top: 70% !important;
 	}
 }
+
+/* For responsive observation table */
+@media (min-width: 640px) {
+	table {
+		display: inline-table !important;
+	}
+
+	thead th {
+		font-weight: 400;
+	}
+
+	thead tr:not(:first-child) {
+		display: none;
+	}
+}
+
+@media (max-width: 639px) {
+	td:not(:last-child) {
+		border-bottom: 0;
+	}
+
+	th:not(:last-child) {
+		border-bottom: 2px solid rgba(0, 0, 0, .1);
+	}
+
+	thead th {
+		font-weight: 400;
+	}
+}

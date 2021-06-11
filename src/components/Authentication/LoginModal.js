@@ -37,8 +37,7 @@ const LoginModal = (props) => {
 
 					<div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
 						<button
-							className="p-1 transition-colors duration-200 transform rounded-md hover:bg-opacity-25 hover:bg-deep-purple-100 focus:outline-none
-							ml-auto bg-transparent border-0 text-brand-900 hover:text-deep-purple-accent-700 float-right text-3xl leading-none font-semibold outline-none"
+							className="close-button "
 							type="button"
 							onClick={handleCloseModal}
 						>
@@ -115,8 +114,8 @@ const LoginModal = (props) => {
 										>
 											ইমেইল
 										</label>
-										<div class="relative flex w-full flex-wrap items-stretch mb-3">
-											<span class="login-icon">
+										<div className="relative flex w-full flex-wrap items-stretch mb-3">
+											<span className="login-icon">
 												<FontAwesomeIcon icon={faEnvelope} className="text-gray-500" />
 											</span>
 											<input
@@ -141,8 +140,8 @@ const LoginModal = (props) => {
 												পাসওয়ার্ড ভুলে গেছেন?
 											</span>
 										</div>
-										<div class="relative flex w-full flex-wrap items-stretch mb-3">
-											<span class="login-icon">
+										<div className="relative flex w-full flex-wrap items-stretch mb-3">
+											<span className="login-icon">
 												<FontAwesomeIcon icon={faLock} className="text-gray-500" />
 											</span>
 											<input
@@ -198,7 +197,7 @@ const LoginModal = (props) => {
 												className="form-radio ring-brand-900 text-brand-900"
 												name="accountType"
 												value="student"
-												checked
+												defaultChecked
 											/>
 											<span className=" text-gray-700 ml-2 font-body">শিক্ষার্থী</span>
 										</label>
@@ -324,7 +323,7 @@ const LoginModal = (props) => {
 					</div>
 				</div>
 			</div>
-			<div className=" opacity-25 fixed inset-0 z-40 bg-brand-900" />
+			<div className="opacity-25 fixed inset-0 z-40 bg-brand-900" />
 		</div>
 	);
 };

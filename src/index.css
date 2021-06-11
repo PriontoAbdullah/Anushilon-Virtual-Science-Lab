@@ -78,3 +78,31 @@
 .footer-terms {
 	@apply text-sm font-medium text-gray-400 transition-colors duration-300 hover:text-cyan-200;
 }
+
+.simulation-template {
+	@apply text-base font-body font-semibold uppercase px-3 py-3 shadow-lg rounded block leading-normal tracking-wider;
+}
+
+.observation-table-header {
+	@apply border-indigo-100 border-r p-3 text-left;
+}
+
+.observation-table-data {
+	@apply border-gray-200 border hover:bg-gray-100;
+}
+
+.observation-table-input {
+	@apply w-full px-4 py-1 text-brand-900 text-base font-normal bg-white border border-gray-300 rounded-md placeholder-gray-400 focus:border-deep-purple-accent-700 focus:shadow-4xl focus:outline-none;
+}
+
+.observation-result-input {
+	@apply px-3 w-32 py-1 text-brand-900 text-base font-normal bg-white border border-gray-300 rounded-md placeholder-gray-400 focus:border-deep-purple-accent-700 focus:shadow-4xl focus:outline-none;
+}
+
+.dashboard-button {
+	@apply bg-brand-900 text-white hover:bg-dark-brand-900 hover:text-gray-50 font-semibold uppercase text-base px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mx-2 my-2 ease-linear transition-all duration-150;
+}
+
+.close-button {
+	@apply p-1 transition-colors duration-200 transform rounded-md hover:bg-opacity-25 hover:bg-deep-purple-100 focus:outline-none ml-auto bg-transparent border-0 text-brand-900 hover:text-deep-purple-accent-700 float-right text-3xl leading-none font-semibold outline-none;
+}

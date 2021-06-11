@@ -23,7 +23,7 @@ const LabIcon = () => {
 const SingleSimulation = ({item}) => {
 	return (
 		<>
-			<Link to="/dashboard" key={item.id}>
+			<Link to="/simulation-phy" key={item.id}>
 				<div className="grid sm:grid-cols-3 p-5 hover:bg-gray-100 shadow-3xl hover:shadow-xl cursor-pointer rounded-lg">
 					<div className="relative w-full h-32 max-h-full rounded shadow sm:h-auto">
 						<img

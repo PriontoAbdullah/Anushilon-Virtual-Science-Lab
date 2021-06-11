@@ -76,7 +76,7 @@ function NotificationBar() {
 					<ul>
 						{notifications &&
 							notifications.map((item) => (
-								<li className="border-b border-gray-200 last:border-0" key={item.index}>
+								<li className="border-b border-gray-200 last:border-0" key={item.name}>
 									<Link
 										className="block py-2 px-4 hover:bg-gray-50"
 										to={item.href}

@@ -3,9 +3,10 @@ import React from 'react';
 // For getting window size & set slider number to show
 
 function getWindowDimensions() {
-	const { innerWidth: width } = window;
+	const { innerWidth: width, innerHeight: height } = window;
 	return {
-		width
+		width,
+		height
 	};
 }
 

@@ -30,7 +30,6 @@ function SideBar({ sidebarOpen, setSidebarOpen }) {
 					: 'opacity-0 pointer-events-none'}`}
 				aria-hidden="true"
 			/>
-
 			{/* Sidebar */}
 			<div
 				id="sidebar"
@@ -40,7 +39,7 @@ function SideBar({ sidebarOpen, setSidebarOpen }) {
 					: '-translate-x-64'}`}
 			>
 				{/* Sidebar header */}
-				<div className="flex justify-between mb-10 pr-12 sm:px-12">
+				<div className="flex justify-between mb-10 pr-12 sm:pr-0">
 					{/* Close button */}
 					<button
 						ref={trigger}
@@ -55,8 +54,8 @@ function SideBar({ sidebarOpen, setSidebarOpen }) {
 						</svg>
 					</button>
 					{/* Logo */}
-					<NavLink exact to="/" className="block mt-3 ">
-						<span className="nav-link-light text-2xl font-display font-black tracking-wider cursor-pointer">
+					<NavLink exact to="/" className="block mt-3 mx-auto">
+						<span className="nav-link-light text-2xl font-display font-black tracking-wider cursor-pointer hover:text-purple-700">
 							অনুশীলন
 						</span>
 					</NavLink>

@@ -5,7 +5,7 @@ import Image12 from '../../../assets/images/simulation/phy/12/01/MeterBridgePro2
 
 const ProcedureTemplate = () => {
 	return (
-		<div className="flex flex-wrap text-lg font-body text-gray-900 leading-relaxed tracking-wide">
+		<div className="flex flex-wrap text-lg font-body text-gray-900 leading-relaxed tracking-wide px-4 py-5">
 			<div className="mb-1">
 				<h2 className="font-semibold"> ডায়াগ্রাম: </h2>
 				<img src={Image10} alt="simulation-theory" className="py-1" />

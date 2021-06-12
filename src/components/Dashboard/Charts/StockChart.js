@@ -102,33 +102,33 @@ const StockChart = ({ info }) => {
 							</span>
 						</div>
 						<div className="flex w-full text-xs leading-loose">
-							<div className="flex w-5/12">
+							<div className="flex w-6/12">
 								<div className="flex-1 pr-3 text-left font-semibold">তারের রোধ, p</div>
-								<div className="flex-1 px-3 text-right">{info.price.open.toFixed(3)} Ω</div>
+								<div className="flex-1 px-5 text-right">{info.price.open.toFixed(3)} Ω</div>
 							</div>
-							<div className="flex w-7/12">
+							<div className="flex w-6/12">
 								<div className="flex-1 px-3 text-left font-semibold">নির্দিষ্ট রোধ, X'</div>
 								<div className="flex-1 pl-3 text-right">{formatter(info.price.cap)} Ω</div>
 							</div>
 						</div>
 						<div className="flex w-full text-xs leading-loose">
-							<div className="flex w-5/12">
+							<div className="flex w-6/12">
 								<div className="flex-1 pr-3 text-left font-semibold">তারের দৈর্ঘ্য, L</div>
-								<div className="px-3 text-right">{info.price.high.toFixed(3)} cm</div>
+								<div className="px-5 text-right">{info.price.high.toFixed(3)} cm</div>
 							</div>
-							<div className="flex w-7/12">
+							<div className="flex w-6/12">
 								<div className="flex-1 px-3 text-left font-semibold">তারের ব্যাসার্ধ, r</div>
 								<div className="pl-3 text-right">{info.price.ratio.toFixed(2)} mm</div>
 							</div>
 						</div>
 						<div className="flex w-full text-xs leading-loose">
-							<div className="flex w-5/12">
+							<div className="flex w-6/12">
 								<div className="flex-1 pr-3 text-left font-semibold">গড় রোধ, X</div>
-								<div className="px-3 text-right">{info.price.low.toFixed(3)} Ω</div>
+								<div className="px-5 text-right">{info.price.low.toFixed(3)} Ω</div>
 							</div>
-							<div className="flex w-7/12">
+							<div className="flex w-6/12">
 								<div className="flex-1 px-3 text-left font-semibold">
-									স্ক্রু গেজের সর্বনিম্ন গণনা (LC)
+									স্ক্রু গেজের গণনা (LC)
 								</div>
 								<div className="pl-3 text-right">{`${info.price.dividend}`} mm</div>
 							</div>

@@ -9,6 +9,9 @@ import Simulation from '../components/HomePage/Simulation/Simulation';
 import Testimonial from '../components/HomePage/Testimonial/Testimonial';
 
 const Home = () => {
+
+	document.title = 'অনুশীলন - ভার্চুয়াল সাইন্স ল্যাব';
+
 	return (
 		<>
 			<div

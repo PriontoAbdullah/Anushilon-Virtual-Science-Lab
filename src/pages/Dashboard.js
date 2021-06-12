@@ -6,6 +6,8 @@ import SimulationTemplate from '../components/Dashboard/Simulation/SimulationTem
 const Dashboard = () => {
 	const [ sidebarOpen, setSidebarOpen ] = useState(false);
 
+	document.title = 'অনুশীলন - সিমুলেশন ড্যাশবোর্ড 🚀';
+
 	useEffect(() => {
 		window.scrollTo(0, 0);
 	}, []);
@@ -18,7 +20,7 @@ const Dashboard = () => {
 				{/*  Site header */}
 				<HeaderBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
-				<main className="px-4 sm:px-6 lg:px-8 py-8 max-w-9xl mx-auto bg-gray-50 h-full w-full">
+				<main className="px-4 sm:px-6 lg:px-8 py-6 max-w-9xl mx-auto bg-gray-50 h-full w-full">
 					<SimulationTemplate />
 				</main>
 			</div>

@@ -220,7 +220,7 @@ const LoginModal = (props) => {
 											নাম
 										</label>
 										<div class="relative flex w-full flex-wrap items-stretch mb-3">
-											<span class="login-icon">
+											<span className="login-icon">
 												<FontAwesomeIcon icon={faUser} className="text-gray-500" />
 											</span>
 											<input

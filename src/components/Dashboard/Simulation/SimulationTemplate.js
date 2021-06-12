@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import ObservationTemplate from './ObservationTemplate';
+import PlaySimulationTemplate from './PlaySimulationTemplate';
 import ProcedureTemplate from './ProcedureTemplate';
 import TheoryTemplate from './TheoryTemplate';
 import VideoTemplate from './VideoTemplate';
@@ -138,7 +139,7 @@ const SimulationTemplate = () => {
 						</li>
 					</ul>
 					<div className="relative flex flex-col min-w-0 break-words bg-white w-full shadow-lg rounded">
-						<div className="px-4 py-5 flex-auto">
+						<div className="flex-auto">
 							<div className="tab-content tab-space">
 								<div className={`mb-5 ${openTab === 1 ? 'block' : 'hidden'}`} id="link1">
 									<TheoryTemplate />
@@ -153,13 +154,7 @@ const SimulationTemplate = () => {
 									<VideoTemplate videoId={videoSimulationId.animationId} />
 								</div>
 								<div className={openTab === 5 ? 'block' : 'hidden'} id="link5">
-									<p>
-										Efficiently unleash cross-media information without cross-media value. Quickly
-										maximize timely deliverables for real-time schemas.
-										<br />
-										<br /> Dramatically maintain clicks-and-mortar solutions without functional
-										solutions.
-									</p>
+									<PlaySimulationTemplate />
 								</div>
 								<div className={openTab === 6 ? 'block' : 'hidden'} id="link6">
 									<ObservationTemplate />

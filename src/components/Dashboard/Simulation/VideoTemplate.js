@@ -32,14 +32,14 @@ const VideoTemplate = (props) => {
 	};
 
 	return (
-		<>
+		<div className="px-4 py-6">
 			<YouTube
 				videoId={props.videoId}
 				opts={opts}
 				onReady={onReady}
 				className="mx-auto shadow-3xl cursor-pointer"
 			/>
-		</>
+		</div>
 	);
 };
 

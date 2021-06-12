@@ -9,7 +9,7 @@ import Image01 from '../../../assets/images/simulation/phy/12/01/Wheatstone-Brid
 
 const TheoryTemplate = () => {
 	return (
-		<div className="flex flex-wrap text-lg font-body text-gray-900 leading-relaxed tracking-wide">
+		<div className="flex flex-wrap text-lg font-body text-gray-900 leading-relaxed tracking-wide px-4 py-5 ">
 			<div className="mb-2 ">
 				<h2 className="font-semibold"> পরীক্ষণের নাম: </h2>
 				<p> মিটার ব্রিজ ব্যবহার করে কোন তারের আপেক্ষিক রোধ নির্ণয়। </p>

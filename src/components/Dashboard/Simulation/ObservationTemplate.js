@@ -1,7 +1,7 @@
 import { faChartLine, faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import Pulse from 'react-reveal/Pulse';
+import Fade from 'react-reveal/Fade';
 import Image20 from '../../../assets/images/simulation/phy/12/01/MeterBridgePro5.png';
 import Image21 from '../../../assets/images/simulation/phy/12/01/MeterBridgePro6.png';
 import Image22 from '../../../assets/images/simulation/phy/12/01/MeterBridgePro7.png';
@@ -62,7 +62,7 @@ const ObservationTemplate = () => {
 
 	return (
 		<React.Fragment>
-			<div className="flex flex-wrap text-lg font-body text-gray-900 leading-relaxed tracking-wide">
+			<div className="flex flex-wrap text-lg font-body text-gray-900 leading-relaxed tracking-wide px-4 py-5">
 				<div className="mb-2 w-full">
 					<h2 className="font-semibold"> পর্যবেক্ষণ: </h2>
 					<p> প্রদত্ত তারের রোধের সন্ধান করতে: </p>
@@ -443,42 +443,44 @@ const ObservationTemplate = () => {
 						<div className="relative w-auto my-6 mx-auto max-w-sm">
 							{/*content*/}
 							<div className="shadow-lg rounded-2xl p-4 bg-white dark:bg-gray-800 w-64 sm:w-96 m-auto">
-								<Pulse>
-									<div className="w-full h-full text-center">
-										<div className="flex h-full flex-col justify-between">
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												className="h-12 w-12 mt-4 m-auto text-green-500"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke="currentColor"
-											>
-												<path
-													strokeLinecap="round"
-													strokeLinejoin="round"
-													strokeWidth={2}
-													d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
-												/>
-											</svg>
+								<div className="w-full h-full text-center">
+									<div className="flex h-full flex-col justify-between">
+										<Fade top>
+											<div>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													className="h-12 w-12 mt-4 m-auto text-green-500"
+													fill="none"
+													viewBox="0 0 24 24"
+													stroke="currentColor"
+												>
+													<path
+														strokeLinecap="round"
+														strokeLinejoin="round"
+														strokeWidth={2}
+														d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+													/>
+												</svg>
+											</div>
 											<p className="font-body text-brand-900 dark:text-gray-100 text-lg py-5 px-12">
 												আপনার পরীক্ষণের সকল তথ্য সংরক্ষণ করা হয়েছে।
 											</p>
 											<div className="flex items-center justify-center gap-4 w-1/2 mt-2 mb-5 mx-auto">
 												<button
 													type="button"
-													class="py-2 px-4 bg-dark-brand-900 hover:bg-brand-900 focus:ring-indigo-800 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-body font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+													className="py-2 px-4 bg-dark-brand-900 hover:bg-brand-900 focus:ring-indigo-800 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-body font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
 													onClick={() => setShowModal(false)}
 												>
 													ঠিক আছে
 												</button>
 											</div>
-										</div>
+										</Fade>
 									</div>
-								</Pulse>
+								</div>
 							</div>
 						</div>
 					</div>
-					<div className="opacity-25 fixed inset-0 z-40 bg-black" />
+					<div className="opacity-30 fixed inset-0 z-40 bg-black" />
 				</div>
 			) : null}
 

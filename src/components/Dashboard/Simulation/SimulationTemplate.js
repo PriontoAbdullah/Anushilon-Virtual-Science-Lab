@@ -11,6 +11,7 @@ import VideoTemplate from './VideoTemplate';
 const SimulationTemplate = () => {
 	const [ openTab, setOpenTab ] = React.useState(1);
 
+	// YouTube video ID
 	const videoSimulationId = {
 		videoId: '0fAqXe1zSUs',
 		animationId: 'LA8hYjygyHk'
@@ -20,7 +21,7 @@ const SimulationTemplate = () => {
 		<div>
 			<div className="flex flex-wrap">
 				<div className="w-full">
-					{/* For mobile view */}
+					{/* For mobile view header */}
 					<nav className="block md:hidden rounded font-body w-full mb-3">
 						<ol className="list-reset flex flex-wrap tracking-wide text-lg">
 							<li>
@@ -46,6 +47,7 @@ const SimulationTemplate = () => {
 							</li>
 						</ol>
 					</nav>
+					{/* Tab Button List */}
 					<ul className="flex mb-0 list-none flex-wrap pb-4 flex-row" role="tablist">
 						<li className="mb-2 mr-2 last:mr-0 flex-auto text-center">
 							<a
@@ -138,6 +140,7 @@ const SimulationTemplate = () => {
 							</a>
 						</li>
 					</ul>
+					{/* Tab Content Components */}
 					<div className="relative flex flex-col min-w-0 break-words bg-white w-full shadow-lg rounded">
 						<div className="flex-auto">
 							<div className="tab-content tab-space">

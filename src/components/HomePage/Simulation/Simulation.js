@@ -14,7 +14,7 @@ const Simulation = () => {
 	const { width } = useWindowDimensions();
 
 	let getHeight =
-		width > 1280 ? 2950 : width > 1024 ? 3200 : width > 768 ? 4200 : width > 640 ? 4400 : width > 430 ? 5000 : 5200;
+		width > 1280 ? 2990 : width > 1024 ? 3200 : width > 768 ? 4200 : width > 640 ? 4400 : width > 430 ? 5000 : 5200;
 
 	function handleScroll() {
 		window.scroll({
@@ -35,6 +35,7 @@ const Simulation = () => {
 			>
 				<div className="px-8 pb-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pt-16 lg:pb-10">
 					<div className="grid sm:gap-8 row-gap-8 grid-cols-1 lg:grid-cols-12">
+						{/* Left Side */}
 						<div className="col-span-5 mb-12 py-6 sm:mb-0">
 							<Slide up>
 								<img
@@ -44,10 +45,11 @@ const Simulation = () => {
 								/>
 							</Slide>
 						</div>
+						{/* Right Side */}
 						<div className="col-span-7 flex flex-wrap justify-center my-5">
 							<div className="max-w-3xl mb-5">
 								<Slide up>
-									<h2 className="mb-5 font-display text-2xl font-bold tracking-normal text-gray-900 leading-relaxed md:text-3xl md:leading-normal">
+									<h2 className="mb-5 font-display text-2xl font-bold tracking-wider text-dark-brand-900 leading-relaxed md:text-3xl md:leading-normal">
 										ঘরে বসেই এক্সপেরিমেন্ট করো, সিমুলেশন এর মাধ্যমে
 										<span className="inline-block text-brand-900 ml-0 sm:ml-3">
 											হয়ে ওঠো ক্ষুদে বিজ্ঞানী 🚀
@@ -63,6 +65,7 @@ const Simulation = () => {
 									</p>
 								</Slide>
 							</div>
+							{/* Simulation Buttons */}
 							<div className="grid gap-1 sm:gap-5 row-gap-8 sm:grid-cols-3 font-body">
 								<Slide bottom>
 									<div
@@ -139,6 +142,7 @@ const Simulation = () => {
 				</div>
 			</section>
 
+			{/* View simulation contents component */}
 			<ViewAllSimulation
 				viewSimulation={viewSimulation}
 				selectTab={selectTab}

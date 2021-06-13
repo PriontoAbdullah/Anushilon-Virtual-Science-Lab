@@ -14,6 +14,7 @@ const Dashboard = () => {
 
 	return (
 		<div className="flex h-screen overflow-hidden">
+			{/*  Site Bar*/}
 			<SideBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
 			<div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">

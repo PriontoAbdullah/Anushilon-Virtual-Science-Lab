@@ -289,7 +289,7 @@ const ObservationTemplate = () => {
 					</div>
 				</div>
 
-				{/* Observation Result 2*/}
+				{/* Observation Result 2 */}
 				<div className="font-body mb-2">
 					<p className="py-4 px-5">
 						গড়, d ={' '}

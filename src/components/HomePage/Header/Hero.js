@@ -5,8 +5,9 @@ import { Link } from 'react-scroll';
 import styled from 'styled-components';
 import WordsFading from '../MicroComponent/WordsFading';
 
+// For styling words fading
 const Wrapper = styled.div`
-	width: 195px;
+	width: 199px;
 	display: inline-block;
 	text-align: center;
 	line-height: 73px;
@@ -16,7 +17,7 @@ const Wrapper = styled.div`
 		width: 100%;
 	}
 	@media (max-width: 1023px) {
-		width: 122px;
+		width: 125px;
 		font-size: 30px;
 		line-height: 47px;
 	}
@@ -36,8 +37,9 @@ const Hero = () => {
 			>
 				<div className="max-w-xl sm:mx-auto lg:max-w-7xl">
 					<div className="flex flex-col text-center">
+						{/* Main Content */}
 						<div className="max-w-xl my-14 md:mx-auto lg:max-w-4xl md:my-28">
-							<h2 className="max-w-2xl mb-10 lg:mb-20 font-display text-3xl font-bold leading-10 lg:leading-normal tracking-wide text-white lg:text-5xl mx-auto">
+							<h2 className="max-w-2xl mb-10 lg:mb-20 font-display text-3xl font-medium leading-10 lg:leading-normal tracking-wider text-gray-50 lg:text-5xl mx-auto">
 								বাংলাদেশের{' '}
 								<span className="relative">
 									<Wrapper>
@@ -54,12 +56,9 @@ const Hero = () => {
 							</p>
 						</div>
 						<div>
+							{/* Button */}
 							<Flip top>
-								<Link
-									to="features"
-									smooth={true}
-									className="deep-button"
-								>
+								<Link to="features" smooth={true} className="deep-button">
 									আমাদের যা আছে
 								</Link>
 							</Flip>

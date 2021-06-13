@@ -72,7 +72,7 @@ function SideBar({ sidebarOpen, setSidebarOpen }) {
 						>
 							<NavLink
 								exact
-								to="/"
+								to="/dashboard"
 								className={`block text-gray-200 hover:text-indigo-200 transition duration-150 ${page ===
 									'' && 'hover:text-gray-200'}`}
 							>
@@ -108,7 +108,7 @@ function SideBar({ sidebarOpen, setSidebarOpen }) {
 						>
 							<NavLink
 								exact
-								to="/"
+								to="/labroom"
 								className={`block text-gray-200 hover:text-indigo-200 transition duration-150 ${page ===
 									'labroom' && 'hover:text-gray-200'}`}
 							>
@@ -283,7 +283,7 @@ function SideBar({ sidebarOpen, setSidebarOpen }) {
 						>
 							<NavLink
 								exact
-								to="/"
+								to="/community"
 								className={`block text-gray-200 hover:text-indigo-200 transition duration-150 ${page ===
 									'community' && 'hover:text-gray-200'}`}
 							>
@@ -313,7 +313,7 @@ function SideBar({ sidebarOpen, setSidebarOpen }) {
 						>
 							<NavLink
 								exact
-								to="/"
+								to="/workshop"
 								className={`block text-gray-200 hover:text-indigo-200 transition duration-150 ${page ===
 									'workshop' && 'hover:text-gray-200'}`}
 							>
@@ -359,7 +359,7 @@ function SideBar({ sidebarOpen, setSidebarOpen }) {
 						>
 							<NavLink
 								exact
-								to="/"
+								to="/settings"
 								className={`block text-gray-200 hover:text-indigo-200 transition duration-150 ${page ===
 									'settings' && 'hover:text-gray-200'}`}
 							>

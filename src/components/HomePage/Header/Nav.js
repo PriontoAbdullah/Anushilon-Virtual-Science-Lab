@@ -12,6 +12,7 @@ const Nav = () => {
 	const [ showLoginModal, setShowLoginModal ] = useState(false);
 	const [ showHeader, setShowHeader ] = useState('block');
 
+	// For Scrolling Function
 	const handleScroll = () => {
 		const offset = window.scrollY;
 		if (offset > 20) {
@@ -30,6 +31,7 @@ const Nav = () => {
 		headerClasses.push(classes.scrolled);
 	}
 
+	// For all modal controler - responsive
 	const handleDesktopLogin = () => {
 		setShowLoginModal(true);
 		setShowHeader('hidden');
@@ -74,6 +76,7 @@ const Nav = () => {
 					<nav className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
 						<div className="relative flex items-center justify-between font-body">
 							<div className="flex items-center">
+								{/* Logo */}
 								<Link
 									to="/"
 									className="inline-flex items-center mr-8"
@@ -87,6 +90,7 @@ const Nav = () => {
 										অনুশীলন
 									</span>
 								</Link>
+								{/* Desktop Nav View */}
 								<ul className="items-center hidden space-x-8 lg:flex">
 									<li>
 										<Link
@@ -163,9 +167,7 @@ const Nav = () => {
 										delay={100}
 										offset={0}
 										duration={500}
-										className={`${scrolled
-											? 'nav-link-deep'
-											: 'nav-link-light'} nav-link-general`}
+										className={`${scrolled ? 'nav-link-deep' : 'nav-link-light'} nav-link-general`}
 										onClick={handleDesktopLogin}
 									>
 										লগ ইন
@@ -188,7 +190,10 @@ const Nav = () => {
 									</Link>
 								</li>
 							</ul>
+
+							{/* Mobile Nav View */}
 							<div className="lg:hidden">
+								{/* Open Menu Button */}
 								<button
 									aria-label="Open Menu"
 									title="Open Menu"
@@ -219,6 +224,7 @@ const Nav = () => {
 										<div className="p-5 bg-white border rounded shadow-sm">
 											<div className="flex items-center justify-between mb-4">
 												<div>
+													{/* Logo */}
 													<Link
 														to="/"
 														spy={true}
@@ -232,6 +238,7 @@ const Nav = () => {
 													</Link>
 												</div>
 												<div>
+													{/* Close Menu Button */}
 													<button
 														aria-label="Close Menu"
 														title="Close Menu"
@@ -344,6 +351,7 @@ const Nav = () => {
 				</header>
 			</motion.div>
 
+{/* Login Modal Component */}
 			{showLoginModal ? (
 				<LoginModal
 					showLoginModal={showLoginModal}

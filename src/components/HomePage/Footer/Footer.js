@@ -15,6 +15,7 @@ const Footer = () => {
 			<div className="px-4 pt-20 pb-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
 				<Fade top>
 					<div className="grid grid-cols-2 gap-10 mb-3 sm:grid-cols-3 lg:grid-cols-12 lg:gap-20">
+						{/* Column 1 */}
 						<div className="col-span-4">
 							<a href="/" aria-label="Go home" title="অনুশীলন" className="inline-flex items-center">
 								<span className="ml-2 text-2xl font-display font-bold tracking-wide text-white uppercase">
@@ -28,7 +29,7 @@ const Footer = () => {
 								</p>
 							</div>
 						</div>
-
+						{/* Column 2 */}
 						<div className="col-span-2 lg:col-span-3 space-y-2 text-sm font-body">
 							<p className="text-base font-semibold tracking-wide text-white">যোগাযোগ</p>
 							<div className="flex flex-wrap">
@@ -55,6 +56,7 @@ const Footer = () => {
 								</a>
 							</div>
 						</div>
+						{/* Column 3 */}
 						<div className="col-span-1 lg:col-span-2 space-y-2 text-sm font-body">
 							<p className="text-base font-semibold tracking-wide text-white">বিভাগ সমূহ</p>
 							<ul className="mt-2 space-y-2">
@@ -80,7 +82,7 @@ const Footer = () => {
 								</li>
 							</ul>
 						</div>
-
+						{/* Column 4 */}
 						<div className="col-span-3">
 							<span className="text-base font-semibold font-body tracking-wide text-white">
 								সামাজিক মাধ্যম
@@ -121,6 +123,7 @@ const Footer = () => {
 							</p>
 						</div>
 					</div>
+					{/* Down Footer */}
 					<div className="flex flex-col-reverse justify-between pt-5 pb-10 border-t border-gray-50 lg:flex-row font-body">
 						<p className="text-sm font-medium text-gray-400 tracking-wide">
 							&copy; কপিরাইট <span className="font-display font-semibold text-gray-200">২০২১</span>{' '}

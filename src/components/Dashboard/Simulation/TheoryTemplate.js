@@ -10,6 +10,7 @@ import Image01 from '../../../assets/images/simulation/phy/12/01/Wheatstone-Brid
 const TheoryTemplate = () => {
 	return (
 		<div className="flex flex-wrap text-lg font-body text-gray-900 leading-relaxed tracking-wide px-4 py-5 ">
+			{/* Content 1 */}
 			<div className="mb-2 ">
 				<h2 className="font-semibold"> পরীক্ষণের নাম: </h2>
 				<p> মিটার ব্রিজ ব্যবহার করে কোন তারের আপেক্ষিক রোধ নির্ণয়। </p>
@@ -22,7 +23,7 @@ const TheoryTemplate = () => {
 					প্রতিরোধের নির্ধারণ করতে হবে।
 				</p>
 			</div>
-
+			{/* Content 2 */}
 			<div className="mb-4">
 				<h2 className="font-semibold"> মূলতত্ত্ব: </h2>
 				<p> হুইটস্টোন এর নীতি অনুসারে </p>
@@ -35,7 +36,7 @@ const TheoryTemplate = () => {
 				</p>
 				<img src={Image02} alt="simulation-theory" className="py-2 ml-2" />
 			</div>
-
+			{/* Content 3 */}
 			<div className="mb-2 mt-2">
 				<h2 className="font-semibold"> মিটার ব্রিজ মেশিন: </h2>
 				<p>
@@ -53,7 +54,7 @@ const TheoryTemplate = () => {
 					AC উপরের দিকে স্লাইড হয়, এটি ভারসাম্য বিন্দুতে নাল পয়েন্ট দেখায়।
 				</p>
 			</div>
-
+			{/* Content 4 */}
 			<div className="mb-4">
 				<p className="my-2">দৈর্ঘ্য যদি AB হয়, তবে BC দৈর্ঘ্য (100-l) হয়।</p>
 				<p>তারপরে, হুইটস্টনের নীতি অনুসারে:</p>
@@ -66,7 +67,7 @@ const TheoryTemplate = () => {
 				<img src={Image07} alt="simulation-theory" className="py-2" />
 				<p className="mt-2">যেখানে L তারের দৈর্ঘ্য হবে এবং R ব্যাসার্ধ হবে। </p>
 			</div>
-
+			{/* Content 5 */}
 			<div className="pb-5">
 				<h2 className="font-semibold mb-1"> শেখার ফলাফল: </h2>
 				<ul className="list-inside leading-loose list-disc">

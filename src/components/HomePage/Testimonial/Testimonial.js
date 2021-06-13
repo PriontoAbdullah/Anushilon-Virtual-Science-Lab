@@ -16,6 +16,7 @@ const Testimonial = () => {
 	const [ reviews, SetReviews ] = useState([]);
 	const { width } = useWindowDimensions();
 
+	// Get all reviews
 	useEffect(
 		() => {
 			SetReviews(AllReviews);
@@ -32,7 +33,7 @@ const Testimonial = () => {
 				backgroundImage: `url(${bgBannerTestimonial})`
 			}}
 		>
-			<div className="px-4 py-16 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pt-16 lg:pb-8">
+			<div className="px-4 py-4 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pt-12 lg:pb-8">
 				<Fade top>
 					<SectionTitle
 						title="ব্যবহারকারীরা যা বলছে আমাদের সম্পর্কে"
@@ -40,6 +41,7 @@ const Testimonial = () => {
 						space="mb-2"
 					/>
 				</Fade>
+				{/* Review Component */}
 				<Slide bottom>
 					<div className="w-full flex flex-col md:flex-row gap-4 mb-8 md:mb-0 flex-between items-center p-5">
 						<Swiper

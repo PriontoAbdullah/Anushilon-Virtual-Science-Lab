@@ -2,6 +2,7 @@ header {
 	transition: all 0.3s ease-in-out;
 }
 
+/* Scroll header style */
 .scrolled header {
 	background: rgba(255, 255, 255, 0.75);
 	backdrop-filter: saturate(180%)blur(5px);

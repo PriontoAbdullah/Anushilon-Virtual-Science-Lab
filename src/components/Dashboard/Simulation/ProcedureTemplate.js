@@ -6,6 +6,7 @@ import Image12 from '../../../assets/images/simulation/phy/12/01/MeterBridgePro2
 const ProcedureTemplate = () => {
 	return (
 		<div className="flex flex-wrap text-lg font-body text-gray-900 leading-relaxed tracking-wide px-4 py-5">
+			{/* Main Content */}
 			<div className="mb-1">
 				<h2 className="font-semibold"> ডায়াগ্রাম: </h2>
 				<img src={Image10} alt="simulation-theory" className="py-1" />
@@ -26,7 +27,7 @@ const ProcedureTemplate = () => {
 					<li>সংযোগ তারের</li>
 				</ul>
 			</div>
-
+			{/* Procedure 1 */}
 			<div className="mb-2 mt-4">
 				<h2 className="font-semibold mb-1"> বাস্তব ল্যাব এর কার্যধারা </h2>
 				<ul className="list-inside leading-loose list-disc">
@@ -80,7 +81,7 @@ const ProcedureTemplate = () => {
 					<img src={Image12} alt="simulation-theory" className="py-1" />
 				</ul>
 			</div>
-
+			{/* Procedure 2 */}
 			<div className="mb-12 mt-8">
 				<h2 className="font-semibold mb-1">সিমুলেটর কার্যধারা (অনলাইন ল্যাব এর মাধ্যমে সম্পাদিত):</h2>
 				<ul className="list-inside leading-loose list-disc">

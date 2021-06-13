@@ -3,6 +3,7 @@ import { animated, config, useTransition } from 'react-spring';
 
 const WordsFading = () => {
 	const [ toggle, set ] = useState(false);
+	// Transition Style
 	const transitions = useTransition(toggle, {
 		from: {
 			position: 'absolute',
@@ -21,6 +22,7 @@ const WordsFading = () => {
 	});
 	
 	return transitions(
+		// Transition Contents
 		({ opacity }, item) =>
 			item ? (
 				<animated.div

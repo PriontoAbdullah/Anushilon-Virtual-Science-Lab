@@ -21,6 +21,7 @@ function UserMenu() {
 
 	return (
 		<div className="relative inline-flex">
+			{/* User Profile Button */}
 			<button
 				ref={trigger}
 				className="inline-flex justify-center items-center group outline-none focus:outline-none"
@@ -38,7 +39,7 @@ function UserMenu() {
 					</svg>
 				</div>
 			</button>
-
+			{/* Profile Menu Dropdown */}
 			<Transition
 				className="origin-top-right z-10 absolute top-full right-0 mr-0 sm:-mr-6 w-44 bg-white border border-gray-200 py-1.5 rounded shadow-lg overflow-hidden mt-1"
 				show={dropdownOpen}
@@ -57,7 +58,7 @@ function UserMenu() {
 						<li>
 							<Link
 								className="font-body font-medium text-sm text-brand-900 hover:text-indigo-600 flex items-center py-2 px-3"
-								to="/dashboard"
+								to="/profile"
 								onClick={() => setDropdownOpen(!dropdownOpen)}
 							>
 								<svg
@@ -80,7 +81,7 @@ function UserMenu() {
 						<li>
 							<Link
 								className="font-body font-medium text-sm text-brand-900 hover:text-indigo-600 flex items-center py-2 px-3"
-								to="/dashboard"
+								to="/logout"
 								onClick={() => setDropdownOpen(!dropdownOpen)}
 							>
 								<svg

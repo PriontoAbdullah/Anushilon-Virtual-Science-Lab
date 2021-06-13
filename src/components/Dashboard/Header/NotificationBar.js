@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Transition from '../../../utils/Transition';
 
+// Notification Data
 const notifications = [
 	{
 		name: 'অনুরোধ',
@@ -37,6 +38,7 @@ function NotificationBar() {
 
 	return (
 		<div className="relative inline-flex ml-3">
+			{/* Dropdown Button */}
 			<button
 				ref={trigger}
 				className={`w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition duration-150 rounded-full outline-none focus:outline-none ${dropdownOpen &&

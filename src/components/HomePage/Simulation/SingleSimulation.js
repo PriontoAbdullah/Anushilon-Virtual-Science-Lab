@@ -36,7 +36,7 @@ const SingleSimulation = ({item}) => {
 						<p className="flex font-body text-brand-900 text-lg font-semibold ">
 							<LabIcon /> {item.title}
 						</p>
-						<p className="mt-2 font-body text-lg font-medium tracking-wide text-gray-800">{item.name}</p>
+						<p className="mt-2 font-body text-lg font-medium tracking-wide text-gray-800 h-10">{item.name}</p>
 					</div>
 				</div>
 			</Link>

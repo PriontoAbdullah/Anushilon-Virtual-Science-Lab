@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import bgViewSimulation from '../../../assets/images/background/biography-bg.png';
+import { biology09, biology10, biology11, biology12 } from '../../../data/biologySimulation';
+import { chemistry09, chemistry10, chemistry11, chemistry12 } from '../../../data/chemistrySimulation';
 import { physics09, physics10, physics11, physics12 } from '../../../data/physicsSimulation';
 import SingleSimulation from './SingleSimulation';
 
@@ -37,6 +39,7 @@ const ViewAllSimulation = (props) => {
 				>
 					<div className="px-2 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-3 lg:px-4 lg:py-8">
 						<div>
+							{/* Close Button */}
 							<button
 								className="simulation-cross-button"
 								type="button"
@@ -72,6 +75,7 @@ const ViewAllSimulation = (props) => {
 								) : null}
 							</h2>
 						</div>
+						{/* View Class Name Buttons */}
 						<div className="flex flex-wrap flex-row">
 							<div className="w-full">
 								<ul
@@ -139,14 +143,29 @@ const ViewAllSimulation = (props) => {
 										</a>
 									</li>
 								</ul>
+								{/* View Simulation Contents */}
 								<div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-3xl rounded">
 									<div className="px-4 py-5 flex-auto">
 										<div className="tab-content tab-space">
 											<div className={openTab === 1 ? 'block' : 'hidden'} id="12">
 												<div className="simulation-item-outer">
-													<div className="simulation-item-inner ">
-														{physics12 &&
+													<div className="simulation-item-inner">
+														{/* CLass 12 */}
+														{props.selectTab === 1 &&
+															physics12 &&
 															physics12.map((item) => (
+																<SingleSimulation item={item} key={item.id} />
+															))}
+
+														{props.selectTab === 2 &&
+															chemistry12 &&
+															chemistry12.map((item) => (
+																<SingleSimulation item={item} key={item.id} />
+															))}
+
+														{props.selectTab === 3 &&
+															biology12 &&
+															biology12.map((item) => (
 																<SingleSimulation item={item} key={item.id} />
 															))}
 													</div>
@@ -155,9 +174,23 @@ const ViewAllSimulation = (props) => {
 
 											<div className={openTab === 2 ? 'block' : 'hidden'} id="11">
 												<div className="simulation-item-outer">
-													<div className="simulation-item-inner ">
-														{physics12 &&
+													<div className="simulation-item-inner">
+														{/* CLass 11 */}
+														{props.selectTab === 1 &&
+															physics11 &&
 															physics11.map((item) => (
+																<SingleSimulation item={item} key={item.id} />
+															))}
+
+														{props.selectTab === 2 &&
+															chemistry11 &&
+															chemistry11.map((item) => (
+																<SingleSimulation item={item} key={item.id} />
+															))}
+
+														{props.selectTab === 3 &&
+															biology11 &&
+															biology11.map((item) => (
 																<SingleSimulation item={item} key={item.id} />
 															))}
 													</div>
@@ -165,9 +198,23 @@ const ViewAllSimulation = (props) => {
 											</div>
 											<div className={openTab === 3 ? 'block' : 'hidden'} id="10">
 												<div className="simulation-item-outer">
-													<div className="simulation-item-inner ">
-														{physics12 &&
+													<div className="simulation-item-inner">
+														{/* CLass 10 */}
+														{props.selectTab === 1 &&
+															physics10 &&
 															physics10.map((item) => (
+																<SingleSimulation item={item} key={item.id} />
+															))}
+
+														{props.selectTab === 2 &&
+															chemistry10 &&
+															chemistry10.map((item) => (
+																<SingleSimulation item={item} key={item.id} />
+															))}
+
+														{props.selectTab === 3 &&
+															biology10 &&
+															biology10.map((item) => (
 																<SingleSimulation item={item} key={item.id} />
 															))}
 													</div>
@@ -175,9 +222,23 @@ const ViewAllSimulation = (props) => {
 											</div>
 											<div className={openTab === 4 ? 'block' : 'hidden'} id="9">
 												<div className="simulation-item-outer">
-													<div className="simulation-item-inner ">
-														{physics12 &&
+													<div className="simulation-item-inner">
+														{/* CLass 09 */}
+														{props.selectTab === 1 &&
+															physics09 &&
 															physics09.map((item) => (
+																<SingleSimulation item={item} key={item.id} />
+															))}
+
+														{props.selectTab === 2 &&
+															chemistry09 &&
+															chemistry09.map((item) => (
+																<SingleSimulation item={item} key={item.id} />
+															))}
+
+														{props.selectTab === 3 &&
+															biology09 &&
+															biology09.map((item) => (
 																<SingleSimulation item={item} key={item.id} />
 															))}
 													</div>

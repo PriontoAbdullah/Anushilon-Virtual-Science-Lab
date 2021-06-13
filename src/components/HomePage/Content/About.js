@@ -7,10 +7,11 @@ const About = () => {
 		<section id="about">
 			<div className="px-8 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
 				<div className="grid gap-12 row-gap-8 lg:grid-cols-2">
+					{/* Left Side */}
 					<div className="flex flex-col justify-center">
 						<div className="max-w-xl mb-6">
 							<Fade bottom>
-								<h2 className="max-w-lg mb-6 font-display text-2xl font-bold tracking-normal text-gray-900 leading-relaxed md:text-3xl md:leading-normal">
+								<h2 className="max-w-xl mb-6 font-display text-2xl font-semibold tracking-wider text-dark-brand-900 leading-relaxed md:text-3xl md:leading-normal">
 									ল্যাব এক্সপেরিমেন্ট গুলো আরও দক্ষ ও কম ব্যয়বহুলভাবে ইন্টারনেট ব্যবহার করে শেখাবে
 									<span className="text-brand-900 md:ml-1"> অনুশীলন</span>
 								</h2>
@@ -23,7 +24,7 @@ const About = () => {
 								</p>
 							</Fade>
 						</div>
-
+						{/* Small Content */}
 						<div className="grid gap-8 row-gap-8 sm:grid-cols-2 font-body">
 							<div>
 								<Fade bottom>
@@ -83,6 +84,7 @@ const About = () => {
 							</div>
 						</div>
 					</div>
+					{/* Right Side */}
 					<div>
 						<Fade bottom>
 							<img

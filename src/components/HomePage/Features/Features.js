@@ -22,12 +22,13 @@ function Features() {
 			}}
 		>
 			<div className="px-4 py-16 mx-auto  sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-			<Fade top>
-				<SectionTitle
-					title="আমাদের বৈশিষ্ট্য সমূহ"
-					description=" ওয়েব ব্রাউজার ব্যবহার করে শিক্ষার্থীরা প্রত্যন্ত অবস্থান থেকে পরীক্ষা-নিরীক্ষা করতে পারে এবং এই ইন্টারেক্টিভ প্রযুক্তিগুলি শিক্ষার্থীদের অভিনব ও আনন্দায়ক উপায়ে বিজ্ঞান শেখার সম্ভাবনা তৈরী করে।"
-					space="mb-12"
-				/>
+				{/* Main Content */}
+				<Fade top>
+					<SectionTitle
+						title="আমাদের বৈশিষ্ট্য সমূহ"
+						description=" ওয়েব ব্রাউজার ব্যবহার করে শিক্ষার্থীরা প্রত্যন্ত অবস্থান থেকে পরীক্ষা-নিরীক্ষা করতে পারে এবং এই ইন্টারেক্টিভ প্রযুক্তিগুলি শিক্ষার্থীদের অভিনব ও আনন্দায়ক উপায়ে বিজ্ঞান শেখার সম্ভাবনা তৈরী করে।"
+						space="mb-12"
+					/>
 				</Fade>
 				<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 relative font-body">
 					<div style={{ zIndex: '-1' }} className="hidden xl:block 2xl:hidden path absolute w-full">
@@ -35,6 +36,7 @@ function Features() {
 							<img className="mx-auto" src={PathImage} alt="img" />
 						</Zoom>
 					</div>
+					{/* Feature 1 */}
 					<Slide bottom>
 						<Card>
 							<div className="text-center px-5 py-8">
@@ -49,6 +51,7 @@ function Features() {
 							</div>
 						</Card>
 					</Slide>
+					{/* Feature 2 */}
 					<Slide bottom>
 						<Card>
 							<div className="text-center px-5 py-8 xl:mt-24">
@@ -63,6 +66,7 @@ function Features() {
 							</div>
 						</Card>
 					</Slide>
+					{/* Feature 3 */}
 					<Slide bottom>
 						<Card>
 							<div className="text-center px-5 py-8">
@@ -77,6 +81,7 @@ function Features() {
 							</div>
 						</Card>
 					</Slide>
+					{/* Feature 4 */}
 					<Slide bottom>
 						<Card>
 							<div className="text-center mb-24 lg:mb-16 px-5 py-8 xl:mt-24">

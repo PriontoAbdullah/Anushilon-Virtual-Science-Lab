@@ -5,6 +5,7 @@ import useWindowDimensions from '../../../utils/useWindowDimensions';
 const VideoTemplate = (props) => {
 	const { width } = useWindowDimensions();
 
+	// For getting Window width for responsive
 	let getWidth =
 		width > 1280
 			? 737
@@ -19,6 +20,7 @@ const VideoTemplate = (props) => {
 				? 360
 				: width > 680 ? 338 : width > 450 ? 220 : width > 430 ? 203 : width > 400 ? 168 : width > 370 ? 158 : 146;
 
+	// YouTube video attributes
 	const opts = {
 		height: getHeight,
 		width: getWidth,
@@ -27,12 +29,14 @@ const VideoTemplate = (props) => {
 		}
 	};
 
+	// Auto play off
 	const onReady = (event) => {
 		event.target.pauseVideo();
 	};
 
 	return (
 		<div className="px-4 py-6">
+			{/* YouTube Video Frame */}
 			<YouTube
 				videoId={props.videoId}
 				opts={opts}

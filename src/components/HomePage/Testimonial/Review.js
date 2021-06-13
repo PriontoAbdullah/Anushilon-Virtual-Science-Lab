@@ -10,6 +10,7 @@ const Review = (props) => {
 				{quote}
 				<span className="font-bold text-indigo-500 text-lg pl-1">”</span>
 			</p>
+			{/* Review Footer */}
 			<div className="flex items-center mt-5">
 				<div className="block relative">
 					<img alt="profile" src={img} className="mx-auto object-cover rounded-full h-16 w-16" />

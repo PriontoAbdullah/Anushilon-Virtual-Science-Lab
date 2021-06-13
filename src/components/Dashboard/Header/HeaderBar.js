@@ -29,7 +29,7 @@ function HeaderBar({ sidebarOpen, setSidebarOpen }) {
 					<nav className="hidden md:block rounded font-body w-8/12 ">
 						<ol className="list-reset flex flex-wrap tracking-wide text-lg">
 							<li>
-								<NavLink exact to="/" className="font-medium text-brand-900">
+								<NavLink exact to="/simulation" className="font-medium text-brand-900">
 									সিমুলেশন
 								</NavLink>
 							</li>
@@ -37,7 +37,7 @@ function HeaderBar({ sidebarOpen, setSidebarOpen }) {
 								<span className="mx-2 font-bold">&gt;</span>
 							</li>
 							<li>
-								<NavLink exact to="/" className="font-medium text-brand-900">
+								<NavLink exact to="/simulation-phy" className="font-medium text-brand-900">
 									পদার্থ বিজ্ঞান
 								</NavLink>
 							</li>

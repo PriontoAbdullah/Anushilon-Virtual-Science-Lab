@@ -19,6 +19,7 @@ const LoginModal = (props) => {
 						? 'lg:mt-12 2xl:mt-14'
 						: 'lg:mt-4 2xl:mt-6'} flex max-w-sm md:max-w-lg lg:max-w-4xl 2xl:max-w-5xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl`}
 				>
+					{/* Left Side Animations */}
 					<div className="hidden lg:block lg:w-1/2 bg-brand-900">
 						{!props.newUser ? (
 							<img
@@ -34,13 +35,10 @@ const LoginModal = (props) => {
 							/>
 						)}
 					</div>
-
+					{/* Right Side Forms */}
 					<div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
-						<button
-							className="close-button "
-							type="button"
-							onClick={handleCloseModal}
-						>
+						{/* Close Button */}
+						<button className="close-button " type="button" onClick={handleCloseModal}>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								className="icon icon-tabler icon-tabler-circle-x"
@@ -60,7 +58,8 @@ const LoginModal = (props) => {
 						</button>
 
 						{!props.newUser ? (
-							<div>
+							<>
+								{/* LogIn Header */}
 								<div>
 									<h2 className="text-2xl ml-4 mb-2 font-display text-center font-bold text-brand-900">
 										অনুশীলন
@@ -92,7 +91,7 @@ const LoginModal = (props) => {
 												/>
 											</svg>
 										</div>
-
+										{/* Google SignIn Button */}
 										<span className="w-5/6 px-4 py-3 pr-20 font-semibold font-body text-base text-center">
 											গুগল দিয়ে সাইন ইন করুন
 										</span>
@@ -106,7 +105,7 @@ const LoginModal = (props) => {
 										</span>
 										<span className="w-1/5 border-b lg:w-1/4" />
 									</div>
-
+									{/* LogIn Form */}
 									<div className="mt-4 font-body">
 										<label
 											className="block mb-2 text-base font-medium text-gray-700"
@@ -172,10 +171,11 @@ const LoginModal = (props) => {
 										<span className="w-1/5 border-b md:w-1/4" />
 									</div>
 								</Slide>
-							</div>
+							</>
 						) : (
-							<div>
+							<>
 								<div>
+									{/* Registration Header*/}
 									<h2 className="text-2xl ml-4 mb-2 font-display text-center font-bold text-brand-900">
 										অনুশীলন
 									</h2>
@@ -211,7 +211,7 @@ const LoginModal = (props) => {
 											<span className=" text-gray-700 ml-2 font-body"> শিক্ষক </span>
 										</label>
 									</div>
-
+									{/* Registration Form*/}
 									<div className="mt-1 font-body">
 										<label
 											className="block mb-2 text-base font-medium text-gray-700"
@@ -318,11 +318,12 @@ const LoginModal = (props) => {
 										<span className="w-1/5 border-b md:w-1/4" />
 									</div>
 								</Slide>
-							</div>
+							</>
 						)}
 					</div>
 				</div>
 			</div>
+			{/* Background Modal Opacity */}
 			<div className="opacity-25 fixed inset-0 z-40 bg-brand-900" />
 		</div>
 	);

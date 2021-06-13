@@ -2,7 +2,7 @@ import React from 'react';
 import { Line } from 'react-chartjs-2';
 
 const formatter = (number) => (number > 999999 ? (number / 1000000).toFixed(1) + 'M' : number);
-
+// Graph Data
 const buildData = ({ chartData }) => ({
 	labels: chartData.labels,
 	datasets: [
@@ -15,7 +15,7 @@ const buildData = ({ chartData }) => ({
 		}
 	]
 });
-
+// Graph Modal Style
 const options = {
 	legend: {
 		display: false

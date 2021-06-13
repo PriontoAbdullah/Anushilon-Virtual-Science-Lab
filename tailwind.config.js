@@ -4,7 +4,7 @@ module.exports = {
 	theme: {
 		extend: {
 			fontFamily: {
-				display: [ 'CharukolaUltraLight', 'Atma', 'sans-serif' ],
+				display: ['Charukola Unicode', 'sans-serif' ],
 				body: [ 'Hind Siliguri', 'sans-serif' ]
 			},
 			colors: {
@@ -350,6 +350,7 @@ module.exports = {
 		textColor: [ 'responsive', 'hover', 'focus', 'group-hover' ],
 		opacity: [ 'responsive', 'hover', 'focus', 'group-hover' ],
 		backgroundColor: [ 'responsive', 'hover', 'focus', 'group-hover' ],
+		display: ['responsive', 'group-hover', 'group-focus'],
 		extend: {
 			margin: [ 'last' ]
 		}

@@ -1,14 +1,39 @@
-import { faEnvelope, faLock, faUnlock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faLock, faUniversity, faUnlock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slide from 'react-reveal/Slide';
 import loginLoader from '../../assets/images/loader/login.gif';
 import signInLoader from '../../assets/images/loader/signIn.gif';
+import Institution from '../../data/Institution';
 
 const LoginModal = (props) => {
+	const [ institutionUser, setInstitutionUser ] = useState(false);
+	const [ showSearchBox, setShowSearchBox ] = useState(false);
+	const [ institutionList, setInstitutionList ] = useState(null);
+	const [ searchValue, setSearchValue ] = useState('');
+
+	useEffect(
+		() => {
+			searchValue === ''
+				? setInstitutionList(Institution)
+				: setInstitutionList(
+						Institution.filter((item) => item.name.toLowerCase().includes(searchValue.toLowerCase()))
+					);
+		},
+		[ searchValue ]
+	);
+
 	const handleCloseModal = () => {
 		props.setShowHeader('block');
 		props.setShowLoginModal(false);
+	};
+
+	const handleSearchBox = () => {
+		setShowSearchBox(true);
+	};
+
+	const institutionFilterChange = (event) => {
+		setSearchValue(event.target.value);
 	};
 
 	return (
@@ -58,7 +83,7 @@ const LoginModal = (props) => {
 						</button>
 
 						{!props.newUser ? (
-							<>
+							<React.Fragment>
 								{/* LogIn Header */}
 								<div>
 									<h2 className="text-2xl ml-4 mb-2 font-display text-center font-bold text-brand-900">
@@ -171,9 +196,9 @@ const LoginModal = (props) => {
 										<span className="w-1/5 border-b md:w-1/4" />
 									</div>
 								</Slide>
-							</>
+							</React.Fragment>
 						) : (
-							<>
+							<React.Fragment>
 								<div>
 									{/* Registration Header*/}
 									<h2 className="text-2xl ml-4 mb-2 font-display text-center font-bold text-brand-900">
@@ -184,141 +209,297 @@ const LoginModal = (props) => {
 									</p>
 								</div>
 
-								<Slide bottom>
-									<div className="mt-3 mb-0 font-body flex flex-wrap justify-center items-center">
-										<label className="inline-flex items-center">
-											<span className="text-base text-gray-700 font-body mr-3 font-medium">
-												আমি একজন{' '}
-											</span>
-										</label>
-										<label className="inline-flex items-center cursor-pointer">
-											<input
-												type="radio"
-												className="form-radio ring-brand-900 text-brand-900"
-												name="accountType"
-												value="student"
-												defaultChecked
-											/>
-											<span className=" text-gray-700 ml-2 font-body">শিক্ষার্থী</span>
-										</label>
-										<label className="inline-flex items-center ml-3 cursor-pointer">
-											<input
-												type="radio"
-												className="form-radio ring-brand-900"
-												name="accountType"
-												value="teacher"
-											/>
-											<span className=" text-gray-700 ml-2 font-body"> শিক্ষক </span>
-										</label>
-									</div>
-									{/* Registration Form*/}
-									<div className="mt-1 font-body">
-										<label
-											className="block mb-2 text-base font-medium text-gray-700"
-											htmlFor="SignInUserName"
-										>
-											নাম
-										</label>
-										<div class="relative flex w-full flex-wrap items-stretch mb-3">
-											<span className="login-icon">
-												<FontAwesomeIcon icon={faUser} className="text-gray-500" />
-											</span>
-											<input
-												id="SignInUserName"
-												name="name"
-												type="text"
-												className="login-input"
-												placeholder="আপনার নাম প্রদান করুন"
-											/>
-										</div>
-									</div>
+								{!institutionUser ? (
+									<React.Fragment>
+										<Slide bottom>
+											<div className="mt-3 mb-0 font-body flex flex-wrap justify-center items-center">
+												<label className="inline-flex items-center">
+													<span className="text-lg text-brand-900 font-body mr-3 font-medium">
+														নিবন্ধন করুন আপনার শিক্ষাপ্রতিষ্ঠানের মাধ্যমে
+													</span>
+												</label>
+											</div>
 
-									<div className="mt-4 font-body">
-										<label
-											className="block mb-2 text-base font-medium text-gray-700"
-											htmlFor="SignInEmailAddress"
-										>
-											ইমেইল
-										</label>
-										<div class="relative flex w-full flex-wrap items-stretch mb-3">
-											<span class="login-icon">
-												<FontAwesomeIcon icon={faEnvelope} className="text-gray-500" />
-											</span>
-											<input
-												id="SignInEmailAddress"
-												name="email"
-												type="email"
-												className="login-input"
-												placeholder="আপনার ইমেইল প্রদান করুন"
-											/>
-										</div>
-									</div>
+											<div className="mt-5 font-body">
+												<label
+													className="block mb-2 text-base font-medium text-gray-700"
+													htmlFor="SearchInstitutionName"
+												>
+													আপনার শিক্ষা প্রতিষ্ঠানের নাম
+												</label>
+												<div class="relative flex w-full flex-wrap items-stretch mb-3">
+													<span className="login-icon">
+														<FontAwesomeIcon
+															icon={faUniversity}
+															className="text-gray-500"
+														/>
+													</span>
+													<input
+														id="SearchInstitutionName"
+														type="text"
+														className="login-input"
+														onChange={institutionFilterChange}
+														onFocus={handleSearchBox}
+														placeholder="আপনার শিক্ষা প্রতিষ্ঠানের নাম প্রদান করুন"
+													/>
+												</div>
+											</div>
+											{/* Show Search Box */}
 
-									<div className="mt-4 font-body">
-										<div className="flex justify-between">
-											<label
-												className="block mb-2 text-base font-medium text-gray-700"
-												htmlFor="SignInPassword"
-											>
-												পাসওয়ার্ড
-											</label>
-										</div>
-										<div class="relative flex w-full flex-wrap items-stretch mb-3">
-											<span class="login-icon">
-												<FontAwesomeIcon icon={faLock} className="text-gray-500" />
-											</span>
-											<input
-												id="SignInPassword"
-												name="password"
-												type="password"
-												className="login-input"
-												placeholder="আপনার পাসওয়ার্ড প্রদান করুন "
-											/>
-										</div>
-									</div>
+											{showSearchBox ? (
+												<div className="inline-flex flex-col justify-center relative text-gray-600 font-body w-full">
+													<h3 className="mt-2 text-sm">সার্চ রেজাল্ট:</h3>
+													<ul className="bg-white border border-gray-100  overflow-y-scroll h-48 mt-2 ">
+														{institutionList.length === 0 && (
+															<li className="pl-2 pr-2 py-2 border-b-2 border-gray-100 relative hover:bg-indigo-50 hover:text-gray-900">
+																<svg
+																	xmlns="http://www.w3.org/2000/svg"
+																	className="h-6 w-6 inline mr-2"
+																	fill="none"
+																	viewBox="0 0 24 24"
+																	stroke="currentColor"
+																>
+																	<path
+																		strokeLinecap="round"
+																		strokeLinejoin="round"
+																		strokeWidth={2}
+																		d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 001.414.586H19a2 2 0 002-2V7a2 2 0 00-2-2h-8.172a2 2 0 00-1.414.586L3 12z"
+																	/>
+																</svg>
+																আপনার শিক্ষা প্রতিষ্ঠানের নাম খুঁজে পাওয়া যাচ্ছে না!
+															</li>
+														)}
 
-									<div className="mt-4 font-body">
-										<div className="flex justify-between">
-											<label
-												className="block mb-2 text-base font-medium text-gray-700"
-												htmlFor="SignInPasswordAgain"
-											>
-												পাসওয়ার্ড যাচাই
-											</label>
-										</div>
-										<div class="relative flex w-full flex-wrap items-stretch mb-3">
-											<span class="login-icon">
-												<FontAwesomeIcon icon={faUnlock} className="text-gray-500" />
-											</span>
-											<input
-												id="SignInPasswordAgain"
-												name="password"
-												type="password"
-												className="login-input"
-												placeholder="আপনার পাসওয়ার্ড পুনরায় প্রদান করুন"
-											/>
-										</div>
-									</div>
+														{institutionList &&
+															institutionList.map((item, index) => (
+																<li
+																	className="pl-2 pr-2 py-2 border-b-2 border-gray-100 relative cursor-pointer hover:bg-indigo-50 hover:text-gray-900"
+																	key={index}
+																	onClick={() => setInstitutionUser(true)}
+																>
+																	<svg
+																		xmlns="http://www.w3.org/2000/svg"
+																		className="h-6 w-6 inline mr-2 text-gray-400"
+																		fill="none"
+																		viewBox="0 0 24 24"
+																		stroke="currentColor"
+																	>
+																		<path d="M12 14l9-5-9-5-9 5 9 5z" />
+																		<path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+																		<path
+																			strokeLinecap="round"
+																			strokeLinejoin="round"
+																			strokeWidth={2}
+																			d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+																		/>
+																	</svg>
+																	{item.name}
+																</li>
+															))}
+													</ul>
+												</div>
+											) : (
+												<div className="inline-flex flex-col justify-center relative text-gray-600 font-body bg-gray-100 rounded-lg px-3 py-4 mt-3">
+													<p className="pl-2 pr-2 py-2 border-b-2 border-gray-100 relative ">
+														<svg
+															xmlns="http://www.w3.org/2000/svg"
+															className="h-6 w-6 inline mr-2"
+															fill="none"
+															viewBox="0 0 24 24"
+															stroke="currentColor"
+														>
+															<path d="M12 14l9-5-9-5-9 5 9 5z" />
+															<path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+															<path
+																strokeLinecap="round"
+																strokeLinejoin="round"
+																strokeWidth={2}
+																d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+															/>
+														</svg>
+														আপনার শিক্ষা প্রতিষ্ঠানের নাম সার্চ করে নিবন্ধন করুন, এতে আপনার
+														শিক্ষাপ্রতিষ্ঠান আপনার সকল পারফরমেন্স দেখতে পারবে এবং আপনি আপনার
+														প্রতিষ্ঠান থেকে সকল সুজোগ সুবিধা ভোগ করতে পারবেন।
+													</p>
 
-									<div className="mt-8">
-										<button className="w-full px-4 py-2 font-semibold font-body text-base tracking-wide text-gray-50 focus-within:transition-colors duration-200 bg-brand-900 rounded hover:bg-deep-purple-accent-700 focus:outline-none focus:bg-deep-purple-900">
-											নিবন্ধন করুন
-										</button>
-									</div>
+													<p className="pl-2 pr-2 py-2.5 border-gray-100 relative ">
+														<svg
+															xmlns="http://www.w3.org/2000/svg"
+															className="h-6 w-6 inline mr-2"
+															fill="none"
+															viewBox="0 0 24 24"
+															stroke="currentColor"
+														>
+															<path
+																strokeLinecap="round"
+																strokeLinejoin="round"
+																strokeWidth={2}
+																d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+															/>
+														</svg>
+														এছাড়াও আপনি চাইলে শিক্ষা প্রতিষ্ঠান ছাড়া স্বতন্ত্র ভাবে নিবন্ধন
+														করে সকল সুযোগ সুবিধা ভোগ করতে পারবেন।
+													</p>
+												</div>
+											)}
 
-									<div className="flex items-center justify-between mt-4">
-										<span className="w-1/5 border-b  md:w-1/4" />
+											<div className="flex items-center justify-between mt-6">
+												<span className="w-1/6 border-b " />
+												<span className="text-lg text-gray-700 font-body mx-3 font-medium">
+													অথবা নিবন্ধন করুন স্বতন্ত্র ভাবে
+												</span>
+												<span className="w-1/6 border-b " />
+											</div>
 
-										<span
-											className="text-base text-brand-900 font-semibold font-body uppercase cursor-pointer hover:text-deep-purple-accent-700"
-											onClick={() => props.setNewUser(false)}
-										>
-											অথবা লগ ইন
-										</span>
-										<span className="w-1/5 border-b md:w-1/4" />
-									</div>
-								</Slide>
-							</>
+											<div className="mt-5">
+												<button
+													className="w-full px-4 py-2 font-semibold font-body text-base tracking-wide text-gray-50 focus-within:transition-colors duration-200 bg-brand-900 rounded hover:bg-deep-purple-accent-700 focus:outline-none focus:bg-deep-purple-900"
+													onClick={() => setInstitutionUser(true)}
+												>
+													স্বতন্ত্র ভাবে রেজিস্ট্রেশন করুন
+												</button>
+											</div>
+										</Slide>
+									</React.Fragment>
+								) : (
+									<React.Fragment>
+										<Slide bottom>
+											<div className="mt-3 mb-0 font-body flex flex-wrap justify-center items-center">
+												<label className="inline-flex items-center">
+													<span className="text-base text-gray-700 font-body mr-3 font-medium">
+														আমি একজন{' '}
+													</span>
+												</label>
+												<label className="inline-flex items-center cursor-pointer">
+													<input
+														type="radio"
+														className="form-radio ring-brand-900 text-brand-900"
+														name="accountType"
+														value="student"
+														defaultChecked
+													/>
+													<span className=" text-gray-700 ml-2 font-body">শিক্ষার্থী</span>
+												</label>
+												<label className="inline-flex items-center ml-3 cursor-pointer">
+													<input
+														type="radio"
+														className="form-radio ring-brand-900"
+														name="accountType"
+														value="teacher"
+													/>
+													<span className=" text-gray-700 ml-2 font-body"> শিক্ষক </span>
+												</label>
+											</div>
+											{/* Registration Form*/}
+											<div className="mt-1 font-body">
+												<label
+													className="block mb-2 text-base font-medium text-gray-700"
+													htmlFor="SignInUserName"
+												>
+													নাম
+												</label>
+												<div class="relative flex w-full flex-wrap items-stretch mb-3">
+													<span className="login-icon">
+														<FontAwesomeIcon icon={faUser} className="text-gray-500" />
+													</span>
+													<input
+														id="SignInUserName"
+														name="name"
+														type="text"
+														className="login-input"
+														placeholder="আপনার নাম প্রদান করুন"
+														defaultValue=''
+													/>
+												</div>
+											</div>
+
+											<div className="mt-4 font-body">
+												<label
+													className="block mb-2 text-base font-medium text-gray-700"
+													htmlFor="SignInEmailAddress"
+												>
+													ইমেইল
+												</label>
+												<div class="relative flex w-full flex-wrap items-stretch mb-3">
+													<span class="login-icon">
+														<FontAwesomeIcon icon={faEnvelope} className="text-gray-500" />
+													</span>
+													<input
+														id="SignInEmailAddress"
+														name="email"
+														type="email"
+														className="login-input"
+														placeholder="আপনার ইমেইল প্রদান করুন"
+													/>
+												</div>
+											</div>
+
+											<div className="mt-4 font-body">
+												<div className="flex justify-between">
+													<label
+														className="block mb-2 text-base font-medium text-gray-700"
+														htmlFor="SignInPassword"
+													>
+														পাসওয়ার্ড
+													</label>
+												</div>
+												<div class="relative flex w-full flex-wrap items-stretch mb-3">
+													<span class="login-icon">
+														<FontAwesomeIcon icon={faLock} className="text-gray-500" />
+													</span>
+													<input
+														id="SignInPassword"
+														name="password"
+														type="password"
+														className="login-input"
+														placeholder="আপনার পাসওয়ার্ড প্রদান করুন "
+													/>
+												</div>
+											</div>
+
+											<div className="mt-4 font-body">
+												<div className="flex justify-between">
+													<label
+														className="block mb-2 text-base font-medium text-gray-700"
+														htmlFor="SignInPasswordAgain"
+													>
+														পাসওয়ার্ড যাচাই
+													</label>
+												</div>
+												<div class="relative flex w-full flex-wrap items-stretch mb-3">
+													<span class="login-icon">
+														<FontAwesomeIcon icon={faUnlock} className="text-gray-500" />
+													</span>
+													<input
+														id="SignInPasswordAgain"
+														name="password"
+														type="password"
+														className="login-input"
+														placeholder="আপনার পাসওয়ার্ড পুনরায় প্রদান করুন"
+													/>
+												</div>
+											</div>
+
+											<div className="mt-8">
+												<button className="w-full px-4 py-2 font-semibold font-body text-base tracking-wide text-gray-50 focus-within:transition-colors duration-200 bg-brand-900 rounded hover:bg-deep-purple-accent-700 focus:outline-none focus:bg-deep-purple-900">
+													নিবন্ধন করুন
+												</button>
+											</div>
+
+											<div className="flex items-center justify-between mt-4">
+												<span className="w-1/5 border-b  md:w-1/4" />
+												<span
+													className="text-base text-brand-900 font-semibold font-body uppercase cursor-pointer hover:text-deep-purple-accent-700"
+													onClick={() => props.setNewUser(false)}
+												>
+													অথবা লগ ইন
+												</span>
+												<span className="w-1/5 border-b md:w-1/4" />
+											</div>
+										</Slide>
+									</React.Fragment>
+								)}
+							</React.Fragment>
 						)}
 					</div>
 				</div>

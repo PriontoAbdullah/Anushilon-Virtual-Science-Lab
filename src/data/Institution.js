@@ -1,0 +1,31 @@
+const Institution = [
+	{ name: 'Ideal School & College, Dhaka' },
+	{ name: 'RAJUK Uttara Model College' },
+	{ name: 'Notre Dame College, Dhaka' },
+	{ name: 'Dhaka Residential Model College, Dhaka' },
+	{ name: 'Holy Cross Girls’ High School, Dhaka' },
+	{ name: 'Birshreshtha Noor Mohammad Public College' },
+	{ name: 'Chittagong Collegiate School and College' },
+	{ name: 'St. Joseph Higher Secondary School, Dhaka' },
+	{ name: 'Monipur High School & College, Dhaka' },
+	{ name: 'Dhanmondi Government Boys’ High School' },
+	{ name: 'Comilla Cantonment High School' },
+	{ name: 'Laksam Pilot High School' },
+	{ name: 'Government Laboratory High School, Mymensingh' },
+	{ name: 'Mohammadpur Preparatory School & College, Dhaka' },
+	{ name: 'Shaheed Police Smrity School & College, Dhaka' },
+	{ name: 'Adamjee Cantonment Public School & College, Dhaka' },
+	{ name: 'Rangpur Zilla School, Rangpur' },
+	{ name: 'Saarc International School & College, Sylhet' },
+	{ name: 'Bangladesh International School and College, Dhaka' },
+	{ name: 'Milestone College, Dhaka' },
+	{ name: 'Mirzapur Cadet College, Gazipur' },
+	{ name: 'Cambrian College, Dhaka' },
+	{ name: 'Government Hazi Mohammad Mohshin College, Dhaka' },
+	{ name: 'Rangpur Cantonment Public College, Rangpur' },
+	{ name: 'Narsinghdi’s Abul Quader Molla City College' },
+	{ name: 'Rajshahi College, Rajshahi' },
+	{ name: 'Jalalabad Cantonment Public School & College' }
+];
+
+export default Institution;

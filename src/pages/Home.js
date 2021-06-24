@@ -1,6 +1,7 @@
 import React from 'react';
 import bgBanner from '../assets/images/background/header-bg.png';
 import About from '../components/HomePage/Content/About';
+import Partner from '../components/HomePage/Content/Partner';
 import Features from '../components/HomePage/Features/Features';
 import MobileResponsive from '../components/HomePage/Features/MobileResponsive';
 import Footer from '../components/HomePage/Footer/Footer';
@@ -29,6 +30,7 @@ const Home = () => {
 			<Features />
 			<Simulation />
 			<MobileResponsive />
+			<Partner />
 			<Testimonial />
 			<Footer />
 		</>

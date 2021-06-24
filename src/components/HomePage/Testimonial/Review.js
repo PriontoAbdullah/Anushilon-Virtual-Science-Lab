@@ -4,7 +4,7 @@ const Review = (props) => {
 	const { quote, name, location, img } = props.reviews;
 
 	return (
-		<div className="bg-white w-90 mx-auto shadow-lg rounded-xl pl-5 pr-3 py-8 mb-5">
+		<div className="bg-white w-80 sm:w-90 mx-auto shadow-lg rounded-xl pl-5 pr-3 py-8 mb-5">
 			<p className="text-gray-800 text-lg font-body tracking-wide ">
 				<span className="font-bold text-indigo-500 text-lg pr-1">“</span>
 				{quote}

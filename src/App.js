@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import Registration from './components/Authentication/Registration';
 import PageNotFound from './components/HomePage/Content/PageNotFound';
 import Landing from './components/Preloader/Landing';
 import Dashboard from './pages/Dashboard';
@@ -31,8 +32,11 @@ const App = () => {
 							<Route exact path="/">
 								<Home />
 							</Route>
-							<Route exact path="/simulation-phy">
+							<Route path="/simulation-phy">
 								<Dashboard />
+							</Route>
+							<Route path="/registration">
+								<Registration />
 							</Route>
 							<Route path="*">
 									<PageNotFound />

@@ -1,52 +1,51 @@
-import React, { useRef, useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './App.css';
-import Registration from './components/Authentication/Registration';
-import PageNotFound from './components/HomePage/Content/PageNotFound';
-import Landing from './components/Preloader/Landing';
-import Dashboard from './pages/Dashboard';
-import Home from './pages/Home';
+import React, { useRef, useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+import Registration from "./components/Authentication/Registration";
+import PageNotFound from "./components/HomePage/Content/PageNotFound";
+import Landing from "./components/Preloader/Landing";
+import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
 
 const App = () => {
-	const [ preLoaderVisibility, setPreLoaderVisibility ] = useState(true);
+  const [preLoaderVisibility, setPreLoaderVisibility] = useState(true);
 
-	// For Pre-Loader Function
-	const keyUpTimer = useRef(null); 
-    const keyUpTimerDelay = 2000;
-	clearTimeout(keyUpTimer.current); 
-	
-	keyUpTimer.current = setTimeout(() => {
-		setPreLoaderVisibility(false);
-	}, keyUpTimerDelay);
+  // For Pre-Loader Function
+  const keyUpTimer = useRef(null);
+  const keyUpTimerDelay = 2000;
+  clearTimeout(keyUpTimer.current);
 
-	
-	return (
-		<>
-			{/* Pre Loader */}
-			{preLoaderVisibility ? (
-					<Landing />
-			) : (
-				<>
-					<Router>
-						<Switch>
-							<Route exact path="/">
-								<Home />
-							</Route>
-							<Route path="/simulation-phy">
-								<Dashboard />
-							</Route>
-							<Route path="/registration">
-								<Registration />
-							</Route>
-							<Route path="*">
-									<PageNotFound />
-								</Route>
-						</Switch>
-					</Router>
-				</>
-			)}
-		</>
-	);
+  keyUpTimer.current = setTimeout(() => {
+    setPreLoaderVisibility(false);
+  }, keyUpTimerDelay);
+
+  return (
+    <>
+      {/* Pre Loader */}
+      {preLoaderVisibility ? (
+        <Landing />
+      ) : (
+        <>
+          <Router>
+            <Switch>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route path="/simulation-phy">
+                <Dashboard />
+              </Route>
+              <Route path="/registration">
+                <Registration />
+              </Route>
+              <Route path="*">
+                <PageNotFound />
+              </Route>
+            </Switch>
+          </Router>
+        </>
+      )}
+    </>
+  );
 };
 
 export default App;

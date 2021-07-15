@@ -1,93 +1,94 @@
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* For Scroll bar Customization */
 
 html {
-	--scrollbarBG: #e8eaf6;
-	--thumbBG: #2a2a57;
+  --scrollbarBG: #e8eaf6;
+  --thumbBG: #2a2a57;
 }
 
 body::-webkit-scrollbar {
-	width: 13px;
+  width: 13px;
 }
 
 body {
-	width: 100%;
-	height: 100vh;
-	scrollbar-width: thin;
-	scrollbar-color: var(--thumbBG) var(--scrollbarBG);
+  width: 100%;
+  height: 100vh;
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumbBG) var(--scrollbarBG);
 }
 
 body::-webkit-scrollbar-track {
-	--tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-	box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-	background: var(--scrollbarBG);
+  --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  background: var(--scrollbarBG);
 }
 
 body::-webkit-scrollbar-thumb {
-	background-color: var(--thumbBG);
-	border-radius: 6px;
-	border: 3px solid var(--scrollbarBG);
+  background-color: var(--thumbBG);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
 }
 
 /* For Swiper Slide Customization */
 
 .swiper-button-next,
 .swiper-button-prev {
-	color: #2a2a57 !important;
-	top: 55% !important;
+  color: #2a2a57 !important;
+  top: 55% !important;
 }
 
 .swiper-pagination-bullet-active {
-	background-color: #2a2a57 !important;
+  background-color: #2a2a57 !important;
 }
 
 .swiper-button-prev:after,
 .swiper-button-next:after {
-	font-size: 24px !important;
+  font-size: 24px !important;
 }
 
 .swiper-container {
-	width: 100% !important;
-	padding-bottom: 40px !important;
+  width: 100% !important;
+  padding-bottom: 40px !important;
 }
 
 @media (max-width: 768px) {
-	.swiper-button-prev,
-	.swiper-button-next {
-		top: 70% !important;
-	}
+  .swiper-button-prev,
+  .swiper-button-next {
+    top: 70% !important;
+  }
 }
 
 /* For responsive observation table */
 @media (min-width: 640px) {
-	table {
-		display: inline-table !important;
-	}
+  table {
+    display: inline-table !important;
+  }
 
-	thead th {
-		font-weight: 400;
-	}
+  thead th {
+    font-weight: 400;
+  }
 
-	thead tr:not(:first-child) {
-		display: none;
-	}
+  thead tr:not(:first-child) {
+    display: none;
+  }
 }
 
 @media (max-width: 639px) {
-	td:not(:last-child) {
-		border-bottom: 0;
-	}
+  td:not(:last-child) {
+    border-bottom: 0;
+  }
 
-	th:not(:last-child) {
-		border-bottom: 2px solid rgba(0, 0, 0, .1);
-	}
+  th:not(:last-child) {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  }
 
-	thead th {
-		font-weight: 400;
-	}
+  thead th {
+    font-weight: 400;
+  }
 }

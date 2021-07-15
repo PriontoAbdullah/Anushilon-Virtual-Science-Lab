@@ -1,20 +1,20 @@
 header {
-	transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 /* Scroll header style */
 .scrolled header {
-	background: rgba(255, 255, 255, 0.75);
-	backdrop-filter: saturate(180%)blur(5px);
-	-webkit-backdrop-filter: saturate(180%)blur(5px);
-	transition: all 0.3s ease-in-out;
-	box-shadow: rgb(0 0 0 / 16%) 0px 3px 30px;
-	z-index: 9999999 !important;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: saturate(180%) blur(5px);
+  -webkit-backdrop-filter: saturate(180%) blur(5px);
+  transition: all 0.3s ease-in-out;
+  box-shadow: rgb(0 0 0 / 16%) 0px 3px 30px;
+  z-index: 9999999 !important;
 }
 
 .active {
-	position: relative;
-	color: #003857;
-	font-weight: 700;
-	border-bottom: 2px solid #00486e;
+  position: relative;
+  color: #003857;
+  font-weight: 700;
+  border-bottom: 2px solid #00486e;
 }

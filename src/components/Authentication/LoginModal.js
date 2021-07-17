@@ -12,15 +12,17 @@ import signInLoader from "../../assets/images/loader/signIn.gif";
 import Institution from "../../data/Institution";
 import RegistrationModal from "./RegistrationModal";
 
-const LoginModal = (props) => {
+const LoginModal = () => {
   const modalData = useContext(ModalContext);
-
+  // initial states
   const [institutionUser, setInstitutionUser] = useState(null);
   const [institutionName, setInstitutionName] = useState(null);
+  const [forgetPassword, setForgetPassword] = useState(false);
   const [showSearchBox, setShowSearchBox] = useState(false);
   const [institutionList, setInstitutionList] = useState(null);
   const [searchValue, setSearchValue] = useState("");
 
+  // search institution name
   useEffect(() => {
     searchValue === ""
       ? setInstitutionList(Institution)
@@ -31,6 +33,7 @@ const LoginModal = (props) => {
         );
   }, [searchValue]);
 
+  // all modal handlers
   const handleCloseLoginModal = () => {
     modalData.setShowHeader("block");
     modalData.setShowLoginModal(false);
@@ -68,12 +71,16 @@ const LoginModal = (props) => {
           <div className="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-filter saturate-150 backdrop-blur-sm">
             <div
               className={`relative w-full mt-16 mb-4 ${
-                !props.newUser ? "lg:mt-8 2xl:mt-10" : "lg:mt-4 2xl:mt-6"
+                !modalData.newUser
+                  ? !forgetPassword
+                    ? "lg:mt-8 2xl:mt-10"
+                    : "lg:mt-18 2xl:mt-20"
+                  : "lg:mt-4 2xl:mt-6"
               } flex max-w-sm md:max-w-lg lg:max-w-4xl 2xl:max-w-5xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl`}
             >
               {/* Left Side Animations */}
               <div className="hidden lg:block lg:w-1/2 bg-brand-900">
-                {!props.newUser ? (
+                {!modalData.newUser ? (
                   <img
                     src={loginLoader}
                     alt="login-loader"
@@ -113,7 +120,7 @@ const LoginModal = (props) => {
                   </svg>
                 </button>
 
-                {!props.newUser ? (
+                {!modalData.newUser ? (
                   // Login Form
                   <Fragment>
                     {/* LogIn Header */}
@@ -126,119 +133,176 @@ const LoginModal = (props) => {
                       </p>
                     </div>
 
-                    {/* Sign In with Google */}
-                    <Slide bottom>
-                      <div className="flex items-center justify-center mt-3 mb-5 text-brand-900 rounded-lg shadow-md hover:bg-deep-purple-50 hover:text-deep-purple-500 cursor-pointer">
-                        <div className="px-4 py-3">
-                          <img
-                            src="https://img.icons8.com/fluent/28/000000/google-logo.png"
-                            alt="google-logo"
-                          />
-                        </div>
-                        {/* Google SignIn Button */}
-                        <span className="w-5/6 px-4 py-3 pr-20 font-semibold font-body text-base text-center">
-                          গুগল দিয়ে সাইন ইন করুন
-                        </span>
-                      </div>
-                    </Slide>
-
-                    {/* SignIn with Facebook */}
-                    <Slide bottom>
-                      <div className="flex items-center justify-center mt-3 mb-5 text-brand-900 rounded-lg shadow-md hover:bg-deep-purple-50 hover:text-deep-purple-500 cursor-pointer">
-                        <div className="px-4 py-3">
-                          <img
-                            src="https://img.icons8.com/fluent/29/000000/facebook-new.png"
-                            alt="facebook-logo"
-                          />
-                        </div>
-                        {/* Google SignIn Button */}
-                        <span className="w-5/6 px-4 py-3 pr-20 font-semibold font-body text-base text-center">
-                          ফেসবুক দিয়ে সাইন ইন করুন
-                        </span>
-                      </div>
-                    </Slide>
-
-                    {/* Common Login */}
-                    <Slide bottom>
-                      <div className="flex items-center justify-between mt-4">
-                        <span className="w-1/5 border-b lg:w-1/4" />
-                        <span className="text-xs text-center text-gray-600 font-medium font-body tracking-wider uppercase">
-                          অথবা ইমেইল দিয়ে লগ ইন করুন
-                        </span>
-                        <span className="w-1/5 border-b lg:w-1/4" />
-                      </div>
-                      {/* LogIn Form */}
-                      <div className="mt-4 font-body">
-                        <label
-                          className="block mb-2 text-base font-medium text-gray-700"
-                          htmlFor="LoggingEmailAddress"
-                        >
-                          ইমেইল
-                        </label>
-                        <div className="relative flex w-full flex-wrap items-stretch mb-3">
-                          <span className="login-icon">
-                            <FontAwesomeIcon
-                              icon={faEnvelope}
-                              className="text-gray-500"
-                            />
-                          </span>
-                          <input
-                            id="LoggingEmailAddress"
-                            name="email"
-                            type="email"
-                            className="login-input"
-                            placeholder="আপনার ইমেইল প্রদান করুন"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="mt-4 font-body">
-                        <div className="flex justify-between">
-                          <label
-                            className="block mb-2 text-base font-medium text-gray-700"
-                            htmlFor="loggingPassword"
-                          >
-                            পাসওয়ার্ড
-                          </label>
-                          <span className="text-sm text-gray-700 cursor-pointer hover:text-deep-purple-accent-700 tracking-wide">
-                            পাসওয়ার্ড ভুলে গেছেন?
-                          </span>
-                        </div>
-                        <div className="relative flex w-full flex-wrap items-stretch mb-3">
-                          <span className="login-icon">
-                            <FontAwesomeIcon
-                              icon={faLock}
-                              className="text-gray-500"
-                            />
-                          </span>
-                          <input
-                            id="loggingPassword"
-                            name="password"
-                            type="password"
-                            className="login-input"
-                            placeholder="আপনার পাসওয়ার্ড প্রদান করুন "
-                          />
-                        </div>
-                      </div>
-
-                      <div className="mt-8">
-                        <button className="w-full px-4 py-2 font-semibold font-body text-base tracking-wide text-gray-50 focus-within:transition-colors duration-200 bg-brand-900 rounded hover:bg-deep-purple-accent-700 focus:outline-none focus:bg-deep-purple-900">
-                          লগ ইন
-                        </button>
-                      </div>
-
-                      <div className="flex items-center justify-between mt-4">
-                        <span className="w-1/5 border-b  md:w-1/4" />
-
-                        <span
-                          className="text-base text-brand-900 font-semibold font-body uppercase cursor-pointer hover:text-deep-purple-accent-700"
-                          onClick={() => props.setNewUser(true)}
-                        >
-                          অথবা রেজিস্ট্রেশন করুন
-                        </span>
-                        <span className="w-1/5 border-b md:w-1/4" />
-                      </div>
-                    </Slide>
+                    {!forgetPassword ? (
+                      <Fragment>
+                        {/* Sign In with Google */}
+                        <Slide bottom>
+                          <div className="flex items-center justify-center mt-3 mb-5 text-brand-900 rounded-lg shadow-md hover:bg-deep-purple-50 hover:text-deep-purple-500 cursor-pointer">
+                            <div className="px-4 py-3">
+                              <img
+                                src="https://img.icons8.com/fluent/28/000000/google-logo.png"
+                                alt="google-logo"
+                              />
+                            </div>
+                            {/* Google SignIn Button */}
+                            <span className="w-5/6 px-4 py-3 pr-20 font-semibold font-body text-base text-center">
+                              গুগল দিয়ে সাইন ইন করুন
+                            </span>
+                          </div>
+                        </Slide>
+                        {/* SignIn with Facebook */}
+                        <Slide bottom>
+                          <div className="flex items-center justify-center mt-3 mb-5 text-brand-900 rounded-lg shadow-md hover:bg-deep-purple-50 hover:text-deep-purple-500 cursor-pointer">
+                            <div className="px-4 py-3">
+                              <img
+                                src="https://img.icons8.com/fluent/29/000000/facebook-new.png"
+                                alt="facebook-logo"
+                              />
+                            </div>
+                            {/* Google SignIn Button */}
+                            <span className="w-5/6 px-4 py-3 pr-20 font-semibold font-body text-base text-center">
+                              ফেসবুক দিয়ে সাইন ইন করুন
+                            </span>
+                          </div>
+                        </Slide>
+                        {/* Common Login */}
+                        <Slide bottom>
+                          <div className="flex items-center justify-between mt-4">
+                            <span className="w-1/5 border-b lg:w-1/4" />
+                            <span className="text-xs text-center text-gray-600 font-medium font-body tracking-wider uppercase">
+                              অথবা ইমেইল দিয়ে লগ ইন করুন
+                            </span>
+                            <span className="w-1/5 border-b lg:w-1/4" />
+                          </div>
+                          {/* LogIn Form */}
+                          <form>
+                            <div className="mt-4 font-body">
+                              <label
+                                className="block mb-2 text-base font-medium text-gray-700"
+                                htmlFor="LoggingEmailAddress"
+                              >
+                                ইমেইল
+                              </label>
+                              <div className="relative flex w-full flex-wrap items-stretch mb-3">
+                                <span className="login-icon">
+                                  <FontAwesomeIcon
+                                    icon={faEnvelope}
+                                    className="text-gray-500"
+                                  />
+                                </span>
+                                <input
+                                  id="LoggingEmailAddress"
+                                  name="email"
+                                  type="email"
+                                  className="login-input"
+                                  placeholder="আপনার ইমেইল প্রদান করুন"
+                                />
+                              </div>
+                            </div>
+                            <div className="mt-4 font-body">
+                              <div className="flex justify-between">
+                                <label
+                                  className="block mb-2 text-base font-medium text-gray-700"
+                                  htmlFor="loggingPassword"
+                                >
+                                  পাসওয়ার্ড
+                                </label>
+                                <span
+                                  className="text-sm text-gray-700 cursor-pointer hover:text-deep-purple-accent-700 tracking-wide"
+                                  onClick={() => setForgetPassword(true)}
+                                >
+                                  পাসওয়ার্ড ভুলে গেছেন?
+                                </span>
+                              </div>
+                              <div className="relative flex w-full flex-wrap items-stretch mb-3">
+                                <span className="login-icon">
+                                  <FontAwesomeIcon
+                                    icon={faLock}
+                                    className="text-gray-500"
+                                  />
+                                </span>
+                                <input
+                                  id="loggingPassword"
+                                  name="password"
+                                  type="password"
+                                  className="login-input"
+                                  placeholder="আপনার পাসওয়ার্ড প্রদান করুন "
+                                />
+                              </div>
+                            </div>
+                            <div className="mt-8">
+                              <button className="w-full px-4 py-2 font-semibold font-body text-base tracking-wide text-gray-50 focus-within:transition-colors duration-200 bg-brand-900 rounded hover:bg-deep-purple-accent-700 focus:outline-none focus:bg-deep-purple-900">
+                                লগ ইন
+                              </button>
+                            </div>
+                          </form>
+                          <div className="flex items-center justify-between mt-4">
+                            <span className="w-1/5 border-b  md:w-1/4" />
+                            <span
+                              className="text-base text-brand-900 font-semibold font-body uppercase cursor-pointer hover:text-deep-purple-accent-700"
+                              onClick={() => modalData.setNewUser(true)}
+                            >
+                              অথবা রেজিস্ট্রেশন করুন
+                            </span>
+                            <span className="w-1/5 border-b md:w-1/4" />
+                          </div>
+                        </Slide>
+                      </Fragment>
+                    ) : (
+                      // Forget Password Form
+                      <Fragment>
+                        <Slide bottom>
+                          <div className="flex items-center justify-between mt-4">
+                            <span className="w-1/5 border-b lg:w-1/4" />
+                            <span className="mt-1 text-lg text-center text-gray-700 font-normal font-body tracking-wider uppercase">
+                              পাসওয়ার্ড ভুলে গেছেন?
+                            </span>
+                            <span className="w-1/5 border-b lg:w-1/4" />
+                          </div>
+                          <form>
+                            <div className="mt-3 font-body">
+                              <label
+                                className="block mb-2 text-base font-medium text-gray-700"
+                                htmlFor="LoggingEmailAddress"
+                              >
+                                ইমেইল
+                              </label>
+                              <div className="relative flex w-full flex-wrap items-stretch mb-3">
+                                <span className="login-icon">
+                                  <FontAwesomeIcon
+                                    icon={faEnvelope}
+                                    className="text-gray-500"
+                                  />
+                                </span>
+                                <input
+                                  id="LoggingEmailAddress"
+                                  name="email"
+                                  type="email"
+                                  className="login-input"
+                                  placeholder="আপনার ইমেইল প্রদান করুন"
+                                />
+                              </div>
+                            </div>
+                            {/* Forget Password Send Button */}
+                            <div className="mt-8">
+                              <button className="w-full px-4 py-2 font-semibold font-body text-base tracking-wide text-gray-50 focus-within:transition-colors duration-200 bg-brand-900 rounded hover:bg-deep-purple-accent-700 focus:outline-none focus:bg-deep-purple-900">
+                                লগ ইন
+                              </button>
+                            </div>
+                          </form>
+                          <div className="flex items-center justify-between mt-4">
+                            <span className="w-1/5 border-b  md:w-1/4" />
+                            <span
+                              className="text-base text-brand-900 font-semibold font-body uppercase cursor-pointer hover:text-deep-purple-accent-700"
+                              onClick={() => setForgetPassword(false)}
+                            >
+                              অথবা রেজিস্ট্রেশন করুন
+                            </span>
+                            <span className="w-1/5 border-b md:w-1/4" />
+                          </div>
+                        </Slide>
+                      </Fragment>
+                    )}
                   </Fragment>
                 ) : (
                   // Registration Form
@@ -424,7 +488,6 @@ const LoginModal = (props) => {
         <RegistrationModal
           institutionUser={institutionUser}
           institutionName={institutionName}
-          setNewUser={props.setNewUser}
         />
       ) : null}
     </Fragment>

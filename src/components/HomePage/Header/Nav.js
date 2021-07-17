@@ -10,7 +10,6 @@ const Nav = () => {
   // modal context value
   const modalData = useContext(ModalContext);
 
-  const [newUser, setNewUser] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -37,27 +36,27 @@ const Nav = () => {
   const handleDesktopLogin = () => {
     modalData.setShowLoginModal(true);
     modalData.setShowHeader("hidden");
-    setNewUser(false);
+    modalData.setNewUser(false);
   };
 
   const handleDesktopSignIn = () => {
     modalData.setShowLoginModal(true);
     modalData.setShowHeader("hidden");
-    setNewUser(true);
+    modalData.setNewUser(true);
   };
 
   const handleMobileLogin = () => {
     modalData.setShowLoginModal(true);
     modalData.setShowHeader("hidden");
     setIsMenuOpen(false);
-    setNewUser(false);
+    modalData.setNewUser(false);
   };
 
   const handleMobileSignIn = () => {
     modalData.setShowLoginModal(true);
     modalData.setShowHeader("hidden");
     setIsMenuOpen(false);
-    setNewUser(true);
+    modalData.setNewUser(true);
   };
 
   return (
@@ -368,7 +367,7 @@ const Nav = () => {
 
       {/* Login Modal Component */}
       {modalData.showLoginModal ? (
-        <LoginModal newUser={newUser} setNewUser={setNewUser} />
+        <LoginModal />
       ) : null}
     </div>
   );

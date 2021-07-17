@@ -4,14 +4,17 @@ import "./App.css";
 import Registration from "./components/Authentication/Registration";
 import PageNotFound from "./components/HomePage/Content/PageNotFound";
 import Landing from "./components/Preloader/Landing";
+import Activation from "./pages/Activation";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 export const ModalContext = createContext();
 
 const App = () => {
   const [preLoaderVisibility, setPreLoaderVisibility] = useState(true);
+  const [newUser, setNewUser] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegistrationModal, setShowRegistrationModal] = useState(false);
+  const [showActivationModal, setShowActivationModal] = useState(false);
   const [showHeader, setShowHeader] = useState("block");
 
   // For Pre-Loader Function
@@ -25,12 +28,16 @@ const App = () => {
 
   // ModalContext
   const modalContextValue = {
+    newUser,
+    setNewUser,
     showHeader,
     setShowHeader,
     showLoginModal,
     setShowLoginModal,
     showRegistrationModal,
     setShowRegistrationModal,
+    showActivationModal,
+    setShowActivationModal,
   };
 
   return (
@@ -46,10 +53,13 @@ const App = () => {
                 <Route exact path="/">
                   <Home />
                 </Route>
-                <Route path="/simulation-phy">
+                <Route exact path="/users/activate/:token">
+                  <Activation />
+                </Route>
+                <Route exact path="/simulation-phy">
                   <Dashboard />
                 </Route>
-                <Route path="/registration">
+                <Route exact path="/registration">
                   <Registration />
                 </Route>
                 <Route path="*">

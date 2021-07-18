@@ -1,12 +1,16 @@
 import { motion } from "framer-motion";
-import React, { useContext, useEffect, useState } from "react";
+import React, { Fragment, useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { useHistory } from "react-router-dom";
 import { animateScroll as scroll, Link } from "react-scroll";
 import { ModalContext } from "../../../App";
 import textLogo from "../../../assets/images/text-logo.png";
+import { isAuth, signout } from "../../../helpers/auth";
 import LoginModal from "../../Authentication/LoginModal";
 import classes from "./Navbar.module.css";
 
 const Nav = () => {
+  const history = useHistory();
   // modal context value
   const modalData = useContext(ModalContext);
 
@@ -159,42 +163,91 @@ const Nav = () => {
                   </li>
                 </ul>
               </div>
-              <ul className="items-center hidden space-x-8 lg:flex">
-                <li>
-                  <Link
-                    to="/"
-                    spy={true}
-                    smooth={true}
-                    delay={100}
-                    offset={0}
-                    duration={500}
-                    className={`${
-                      scrolled ? "nav-link-deep" : "nav-link-light"
-                    } nav-link-general`}
-                    onClick={handleDesktopLogin}
-                  >
-                    লগ ইন
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/"
-                    className={`${
-                      scrolled
-                        ? "text-gray-50  hover:text-deep-purple-50 bg-brand-900 hover:bg-deep-purple-accent-700"
-                        : "text-gray-50  hover:text-deep-purple-900 bg-brand-900 hover:bg-deep-purple-50"
-                    } join-button-general`}
-                    spy={true}
-                    smooth={true}
-                    delay={100}
-                    offset={0}
-                    duration={500}
-                    onClick={handleDesktopSignIn}
-                  >
-                    জয়েন করো
-                  </Link>
-                </li>
-              </ul>
+
+              {isAuth() ? (
+                // for LoggedIn user
+                <ul className="items-center hidden space-x-8 lg:flex">
+                  <li>
+                    <Link
+                      to="/simulation-phy"
+                      className={`${
+                        scrolled
+                          ? "text-gray-50  hover:text-deep-purple-50 bg-brand-900 hover:bg-deep-purple-accent-700"
+                          : "text-gray-50  hover:text-deep-purple-900 bg-brand-900 hover:bg-deep-purple-50"
+                      } join-button-general`}
+                      spy={true}
+                      smooth={true}
+                      delay={100}
+                      offset={0}
+                      duration={500}
+                      onClick={() => {
+                        history.push("/simulation-phy");
+                      }}
+                    >
+                      ড্যাশবোর্ড
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/"
+                      spy={true}
+                      smooth={true}
+                      delay={100}
+                      offset={0}
+                      duration={500}
+                      className={`${
+                        scrolled ? "nav-link-deep" : "nav-link-light"
+                      } nav-link-general`}
+                      onClick={() => {
+                        signout(() => {
+                          toast.success("সফল ভাবে সাইন আউট হয়েছে!");
+                          history.push("/");
+                        });
+                      }}
+                    >
+                      লগ আউট
+                    </Link>
+                  </li>
+                </ul>
+              ) : (
+                // For Non LoggedIn user
+                <ul className="items-center hidden space-x-8 lg:flex">
+                  <li>
+                    <Link
+                      to="/"
+                      spy={true}
+                      smooth={true}
+                      delay={100}
+                      offset={0}
+                      duration={500}
+                      className={`${
+                        scrolled ? "nav-link-deep" : "nav-link-light"
+                      } nav-link-general`}
+                      onClick={handleDesktopLogin}
+                    >
+                      লগ ইন
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/"
+                      className={`${
+                        scrolled
+                          ? "text-gray-50  hover:text-deep-purple-50 bg-brand-900 hover:bg-deep-purple-accent-700"
+                          : "text-gray-50  hover:text-deep-purple-900 bg-brand-900 hover:bg-deep-purple-50"
+                      } join-button-general`}
+                      spy={true}
+                      smooth={true}
+                      delay={100}
+                      offset={0}
+                      duration={500}
+                      onClick={handleDesktopSignIn}
+                    >
+                      জয়েন করো
+                    </Link>
+                  </li>
+                </ul>
+              )}
 
               {/* Mobile Nav View */}
               <div className="lg:hidden">
@@ -202,7 +255,7 @@ const Nav = () => {
                 <button
                   aria-label="Open Menu"
                   title="Open Menu"
-                  className="p-2 mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-deep-purple-50 focus:bg-deep-purple-50"
+                  className="p-2 mr-1 transition duration-200 rounded focus:outline-none focus:shadow-outline hover:bg-brand-900 focus:bg-brand-900"
                   onClick={() => setIsMenuOpen(true)}
                 >
                   <svg
@@ -326,34 +379,78 @@ const Nav = () => {
                               আমাদের সম্পর্কে
                             </Link>
                           </li>
-                          <li>
-                            <Link
-                              to="/"
-                              spy={true}
-                              smooth={true}
-                              delay={100}
-                              offset={0}
-                              duration={500}
-                              className="nav-link-mobile"
-                              onClick={handleMobileLogin}
-                            >
-                              লগ ইন
-                            </Link>
-                          </li>
-                          <li>
-                            <Link
-                              to="/"
-                              className="join-button-mobile"
-                              spy={true}
-                              smooth={true}
-                              delay={100}
-                              offset={0}
-                              duration={500}
-                              onClick={handleMobileSignIn}
-                            >
-                              জয়েন করো
-                            </Link>
-                          </li>
+                          {isAuth() ? (
+                            // For loggedIn user
+                            <Fragment>
+                              <li>
+                                <Link
+                                  to="/simulation-phy"
+                                  className="join-button-mobile"
+                                  spy={true}
+                                  smooth={true}
+                                  delay={100}
+                                  offset={0}
+                                  duration={500}
+                                  onClick={() => {
+                                    history.push("/simulation-phy");
+                                  }}
+                                >
+                                  ড্যাশবোর্ড
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  to="/"
+                                  spy={true}
+                                  smooth={true}
+                                  delay={100}
+                                  offset={0}
+                                  duration={500}
+                                  className="nav-link-mobile"
+                                  onClick={() => {
+                                    signout(() => {
+                                      toast.success("সফল ভাবে সাইন আউট হয়েছে!");
+                                      history.push("/");
+                                    });
+                                  }}
+                                >
+                                  লগ আউট
+                                </Link>
+                              </li>
+                            </Fragment>
+                          ) : (
+                            // For Non loggedIn user
+                            <Fragment>
+                              <li>
+                                <Link
+                                  to="/"
+                                  spy={true}
+                                  smooth={true}
+                                  delay={100}
+                                  offset={0}
+                                  duration={500}
+                                  className="nav-link-mobile"
+                                  onClick={handleMobileLogin}
+                                >
+                                  লগ ইন
+                                </Link>
+                              </li>
+                              <li>
+                                <Link
+                                  to="/"
+                                  className="join-button-mobile"
+                                  spy={true}
+                                  smooth={true}
+                                  delay={100}
+                                  offset={0}
+                                  duration={500}
+                                  onClick={handleMobileSignIn}
+                                >
+                                  জয়েন করো
+                                </Link>
+                              </li>{" "}
+                            </Fragment>
+                          )}
                         </ul>
                       </nav>
                     </div>
@@ -366,9 +463,7 @@ const Nav = () => {
       </motion.div>
 
       {/* Login Modal Component */}
-      {modalData.showLoginModal ? (
-        <LoginModal />
-      ) : null}
+      {modalData.showLoginModal ? <LoginModal /> : null}
     </div>
   );
 };

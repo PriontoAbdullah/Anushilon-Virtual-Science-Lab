@@ -84,6 +84,7 @@ const RegistrationModal = (props) => {
             });
             toast.dismiss(loading);
             toast.success(res.data.message);
+            handleCloseModal();
           })
           .catch((err) => {
             setFormData({
@@ -112,7 +113,7 @@ const RegistrationModal = (props) => {
         toastOptions={{
           duration: 5000,
           style: {
-            minWidth: "450px",
+            minWidth: "480px",
             fontFamily: "Hind Siliguri",
           },
           success: {

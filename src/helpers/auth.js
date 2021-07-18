@@ -2,7 +2,7 @@ import cookie from "js-cookie";
 
 // Set in Cookie
 export const setCookie = (key, value) => {
-  if (window !== "undefiend") {
+  if (window !== "undefined") {
     cookie.set(key, value, {
       // 1 Day
       expires: 1,
@@ -43,7 +43,7 @@ export const removeLocalStorage = (key) => {
 
 // Auth enticate user by passing data to cookie and localstorage during signin
 export const authenticate = (response, next) => {
-  console.log("AUTHENTICATE HELPER ON SIGNIN RESPONSE", response);
+  // console.log("AUTHENTICATE HELPER ON SIGNIN RESPONSE", response);
   setCookie("token", response.data.token);
   setLocalStorage("user", response.data.user);
   next();
@@ -72,7 +72,7 @@ export const signout = (next) => {
 
 // update user in cookies
 export const updateUser = (response, next) => {
-  console.log("UPDATE USER IN LOCALSTORAGE HELPERS", response);
+  // console.log("UPDATE USER IN LOCALSTORAGE HELPERS", response);
   if (typeof window !== "undefined") {
     let auth = JSON.parse(localStorage.getItem("user"));
     auth = response.data;

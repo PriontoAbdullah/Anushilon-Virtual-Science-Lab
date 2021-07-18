@@ -24,7 +24,7 @@
 }
 
 .nav-link-mobile {
-  @apply font-medium tracking-wide text-brand-900 transition-colors duration-200 hover:text-deep-purple-900;
+  @apply font-medium tracking-wide text-brand-900 transition-colors duration-200 hover:text-deep-purple-900 cursor-pointer;
 }
 
 .join-button-general {
@@ -32,7 +32,7 @@
 }
 
 .join-button-mobile {
-  @apply inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-brand-900 hover:bg-deep-purple-900 focus:shadow-outline focus:outline-none;
+  @apply inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-brand-900 hover:bg-deep-purple-900 focus:shadow-outline focus:outline-none cursor-pointer;
 }
 
 .login-icon {

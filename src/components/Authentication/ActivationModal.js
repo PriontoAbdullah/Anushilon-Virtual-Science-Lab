@@ -7,7 +7,7 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { Redirect, useHistory, useParams } from "react-router-dom";
 import { ModalContext } from "../../App";
-import activationLoader from "../../assets/images/loader/modal.gif";
+import activationLoader from "../../assets/images/loader/activationModal.gif";
 import { isAuth } from "../../helpers/auth";
 
 const ActivationModal = () => {
@@ -22,6 +22,7 @@ const ActivationModal = () => {
     history.push("/");
   };
 
+  // set form data states
   const [formData, setFormData] = useState({
     name: "",
     token: "",
@@ -40,14 +41,16 @@ const ActivationModal = () => {
 
   const { name } = formData;
 
+  // submit activation token
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    const loading = toast.loading("অনুগ্রহপূর্বক অপেক্ষা করুন...");
     axios
       .post(`${process.env.REACT_APP_API_URL}/activation`, {
         token,
       })
       .then((res) => {
+        toast.dismiss(loading);
         toast.success(res.data.message);
         setFormData({
           ...formData,
@@ -62,6 +65,7 @@ const ActivationModal = () => {
         modalData.setShowLoginModal(true);
       })
       .catch((err) => {
+        toast.dismiss(loading);
         toast.error(err.response.data.errors);
       });
   };
@@ -98,7 +102,7 @@ const ActivationModal = () => {
                 />
               </div>
 
-              <div className="w-72 -mt-6 sm:-mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-80 lg:w-98">
+              <div className="w-72 -mt-6 sm:-mt-7 lg:-mt-10 overflow-hidden bg-white rounded-lg shadow-lg md:w-80 lg:w-98">
                 <div className="pt-1 pr-1">
                   {/* Close Button */}
                   <button
@@ -125,7 +129,7 @@ const ActivationModal = () => {
                   </button>
                 </div>
                 <div className="mt-8 flex flex-col items-center">
-                  <h1 className="text-xl sm:text-3xl font-body text-gray-900 font-semibold">
+                  <h1 className="text-xl sm:text-2xl lg:text-3xl font-body text-gray-900 font-semibold">
                     স্বাগতম {name}
                   </h1>
 
@@ -134,11 +138,11 @@ const ActivationModal = () => {
                     onSubmit={handleSubmit}
                   >
                     <div className="border-b text-center">
-                      <div className="leading-none px-2 inline-block text-sm sm:text-base font-body text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
+                      <div className="leading-none px-2 inline-block text-sm lg:text-base font-body text-gray-600 tracking-wide font-medium bg-white transform translate-y-1/2">
                         অনুগ্রহ করে আপনার একাউন্ট একটিভ করুন
                       </div>
                     </div>
-                    <div className="mx-auto w-48 md:w-80 relative">
+                    <div className="mx-auto w-48 sm:w-60 lg:w-80 relative">
                       <button
                         type="submit"
                         className="mt-8 mb-6 text-sm md:text-lg tracking-wide font-body font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { Toaster } from "react-hot-toast";
 import bgBanner from "../assets/images/background/header-bg.png";
 import About from "../components/HomePage/Content/About";
 import Partner from "../components/HomePage/Content/Partner";
@@ -14,7 +15,17 @@ const Home = () => {
   document.title = "অনুশীলন - ভার্চুয়াল সাইন্স ল্যাব";
 
   return (
-    <>
+    <Fragment>
+      {/* For Toast Notification */}
+      <Toaster
+        toastOptions={{
+          duration: 5000,
+          style: {
+            minWidth: "450px",
+            fontFamily: "Hind Siliguri",
+          },
+        }}
+      />
       {/* For Background Image */}
       <div
         className="min-h-auto lg:min-h-screen bg-cover bg-no-repeat bg-center"
@@ -32,7 +43,7 @@ const Home = () => {
       <Partner />
       <Testimonial />
       <Footer />
-    </>
+    </Fragment>
   );
 };
 

@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
+import { Link, useHistory } from "react-router-dom";
 import UserAvatar from "../../../assets/images/icon/user.png";
+import { isAuth, signout } from "../../../helpers/auth";
 import Transition from "../../../utils/Transition";
 
 function UserMenu() {
+  const history = useHistory();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef(null);
@@ -43,7 +46,7 @@ function UserMenu() {
         />
         <div className="flex items-center truncate">
           <span className="truncate ml-2 font-body text-base font-medium text-brand-900 group-hover:text-gray-800">
-            হিরো আলম{" "}
+            {isAuth() && isAuth().name}
           </span>
           <svg
             className="w-3 h-3 flex-shrink-0 ml-2 fill-current text-gray-500"
@@ -71,7 +74,9 @@ function UserMenu() {
         >
           <div className="py-1 pb-2 px-3 border-b border-gray-200">
             <div className="font-body font-medium ml-1 text-gray-800">
-              শিক্ষার্থী
+              {isAuth() && isAuth().role === "student"
+                ? "শিক্ষার্থী"
+                : "শিক্ষক"}
             </div>
           </div>
           <ul>
@@ -101,8 +106,13 @@ function UserMenu() {
             <li>
               <Link
                 className="font-body font-medium text-sm text-brand-900 hover:text-indigo-600 flex items-center py-2 px-3"
-                to="/logout"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
+                to="/"
+                onClick={() => {
+                  signout(() => {
+                    toast.success("সফল ভাবে সাইন আউট হয়েছে!");
+                    history.push("/");
+                  });
+                }}
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

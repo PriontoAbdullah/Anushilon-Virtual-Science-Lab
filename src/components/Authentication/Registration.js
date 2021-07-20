@@ -10,10 +10,22 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import toast from "react-hot-toast";
 import Slide from "react-reveal/Slide";
+import { useHistory } from "react-router-dom";
 import bgBannerFeature from "../../assets/images/background/astronaut.jpg";
 
 const Registration = () => {
+  const history = useHistory();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    history.push("/");
+    toast.error(
+      "দুঃখিত, এই মুহূর্তে শিক্ষা প্রতিষ্ঠানের নিবন্ধনকরণ বন্ধ রয়েছে! 😓"
+    );
+  };
+
   return (
     <section
       className="min-h-auto lg:min-h-screen bg-cover bg-no-repeat bg-center"
@@ -178,7 +190,10 @@ const Registration = () => {
                   </div>
 
                   <div className="mt-6">
-                    <button className="w-full px-4 py-2 font-semibold font-body text-base tracking-wide text-gray-50 focus-within:transition-colors duration-200 bg-brand-900 rounded hover:bg-dark-brand-900 focus:outline-none focus:bg-deep-purple-900">
+                    <button
+                      className="w-full px-4 py-2 font-semibold font-body text-base tracking-wide text-gray-50 focus-within:transition-colors duration-200 bg-brand-900 rounded hover:bg-dark-brand-900 focus:outline-none focus:bg-deep-purple-900"
+                      onClick={handleSubmit}
+                    >
                       নিবন্ধন করুন
                     </button>
                   </div>

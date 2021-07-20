@@ -14,6 +14,8 @@ const Nav = () => {
   // modal context value
   const modalData = useContext(ModalContext);
 
+  // initial states
+  const [isAuthenticated, setIsAuthenticated] = useState(new Date());
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -27,6 +29,12 @@ const Nav = () => {
     }
   };
 
+  // For re-rendering on auth change
+  const handleAuthChange = () => {
+    setIsAuthenticated(new Date());
+    toast.success("সফল ভাবে সাইন আউট হয়েছে! আমাদের সাথে থাকার জন্য ধন্যবাদ ❤️");
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
   });
@@ -38,29 +46,29 @@ const Nav = () => {
 
   // For all modal controler - responsive
   const handleDesktopLogin = () => {
-    modalData.setShowLoginModal(true);
     modalData.setShowHeader("hidden");
+    modalData.setShowLoginModal(true);
     modalData.setNewUser(false);
   };
 
   const handleDesktopSignIn = () => {
-    modalData.setShowLoginModal(true);
     modalData.setShowHeader("hidden");
+    modalData.setShowLoginModal(true);
     modalData.setNewUser(true);
   };
 
   const handleMobileLogin = () => {
-    modalData.setShowLoginModal(true);
     modalData.setShowHeader("hidden");
-    setIsMenuOpen(false);
+    modalData.setShowLoginModal(true);
     modalData.setNewUser(false);
+    setIsMenuOpen(false);
   };
 
   const handleMobileSignIn = () => {
-    modalData.setShowLoginModal(true);
     modalData.setShowHeader("hidden");
-    setIsMenuOpen(false);
+    modalData.setShowLoginModal(true);
     modalData.setNewUser(true);
+    setIsMenuOpen(false);
   };
 
   return (
@@ -94,6 +102,7 @@ const Nav = () => {
                   >
                     অনুশীলন
                   </span>
+                  <span className="hidden">{isAuthenticated.toString()}</span>
                 </Link>
                 {/* Desktop Nav View */}
                 <ul className="items-center hidden space-x-8 lg:flex">
@@ -200,7 +209,7 @@ const Nav = () => {
                       } nav-link-general`}
                       onClick={() => {
                         signout(() => {
-                          toast.success("সফল ভাবে সাইন আউট হয়েছে!");
+                          handleAuthChange();
                           history.push("/");
                         });
                       }}
@@ -260,7 +269,9 @@ const Nav = () => {
                 >
                   <svg
                     className={`${
-                      scrolled ? "text-brand-900" : "text-white"
+                      scrolled
+                        ? "text-brand-900 hover:text-white"
+                        : "text-white"
                     } w-5`}
                     viewBox="0 0 24 24"
                   >
@@ -409,7 +420,8 @@ const Nav = () => {
                                   className="nav-link-mobile"
                                   onClick={() => {
                                     signout(() => {
-                                      toast.success("সফল ভাবে সাইন আউট হয়েছে!");
+                                      handleAuthChange();
+                                      setIsMenuOpen(false);
                                       history.push("/");
                                     });
                                   }}
@@ -448,7 +460,7 @@ const Nav = () => {
                                 >
                                   জয়েন করো
                                 </Link>
-                              </li>{" "}
+                              </li>
                             </Fragment>
                           )}
                         </ul>

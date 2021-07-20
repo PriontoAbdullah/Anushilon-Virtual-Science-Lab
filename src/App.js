@@ -8,6 +8,7 @@ import Activation from "./pages/Activation";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
 import ResetPassword from "./pages/ResetPassword";
+import StudentRoute from "./Routes/StudentRoute";
 export const ModalContext = createContext();
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegistrationModal, setShowRegistrationModal] = useState(false);
   const [showActivationModal, setShowActivationModal] = useState(false);
+  const [showActivationUserModal, setShowActivationUserModal] = useState(false);
   const [showResetPasswordModal, setShowResetPasswordModal] = useState(false);
   const [showHeader, setShowHeader] = useState("block");
 
@@ -43,6 +45,8 @@ const App = () => {
     setShowActivationModal,
     showResetPasswordModal,
     setShowResetPasswordModal,
+    showActivationUserModal,
+    setShowActivationUserModal,
   };
 
   return (
@@ -64,12 +68,13 @@ const App = () => {
                 <Route exact path="/users/password/reset/:jwtToken">
                   <ResetPassword />
                 </Route>
-                <Route exact path="/simulation-phy">
-                  <Dashboard />
-                </Route>
                 <Route exact path="/registration">
                   <Registration />
                 </Route>
+                <StudentRoute exact path="/simulation-phy">
+                  <Dashboard />
+                </StudentRoute>
+
                 <Route path="*">
                   <PageNotFound />
                 </Route>

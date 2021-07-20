@@ -1,6 +1,5 @@
 import React from "react";
 import bgBanner from "../../assets/images/background/header-bg.png";
-import Loader from "../../assets/images/loader/landing.gif";
 
 const Landing = () => {
   return (
@@ -17,7 +16,7 @@ const Landing = () => {
           </h2>
           {/* Pre Loader Animation */}
           <img
-            src={Loader}
+            src="https://cdn.dribbble.com/users/806947/screenshots/9680900/media/3119aee698cbf29b6f70e921638a3722.gif"
             alt="loader"
             className="pt-20 sm:pt-0 sm:h-screen mx-auto"
           />

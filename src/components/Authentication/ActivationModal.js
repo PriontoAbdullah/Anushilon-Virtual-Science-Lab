@@ -5,10 +5,9 @@ import { motion } from "framer-motion";
 import jwt from "jsonwebtoken";
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { Redirect, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { ModalContext } from "../../App";
 import activationLoader from "../../assets/images/loader/activationModal.gif";
-import { isAuth } from "../../helpers/auth";
 
 const ActivationModal = () => {
   const history = useHistory();
@@ -35,16 +34,16 @@ const ActivationModal = () => {
     let { name } = jwt.decode(token);
 
     if (token) {
-      setFormData({ ...formData, name, token });
+      setFormData((prevState) => ({ ...prevState, name, token }));
     }
-  }, [formData, token]);
+  }, [token]);
 
   const { name } = formData;
 
   // submit activation token
   const handleSubmit = (e) => {
     e.preventDefault();
-    const loading = toast.loading("অনুগ্রহপূর্বক অপেক্ষা করুন...");
+    const loading = toast.loading("অনুগ্রহপূর্বক অপেক্ষা করুন...⏳");
     axios
       .post(`${process.env.REACT_APP_API_URL}/activation`, {
         token,
@@ -72,7 +71,6 @@ const ActivationModal = () => {
 
   return (
     <Fragment>
-      {isAuth() ? <Redirect to="/" /> : null}
       <Toaster
         toastOptions={{
           duration: 5000,
@@ -129,8 +127,8 @@ const ActivationModal = () => {
                   </button>
                 </div>
                 <div className="mt-8 flex flex-col items-center">
-                  <h1 className="text-xl sm:text-2xl lg:text-3xl font-body text-gray-900 font-semibold">
-                    স্বাগতম {name}
+                  <h1 className="text-lg sm:text-xl lg:text-2xl mx-4 font-body text-gray-900 font-semibold">
+                    স্বাগতম 💐 {name}
                   </h1>
 
                   <form
@@ -142,10 +140,10 @@ const ActivationModal = () => {
                         অনুগ্রহ করে আপনার একাউন্ট একটিভ করুন
                       </div>
                     </div>
-                    <div className="mx-auto w-48 sm:w-60 lg:w-80 relative">
+                    <div className="mx-auto w-48 sm:w-60 lg:w-72 relative">
                       <button
                         type="submit"
-                        className="mt-8 mb-6 text-sm md:text-lg tracking-wide font-body font-semibold bg-indigo-500 text-gray-100 w-full py-4 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
+                        className="mt-8 mb-6 text-sm md:text-base tracking-wide font-body font-semibold bg-indigo-500 text-gray-100 w-full px-6 py-3 rounded-lg hover:bg-indigo-700 transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
                       >
                         <FontAwesomeIcon icon={faUser} className="w-6 -ml-2" />
                         <span className="ml-3">অ্যাকাউন্ট সচল করুন</span>

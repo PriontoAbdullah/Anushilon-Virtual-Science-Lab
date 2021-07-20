@@ -3,7 +3,7 @@ const Institution = [
   { name: "RAJUK Uttara Model College" },
   { name: "Notre Dame College, Dhaka" },
   { name: "Dhaka Residential Model College, Dhaka" },
-  { name: "Holy Cross Girls’ High School, Dhaka" },
+  { name: "Holy Cross Girl's High School, Dhaka" },
   { name: "Birshreshtha Noor Mohammad Public College" },
   { name: "Chittagong Collegiate School and College" },
   { name: "St. Joseph Higher Secondary School, Dhaka" },

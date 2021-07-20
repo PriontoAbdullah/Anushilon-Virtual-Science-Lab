@@ -8,11 +8,10 @@ import axios from "axios";
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import { GoogleLogin } from "react-google-login";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import Slide from "react-reveal/Slide";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { ModalContext } from "../../App";
-import loginLoader from "../../assets/images/loader/login.gif";
 import signInLoader from "../../assets/images/loader/signIn.gif";
 import Institution from "../../data/Institution";
 import { authenticate, isAuth } from "../../helpers/auth";
@@ -20,6 +19,8 @@ import RegistrationModal from "./RegistrationModal";
 
 const LoginModal = () => {
   const history = useHistory();
+  const location = useLocation();
+  const { from } = location.state || { from: { pathname: "/" } };
   const modalData = useContext(ModalContext);
   // initial states
   const [institutionUser, setInstitutionUser] = useState(null);
@@ -28,6 +29,18 @@ const LoginModal = () => {
   const [showSearchBox, setShowSearchBox] = useState(false);
   const [institutionList, setInstitutionList] = useState(null);
   const [searchValue, setSearchValue] = useState("");
+
+  // show notification
+  useEffect(() => {
+    modalData.newUser &&
+      toast(
+        `অনুগ্রহক করে এই মুহূর্তে "স্বতন্ত্র ভাবে নিবন্ধন করে" পুরো এপ্লিকেশনটি ব্যবহার করতে পারবেন! 😊`,
+        {
+          icon: "🙏",
+          position: "bottom-left",
+        }
+      );
+  }, [modalData.newUser]);
 
   // search institution name
   useEffect(() => {
@@ -89,26 +102,25 @@ const LoginModal = () => {
         ? history.push("/admin")
         : history.push("/");
       toast.success(
-        `হ্যালো! ${response.data.user.name}, ফিরে আসার জন্য ধন্যবাদ!`
+        `হ্যালো! ${response.data.user.name}, ফিরে আসার জন্য ধন্যবাদ! ❤️`
       );
     });
   };
 
   // google login handler
   const sendGoogleToken = (tokenId) => {
-    const loading = toast.loading("অনুগ্রহপূর্বক অপেক্ষা করুন...");
+    const loading = toast.loading("অনুগ্রহপূর্বক অপেক্ষা করুন...⏳");
     axios
       .post(`${process.env.REACT_APP_API_URL}/googlelogin`, {
         idToken: tokenId,
       })
       .then((res) => {
-        console.log(res.data);
         toast.dismiss(loading);
         informParent(res);
         handleCloseLoginModal();
       })
       .catch((error) => {
-        console.log("GOOGLE SIGNIN ERROR", error.response);
+        // console.log("GOOGLE SIGNIN ERROR", error.response);
         toast.dismiss(loading);
         toast.error(error.response.data.error);
       });
@@ -123,36 +135,35 @@ const LoginModal = () => {
         accessToken,
       })
       .then((res) => {
-        console.log(res.data);
         toast.dismiss(loading);
+        // console.log(res.data);
         informParent(res);
         handleCloseLoginModal();
       })
       .catch((error) => {
-        console.log("GOOGLE SIGNIN ERROR", error.response);
         toast.dismiss(loading);
+        // console.log("GOOGLE SIGNIN ERROR", error.response);
         toast.error(error.response.data.error);
       });
   };
 
   // responses from google & facebook api
   const responseGoogle = (response) => {
-    console.log(response);
+    // console.log(response);
     sendGoogleToken(response.tokenId);
   };
 
   const responseFacebook = (response) => {
-    console.log(response);
+    // console.log(response);
     sendFacebookToken(response.userID, response.accessToken);
   };
 
   // manual login handler
   const handleSubmit = (e) => {
-    console.log(process.env.REACT_APP_API_URL);
     e.preventDefault();
 
     if (email && password1) {
-      const loading = toast.loading("অনুগ্রহপূর্বক অপেক্ষা করুন...");
+      const loading = toast.loading("অনুগ্রহপূর্বক অপেক্ষা করুন...⏳");
       setFormData({ ...formData, textChange: "লগ ইন হচ্ছে" });
       axios
         .post(`${process.env.REACT_APP_API_URL}/login`, {
@@ -173,9 +184,9 @@ const LoginModal = () => {
             // redirect for role based user
             isAuth() && isAuth().role === "admin"
               ? history.push("/admin")
-              : history.push("/");
+              : history.replace(from);
             toast.success(
-              `হ্যালো! ${res.data.user.name}, ফিরে আসার জন্য ধন্যবাদ!`
+              `হ্যালো! ${res.data.user.name}, ফিরে আসার জন্য ধন্যবাদ! ❤️`
             );
           });
         })
@@ -186,12 +197,11 @@ const LoginModal = () => {
             password1: "",
             textChange: "লগ ইন করুন",
           });
-          console.log(err.response);
           toast.dismiss(loading);
           toast.error(err.response.data.errors);
         });
     } else {
-      toast.error("অনুগ্রহপূর্বক সবগুলো স্থান তথ্য দিয়ে পূরণ করুন");
+      toast.error("অনুগ্রহপূর্বক সবগুলো স্থান তথ্য দিয়ে পূরণ করুন! 😒");
     }
   };
 
@@ -210,7 +220,7 @@ const LoginModal = () => {
   const handleForgetPasswordSubmit = (e) => {
     e.preventDefault();
 
-    const loading = toast.loading("অনুগ্রহপূর্বক অপেক্ষা করুন...");
+    const loading = toast.loading("অনুগ্রহপূর্বক অপেক্ষা করুন...⏳");
     if (forgetEmail) {
       setForgetPasswordData({
         ...forgetPasswordData,
@@ -239,35 +249,21 @@ const LoginModal = () => {
             forgetEmail: "",
             forgetTextChange: "জমা দিন",
           });
-          console.log(err.response);
           toast.dismiss(loading);
           toast.error(err.response.data.errors);
         });
     } else {
-      toast.error("অনুগ্রহপূর্বক তথ্য দিয়ে পূরণ করুন");
+      toast.error("অনুগ্রহপূর্বক তথ্য দিয়ে পূরণ করুন! 😒");
     }
   };
 
   return (
     <Fragment>
-      {isAuth() ? <Redirect to="/" /> : null}
-      <Toaster
-        toastOptions={{
-          duration: 5000,
-          style: {
-            minWidth: "480px",
-            fontFamily: "Hind Siliguri",
-          },
-          error: {
-            duration: 7000,
-          },
-        }}
-      />
       {!modalData.showRegistrationModal && (
         <div>
           <div className="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none backdrop-filter saturate-150 backdrop-blur-sm">
             <div
-              className={`relative w-full mt-16 mb-4 ${
+              className={`relative w-full mt-12 mb-24 sm:mb-4 ${
                 !modalData.newUser
                   ? !forgetPassword
                     ? "lg:mt-8 2xl:mt-10"
@@ -279,7 +275,7 @@ const LoginModal = () => {
               <div className="hidden lg:block lg:w-1/2 bg-brand-900">
                 {!modalData.newUser ? (
                   <img
-                    src={loginLoader}
+                    src="https://cdn.dribbble.com/users/535360/screenshots/2583480/scientists_2.gif"
                     alt="login-loader"
                     className="min-h-auto md:min-h-full bg-cover bg-no-repeat bg-center"
                   />
@@ -671,7 +667,7 @@ const LoginModal = () => {
                               আপনার শিক্ষা প্রতিষ্ঠানের নাম সার্চ করে নিবন্ধন
                               করুন, এতে আপনার শিক্ষাপ্রতিষ্ঠান আপনার সকল
                               পারফরমেন্স দেখতে পারবে এবং আপনি আপনার প্রতিষ্ঠান
-                              থেকে সকল সুজোগ সুবিধা ভোগ করতে পারবেন।
+                              থেকে সকল সুযোগ সুবিধা ভোগ করতে পারবেন।
                             </p>
                           </div>
                           <div>
@@ -702,7 +698,7 @@ const LoginModal = () => {
                       {/* Registration for Individual  */}
                       <div className="flex items-center justify-between mt-6">
                         <span className="w-1/6 border-b " />
-                        <span className="text-lg text-gray-700 font-body mx-3 font-medium">
+                        <span className="text-base lg:textlg text-gray-700 font-body mx-3 font-medium">
                           অথবা নিবন্ধন করুন স্বতন্ত্র ভাবে
                         </span>
                         <span className="w-1/6 border-b " />
@@ -713,7 +709,7 @@ const LoginModal = () => {
                           className="w-full px-4 py-2 font-semibold font-body text-base tracking-wide text-gray-50 focus-within:transition-colors duration-200 bg-brand-900 rounded hover:bg-deep-purple-accent-700 focus:outline-none focus:bg-deep-purple-900"
                           onClick={handleRegistrationModal}
                         >
-                          স্বতন্ত্র ভাবে রেজিস্ট্রেশন করুন
+                          স্বতন্ত্র ভাবে নিবন্ধন করুন
                         </button>
                       </div>
                     </Slide>

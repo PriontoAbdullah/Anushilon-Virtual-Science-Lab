@@ -109,7 +109,9 @@ function UserMenu() {
                 to="/"
                 onClick={() => {
                   signout(() => {
-                    toast.success("সফল ভাবে সাইন আউট হয়েছে!");
+                    toast.success(
+                      "সফল ভাবে সাইন আউট হয়েছে! সাথে থাকার জন্য ধন্যবাদ ❤️"
+                    );
                     history.push("/");
                   });
                 }}

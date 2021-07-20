@@ -1,13 +1,12 @@
-import { faLock, faUnlock, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import { motion } from "framer-motion";
 import React, { Fragment, useContext, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { Redirect, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { ModalContext } from "../../App";
 import resetPasswordLoader from "../../assets/images/loader/resetPassword.gif";
-import { isAuth } from "../../helpers/auth";
 
 const ResetPasswordModal = () => {
   let { jwtToken } = useParams();
@@ -24,7 +23,7 @@ const ResetPasswordModal = () => {
 
   const handleStrongPassword = () => {
     toast(
-      "পাসওয়ার্ডটি কমপক্ষে ৮ টি অক্ষরের দীর্ঘ হতে হবে এবং কমপক্ষে একটি ছোট হাতের অক্ষর, একটি বড় হাতের অক্ষর, একটি নম্বর এবং একটি চিহ্ন থাকতে হবে",
+      "পাসওয়ার্ডটি কমপক্ষে ৮ টি অক্ষরের দীর্ঘ হতে হবে এবং কমপক্ষে একটি ছোট হাতের অক্ষর, একটি বড় হাতের অক্ষর, একটি নম্বর এবং একটি চিহ্ন থাকতে হবে!",
       {
         icon: "🙏",
       }
@@ -51,6 +50,7 @@ const ResetPasswordModal = () => {
 
     if (password1 && password2) {
       if (password1 === password2) {
+        const loading = toast.loading("অনুগ্রহপূর্বক অপেক্ষা করুন...⏳");
         setFormData({ ...formData, textChange: "জমা দেওয়া হচ্ছে" });
         axios
           .put(`${process.env.REACT_APP_API_URL}/resetpassword`, {
@@ -58,13 +58,13 @@ const ResetPasswordModal = () => {
             resetPasswordLink: token,
           })
           .then((res) => {
-            console.log(res.data.message);
             setFormData({
               ...formData,
               password1: "",
               password2: "",
               textChange: "জমা দেওয়া হয়েছে",
             });
+            toast.dismiss(loading);
             toast.success(res.data.message);
           })
           .catch((err) => {
@@ -74,19 +74,19 @@ const ResetPasswordModal = () => {
               password2: "",
               textChange: "জমা দিন",
             });
+            toast.dismiss(loading);
             toast.error(err.response.data.errors);
           });
       } else {
-        toast.error("পাসওয়ার্ড দুটির মধ্যে মিল খুঁজে পাওয়া যায়নি");
+        toast.error("পাসওয়ার্ড দুটির মধ্যে মিল খুঁজে পাওয়া যায়নি! 🤨");
       }
     } else {
-      toast.error("অনুগ্রহপূর্বক সবগুলো স্থান তথ্য দিয়ে পূরণ করুন");
+      toast.error("অনুগ্রহপূর্বক সবগুলো স্থান তথ্য দিয়ে পূরণ করুন! 😒");
     }
   };
 
   return (
     <Fragment>
-      {isAuth() ? <Redirect to="/" /> : null}
       <Toaster
         toastOptions={{
           duration: 5000,
@@ -217,8 +217,7 @@ const ResetPasswordModal = () => {
                         type="submit"
                         className="w-full px-4 py-2 mt-2 mb-6 font-semibold font-body text-base tracking-wide text-gray-50 focus-within:transition-colors duration-200 bg-brand-900 rounded hover:bg-deep-purple-accent-700 focus:outline-none focus:bg-deep-purple-900"
                       >
-                        <FontAwesomeIcon icon={faUser} className="w-6 -ml-2" />
-                        <span className="ml-3">{textChange}</span>
+                        {textChange}
                       </button>
                     </div>
                   </form>

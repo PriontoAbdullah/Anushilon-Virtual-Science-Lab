@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 import { ModalContext } from "../App";
 import ResetPasswordModal from "../components/Authentication/ResetPasswordModal";
 import Home from "./Home";
@@ -8,8 +8,10 @@ const ResetPassword = () => {
   const modalData = useContext(ModalContext);
 
   // open reset password modal
-  modalData.setShowHeader("hidden");
-  modalData.setShowResetPasswordModal(true);
+  useEffect(() => {
+    modalData.setShowHeader("hidden");
+    modalData.setShowResetPasswordModal(true);
+  }, [modalData]);
 
   return (
     <Fragment>

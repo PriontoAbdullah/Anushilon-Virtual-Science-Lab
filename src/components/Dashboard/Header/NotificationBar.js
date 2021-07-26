@@ -87,7 +87,7 @@ function NotificationBar() {
           onBlur={() => setDropdownOpen(false)}
         >
           <div className="font-body text-sm font-semibold text-gray-500 uppercase pt-1.5 pb-2 px-4 border-b">
-            নোটিফিকেশন{" "}
+            নোটিফিকেশন
           </div>
           <ul>
             {notifications &&

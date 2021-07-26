@@ -89,7 +89,7 @@ const Partner = () => {
             <div className="grid grid-cols-2 gap-10 text-center lg:grid-cols-8">
               {partnerData &&
                 partnerData.map((item, index) => (
-                  <div className="flex items-center justify-center">
+                  <div className="flex items-center justify-center" key={index}>
                     <SwiperSlide
                       tag="li"
                       key={index}

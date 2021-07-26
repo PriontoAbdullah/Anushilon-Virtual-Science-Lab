@@ -46,6 +46,7 @@ export const authenticate = (response, next) => {
   // console.log("AUTHENTICATE HELPER ON SIGNIN RESPONSE", response);
   setCookie("token", response.data.token);
   setLocalStorage("user", response.data.user);
+
   next();
 };
 

@@ -1,5 +1,7 @@
 import {
   faEnvelope,
+  faEye,
+  faEyeSlash,
   faLock,
   faUniversity,
 } from "@fortawesome/free-solid-svg-icons";
@@ -9,17 +11,20 @@ import React, { Fragment, useContext, useEffect, useState } from "react";
 import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 import { GoogleLogin } from "react-google-login";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 import Slide from "react-reveal/Slide";
 import { useHistory, useLocation } from "react-router-dom";
 import { ModalContext } from "../../App";
 import signInLoader from "../../assets/images/loader/signIn.gif";
 import Institution from "../../data/Institution";
 import { authenticate, isAuth } from "../../helpers/auth";
+import { GLOBALTYPES } from "../../redux/actions/globalTypes";
 import RegistrationModal from "./RegistrationModal";
 
 const LoginModal = () => {
   const history = useHistory();
   const location = useLocation();
+  const dispatch = useDispatch();
   const { from } = location.state || { from: { pathname: "/" } };
   const modalData = useContext(ModalContext);
   // initial states
@@ -29,6 +34,7 @@ const LoginModal = () => {
   const [showSearchBox, setShowSearchBox] = useState(false);
   const [institutionList, setInstitutionList] = useState(null);
   const [searchValue, setSearchValue] = useState("");
+  const [typePass, setTypePass] = useState(false);
 
   // show notification
   useEffect(() => {
@@ -98,6 +104,15 @@ const LoginModal = () => {
   // redirect for role based user
   const informParent = (response) => {
     authenticate(response, () => {
+      // dispatch to auth reducer
+      dispatch({
+        type: GLOBALTYPES.AUTH,
+        payload: {
+          token: response.data.token,
+          user: response.data.user,
+        },
+      });
+
       isAuth() && isAuth().role === "admin"
         ? history.push("/admin")
         : history.push("/");
@@ -178,6 +193,16 @@ const LoginModal = () => {
               password1: "",
               textChange: "লগ ইন হয়েছে",
             });
+
+            // dispatch to auth reducer
+            dispatch({
+              type: GLOBALTYPES.AUTH,
+              payload: {
+                token: res.data.token,
+                user: res.data.user,
+              },
+            });
+
             toast.dismiss(loading);
             // close login modal
             handleCloseLoginModal();
@@ -444,12 +469,19 @@ const LoginModal = () => {
                                 <input
                                   id="loggingPassword"
                                   name="password"
-                                  type="password"
+                                  type={typePass ? "text" : "password"}
                                   className="login-input"
                                   placeholder="আপনার পাসওয়ার্ড প্রদান করুন"
                                   onChange={handleChange("password1")}
                                   value={password1}
                                 />
+                                <span class="absolute inset-y-0 right-0 pr-3 flex items-center text-base leading-5 cursor-pointer">
+                                  <FontAwesomeIcon
+                                    icon={typePass ? faEyeSlash : faEye}
+                                    className="text-gray-500"
+                                    onClick={() => setTypePass(!typePass)}
+                                  />
+                                </span>
                               </div>
                             </div>
                             <div className="mt-8">

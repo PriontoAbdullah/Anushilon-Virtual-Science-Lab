@@ -145,7 +145,7 @@ const Footer = () => {
           <div className="flex flex-col-reverse justify-between pt-5 pb-10 border-t border-gray-50 lg:flex-row font-body">
             <p className="text-sm font-medium text-gray-400 tracking-wide">
               &copy; কপিরাইট{" "}
-              <span className="font-display font-semibold text-gray-200">
+              <span className="font-display font-medium text-gray-200">
                 ২০২১
               </span>{" "}
               অনুশীলন কতৃক সমস্ত অধিকার সংরক্ষিত।

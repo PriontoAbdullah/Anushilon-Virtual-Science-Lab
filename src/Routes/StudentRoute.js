@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
+import { useSelector } from "react-redux";
 import { Route, useHistory } from "react-router-dom";
 import { ModalContext } from "../App";
-import { isAuth } from "../helpers/auth";
 
 const StudentRoute = ({ children, ...rest }) => {
   const history = useHistory();
+  const { auth } = useSelector((state) => state);
   // modal context value
   const modalData = useContext(ModalContext);
 
@@ -28,7 +29,15 @@ const StudentRoute = ({ children, ...rest }) => {
     <Route
       {...rest}
       render={({ location }) =>
-        isAuth() && isAuth().role === "student" ? children : openLoginModal()
+        auth.user && auth.user.role === "student"
+          ? children
+          : // <Redirect
+            //   to={{
+            //     pathname: "/",
+            //     state: { from: location },
+            //   }}
+            // />
+            openLoginModal()
       }
     />
   );

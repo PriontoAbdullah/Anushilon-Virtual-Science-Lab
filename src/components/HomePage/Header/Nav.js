@@ -1,16 +1,19 @@
 import { motion } from "framer-motion";
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { animateScroll as scroll, Link } from "react-scroll";
 import { ModalContext } from "../../../App";
 import textLogo from "../../../assets/images/text-logo.png";
 import { isAuth, signout } from "../../../helpers/auth";
+import { GLOBALTYPES } from "../../../redux/actions/globalTypes";
 import LoginModal from "../../Authentication/LoginModal";
 import classes from "./Navbar.module.css";
 
 const Nav = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
   // modal context value
   const modalData = useContext(ModalContext);
 
@@ -31,6 +34,14 @@ const Nav = () => {
 
   // For re-rendering on auth change
   const handleAuthChange = () => {
+    // dispatch to auth reducer
+    dispatch({
+      type: GLOBALTYPES.AUTH,
+      payload: {
+        token: null,
+        user: null,
+      },
+    });
     setIsAuthenticated(new Date());
     toast.success("সফল ভাবে সাইন আউট হয়েছে! আমাদের সাথে থাকার জন্য ধন্যবাদ ❤️");
   };

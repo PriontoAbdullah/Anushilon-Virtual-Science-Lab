@@ -20,8 +20,8 @@ function UserMenu() {
     const clickHandler = ({ target }) => {
       if (
         !dropdownOpen ||
-        dropdown.current.contains(target) ||
-        trigger.current.contains(target)
+        (dropdown.current && dropdown.current.contains(target)) ||
+        (trigger.current && trigger.current.contains(target))
       )
         return;
       setDropdownOpen(false);
@@ -85,7 +85,6 @@ function UserMenu() {
               <Link
                 className="font-body font-medium text-sm text-brand-900 hover:text-indigo-600 flex items-center py-2 px-3"
                 to={`/profile/${auth.user._id}`}
-                ref={trigger}
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
                 <svg

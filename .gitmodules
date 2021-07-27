@@ -1,0 +1,9 @@
+[submodule "client"]
+	path = client
+	url = https://github.com/PriontoAbdullah/Anushilon-Client
+[submodule "server"]
+	path = server
+	url = https://github.com/PriontoAbdullah/Anushilon-Server
+[submodule "simulations"]
+	path = simulations
+	url = https://github.com/PriontoAbdullah/Anushilon-Simulations

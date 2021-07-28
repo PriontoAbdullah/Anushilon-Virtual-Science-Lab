@@ -7,12 +7,19 @@ import toast, { Toaster } from "react-hot-toast";
 import { useHistory, useParams } from "react-router-dom";
 import { ModalContext } from "../../App";
 import resetPasswordLoader from "../../assets/images/loader/resetPassword.gif";
+import useWindowDimensions from "../../utils/useWindowDimensions";
 
 const ResetPasswordModal = () => {
   let { jwtToken } = useParams();
   const history = useHistory();
   // modal context value
   const modalData = useContext(ModalContext);
+
+  // get device width from custom hooks
+  const { width } = useWindowDimensions();
+
+  let notificationWidth =
+    width > 500 ? "480px" : width > 400 ? "390px" : "370px";
 
   // for handling modal functionality
   const handleCloseModal = () => {
@@ -91,7 +98,7 @@ const ResetPasswordModal = () => {
         toastOptions={{
           duration: 5000,
           style: {
-            minWidth: "450px",
+            minWidth: `${notificationWidth}`,
             fontFamily: "Hind Siliguri",
           },
         }}

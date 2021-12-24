@@ -1,22 +1,22 @@
-import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import Transition from "../../../utils/Transition";
+import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import Transition from '../../../utils/Transition';
 
 // Notification Data
 const notifications = [
   {
-    name: "অনুরোধ",
-    description: "অনুগ্রহপূর্বক আপনার সকল তথ্য বাংলায় দাখিল করুন ",
-    time: "১ মিনিট আগে",
-    href: "#0",
-    icon: "📣",
+    name: 'অনুরোধ',
+    description: 'অনুগ্রহপূর্বক আপনার সকল তথ্য বাংলায় দাখিল করুন ',
+    time: '১ মিনিট আগে',
+    href: '#0',
+    icon: '📣',
   },
   {
-    name: "অভ্যর্থনা",
-    description: "অনুশীলনে আপনাকে স্বাগতম",
-    time: "২ মিনিট আগে",
-    href: "#0",
-    icon: "🚀",
+    name: 'অভ্যর্থনা',
+    description: 'অনুশীলনে আপনাকে স্বাগতম',
+    time: '২ মিনিট আগে',
+    href: '#0',
+    icon: '🚀',
   },
 ];
 
@@ -37,8 +37,8 @@ function NotificationBar() {
         return;
       setDropdownOpen(false);
     };
-    document.addEventListener("click", clickHandler);
-    return () => document.removeEventListener("click", clickHandler);
+    document.addEventListener('click', clickHandler);
+    return () => document.removeEventListener('click', clickHandler);
   });
 
   return (
@@ -47,7 +47,7 @@ function NotificationBar() {
       <button
         ref={trigger}
         className={`w-8 h-8 flex items-center justify-center bg-gray-100 hover:bg-gray-200 transition duration-150 rounded-full outline-none focus:outline-none ${
-          dropdownOpen && "bg-gray-200"
+          dropdownOpen && 'bg-gray-200'
         }`}
         aria-haspopup="true"
         onClick={() => setDropdownOpen(!dropdownOpen)}

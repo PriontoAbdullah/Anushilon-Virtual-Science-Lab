@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const LabIcon = () => {
   return (
@@ -23,8 +23,13 @@ const LabIcon = () => {
 const SingleSimulation = ({ item }) => {
   return (
     <>
-      <Link to="/simulation-phy" key={item.id}>
-        <div className="grid sm:grid-cols-3 p-5 hover:bg-gray-100 shadow-3xl hover:shadow-xl cursor-pointer rounded-lg">
+      <Link
+        to="/মিটার-ব্রিজ-ব্যবহার-করে-কোন-তারের-আপেক্ষিক-রোধ-নির্ণয়।"
+        key={item.id}
+      >
+        <div
+          className={`grid sm:grid-cols-3 p-5 hover:bg-gray-100 shadow-3xl hover:shadow-xl cursor-pointer rounded-lg`}
+        >
           <div className="relative w-full h-32 max-h-full rounded shadow sm:h-auto">
             <img
               className="absolute object-cover w-full h-full rounded"

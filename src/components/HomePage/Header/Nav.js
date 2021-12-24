@@ -1,21 +1,22 @@
-import { motion } from "framer-motion";
-import React, { Fragment, useContext, useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
-import { animateScroll as scroll, Link } from "react-scroll";
-import { ModalContext } from "../../../App";
-import textLogo from "../../../assets/images/text-logo.png";
-import { isAuth, signout } from "../../../helpers/auth";
-import { GLOBALTYPES } from "../../../redux/actions/globalTypes";
-import LoginModal from "../../Authentication/LoginModal";
-import classes from "./Navbar.module.css";
+import { motion } from 'framer-motion';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { animateScroll as scroll, Link } from 'react-scroll';
+import { ModalContext } from '../../../App';
+import textLogo from '../../../assets/images/text-logo.png';
+import { isAuth, signout } from '../../../helpers/auth';
+import { GLOBALTYPES } from '../../../redux/actions/globalTypes';
+import LoginModal from '../../Authentication/LoginModal';
+import classes from './Navbar.module.css';
 
 const Nav = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   // modal context value
   const modalData = useContext(ModalContext);
+  const { auth } = useSelector((state) => state);
 
   // initial states
   const [isAuthenticated, setIsAuthenticated] = useState(new Date());
@@ -43,40 +44,40 @@ const Nav = () => {
       },
     });
     setIsAuthenticated(new Date());
-    toast.success("সফল ভাবে সাইন আউট হয়েছে! আমাদের সাথে থাকার জন্য ধন্যবাদ ❤️");
+    toast.success('সফল ভাবে সাইন আউট হয়েছে! আমাদের সাথে থাকার জন্য ধন্যবাদ ❤️');
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
   });
 
-  let headerClasses = ["header"];
+  let headerClasses = ['header'];
   if (scrolled) {
     headerClasses.push(classes.scrolled);
   }
 
   // For all modal controler - responsive
   const handleDesktopLogin = () => {
-    modalData.setShowHeader("hidden");
+    modalData.setShowHeader('hidden');
     modalData.setShowLoginModal(true);
     modalData.setNewUser(false);
   };
 
   const handleDesktopSignIn = () => {
-    modalData.setShowHeader("hidden");
+    modalData.setShowHeader('hidden');
     modalData.setShowLoginModal(true);
     modalData.setNewUser(true);
   };
 
   const handleMobileLogin = () => {
-    modalData.setShowHeader("hidden");
+    modalData.setShowHeader('hidden');
     modalData.setShowLoginModal(true);
     modalData.setNewUser(false);
     setIsMenuOpen(false);
   };
 
   const handleMobileSignIn = () => {
-    modalData.setShowHeader("hidden");
+    modalData.setShowHeader('hidden');
     modalData.setShowLoginModal(true);
     modalData.setNewUser(true);
     setIsMenuOpen(false);
@@ -85,7 +86,7 @@ const Nav = () => {
   return (
     <div>
       <motion.div
-        className={`${headerClasses.join(" ")}`}
+        className={`${headerClasses.join(' ')}`}
         initial={{
           opacity: 0,
         }}
@@ -108,7 +109,7 @@ const Nav = () => {
                 >
                   <span
                     className={`${
-                      scrolled ? "nav-link-deep" : "nav-link-light"
+                      scrolled ? 'nav-link-deep' : 'nav-link-light'
                     } text-3xl font-display font-black tracking-wider cursor-pointer`}
                   >
                     অনুশীলন
@@ -127,7 +128,7 @@ const Nav = () => {
                       duration={500}
                       activeClass={`${classes.active}`}
                       className={`${
-                        scrolled ? "nav-link-deep" : "nav-link-light"
+                        scrolled ? 'nav-link-deep' : 'nav-link-light'
                       } nav-link-general`}
                     >
                       আমাদের সিমুলেশন
@@ -143,7 +144,7 @@ const Nav = () => {
                       duration={500}
                       activeClass={`${classes.active}`}
                       className={`${
-                        scrolled ? "nav-link-deep" : "nav-link-light"
+                        scrolled ? 'nav-link-deep' : 'nav-link-light'
                       } nav-link-general`}
                     >
                       আমাদের বৈশিষ্ট্য
@@ -159,7 +160,7 @@ const Nav = () => {
                       duration={500}
                       activeClass={`${classes.active}`}
                       className={`${
-                        scrolled ? "nav-link-deep" : "nav-link-light"
+                        scrolled ? 'nav-link-deep' : 'nav-link-light'
                       } nav-link-general`}
                     >
                       লোকেরা যা বলছে
@@ -175,7 +176,7 @@ const Nav = () => {
                       duration={500}
                       activeClass={`${classes.active}`}
                       className={`${
-                        scrolled ? "nav-link-deep" : "nav-link-light"
+                        scrolled ? 'nav-link-deep' : 'nav-link-light'
                       } nav-link-general`}
                     >
                       আমাদের সম্পর্কে
@@ -184,7 +185,7 @@ const Nav = () => {
                 </ul>
               </div>
 
-              {isAuth() ? (
+              {auth.user ? (
                 // for LoggedIn user
                 <ul className="items-center hidden space-x-8 lg:flex">
                   <li>
@@ -192,8 +193,8 @@ const Nav = () => {
                       to="/simulation-phy"
                       className={`${
                         scrolled
-                          ? "text-gray-50  hover:text-deep-purple-50 bg-brand-900 hover:bg-deep-purple-accent-700"
-                          : "text-gray-50  hover:text-deep-purple-900 bg-brand-900 hover:bg-deep-purple-50"
+                          ? 'text-gray-50  hover:text-deep-purple-50 bg-brand-900 hover:bg-deep-purple-accent-700'
+                          : 'text-gray-50  hover:text-deep-purple-900 bg-brand-900 hover:bg-deep-purple-50'
                       } join-button-general`}
                       spy={true}
                       smooth={true}
@@ -201,7 +202,7 @@ const Nav = () => {
                       offset={0}
                       duration={500}
                       onClick={() => {
-                        history.push("/simulation-phy");
+                        history.push('/simulation-phy');
                       }}
                     >
                       ড্যাশবোর্ড
@@ -216,12 +217,12 @@ const Nav = () => {
                       offset={0}
                       duration={500}
                       className={`${
-                        scrolled ? "nav-link-deep" : "nav-link-light"
+                        scrolled ? 'nav-link-deep' : 'nav-link-light'
                       } nav-link-general`}
                       onClick={() => {
                         signout(() => {
                           handleAuthChange();
-                          history.push("/");
+                          history.push('/');
                         });
                       }}
                     >
@@ -241,7 +242,7 @@ const Nav = () => {
                       offset={0}
                       duration={500}
                       className={`${
-                        scrolled ? "nav-link-deep" : "nav-link-light"
+                        scrolled ? 'nav-link-deep' : 'nav-link-light'
                       } nav-link-general`}
                       onClick={handleDesktopLogin}
                     >
@@ -253,8 +254,8 @@ const Nav = () => {
                       to="/"
                       className={`${
                         scrolled
-                          ? "text-gray-50  hover:text-deep-purple-50 bg-brand-900 hover:bg-deep-purple-accent-700"
-                          : "text-gray-50  hover:text-deep-purple-900 bg-brand-900 hover:bg-deep-purple-50"
+                          ? 'text-gray-50  hover:text-deep-purple-50 bg-brand-900 hover:bg-deep-purple-accent-700'
+                          : 'text-gray-50  hover:text-deep-purple-900 bg-brand-900 hover:bg-deep-purple-50'
                       } join-button-general`}
                       spy={true}
                       smooth={true}
@@ -281,8 +282,8 @@ const Nav = () => {
                   <svg
                     className={`${
                       scrolled
-                        ? "text-brand-900 hover:text-white"
-                        : "text-white"
+                        ? 'text-brand-900 hover:text-white'
+                        : 'text-white'
                     } w-5`}
                     viewBox="0 0 24 24"
                   >
@@ -414,7 +415,7 @@ const Nav = () => {
                                   offset={0}
                                   duration={500}
                                   onClick={() => {
-                                    history.push("/simulation-phy");
+                                    history.push('/simulation-phy');
                                   }}
                                 >
                                   ড্যাশবোর্ড
@@ -433,7 +434,7 @@ const Nav = () => {
                                     signout(() => {
                                       handleAuthChange();
                                       setIsMenuOpen(false);
-                                      history.push("/");
+                                      history.push('/');
                                     });
                                   }}
                                 >

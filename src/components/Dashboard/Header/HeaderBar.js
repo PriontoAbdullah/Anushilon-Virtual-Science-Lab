@@ -1,10 +1,12 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import NotificationBar from "./NotificationBar";
-import SearchBar from "./SearchBar";
-import UserMenu from "./UserMenu";
+import React from 'react';
+import { NavLink, useParams } from 'react-router-dom';
+import NotificationBar from './NotificationBar';
+import SearchBar from './SearchBar';
+import UserMenu from './UserMenu';
 
 function HeaderBar({ sidebarOpen, setSidebarOpen }) {
+  const { page } = useParams();
+
   return (
     <header className="sticky top-0 bg-indigo-50 border-b border-gray-200 z-30">
       <div className="px-4 sm:px-6 lg:px-8">
@@ -34,10 +36,16 @@ function HeaderBar({ sidebarOpen, setSidebarOpen }) {
               <li>
                 <NavLink
                   exact
-                  to="/simulation"
+                  to={`/${page}`}
                   className="font-medium text-brand-900"
                 >
-                  সিমুলেশন
+                  {page === 'simulation-phy' ||
+                  page === 'simulation-che' ||
+                  page === 'simulation-bio'
+                    ? 'সিমুলেশন'
+                    : page === 'community'
+                    ? 'কমিউনিটি '
+                    : ''}
                 </NavLink>
               </li>
               <li>
@@ -46,20 +54,28 @@ function HeaderBar({ sidebarOpen, setSidebarOpen }) {
               <li>
                 <NavLink
                   exact
-                  to="/simulation-phy"
+                  to={`/${page}`}
                   className="font-medium text-brand-900"
                 >
-                  পদার্থ বিজ্ঞান
+                  {page === 'simulation-phy'
+                    ? 'পদার্থ বিজ্ঞান'
+                    : page === 'simulation-che'
+                    ? 'রসায়ন'
+                    : page === 'simulation-bio'
+                    ? 'জীব বিজ্ঞান'
+                    : page === 'community'
+                    ? 'পোস্ট '
+                    : ''}
                 </NavLink>
               </li>
-              <li>
+              {/* <li>
                 <span className="mx-2 font-bold">&gt;</span>
               </li>
               <li>
                 <span className="text">
                   মিটার ব্রিজ ব্যবহার করে কোন তারের আপেক্ষিক রোধ নির্ণয়।
                 </span>
-              </li>
+              </li> */}
             </ol>
           </nav>
 

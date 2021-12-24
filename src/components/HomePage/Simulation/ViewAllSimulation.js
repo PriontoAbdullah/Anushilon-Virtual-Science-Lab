@@ -1,43 +1,25 @@
-import React, { useState } from "react";
-import bgViewSimulation from "../../../assets/images/background/biography-bg.png";
+import React, { useState } from 'react';
+import bgViewSimulation from '../../../assets/images/background/biography-bg.png';
 import {
   biology09,
   biology10,
   biology11,
   biology12,
-} from "../../../data/biologySimulation";
+} from '../../../data/biologySimulation';
 import {
   chemistry09,
   chemistry10,
   chemistry11,
   chemistry12,
-} from "../../../data/chemistrySimulation";
+} from '../../../data/chemistrySimulation';
 import {
   physics09,
   physics10,
   physics11,
   physics12,
-} from "../../../data/physicsSimulation";
-import SingleSimulation from "./SingleSimulation";
-
-const BookIcon = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="h-6 w-6 inline-block mr-2"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
-      />
-    </svg>
-  );
-};
+} from '../../../data/physicsSimulation';
+import BookIcon from '../../../helpers/BookIcon';
+import SingleSimulation from './SingleSimulation';
 
 const ViewAllSimulation = (props) => {
   const [openTab, setOpenTab] = useState(1);
@@ -82,11 +64,11 @@ const ViewAllSimulation = (props) => {
               </button>
               <h2 className="font-display font-bold text-brand-900 text-3xl text-center pt-1 pb-4">
                 {props.selectTab === 1
-                  ? "পদার্থ বিজ্ঞান"
+                  ? 'পদার্থ বিজ্ঞান'
                   : props.selectTab === 2
-                  ? "রসায়ন"
+                  ? 'রসায়ন'
                   : props.selectTab === 3
-                  ? "জীব বিজ্ঞান"
+                  ? 'জীব বিজ্ঞান'
                   : null}
               </h2>
             </div>
@@ -100,7 +82,7 @@ const ViewAllSimulation = (props) => {
                   <li className="simulation-class-list ">
                     <a
                       className={`simulation-class-name 
-										${openTab === 1 ? "text-white bg-brand-900" : "text-brand-900 bg-white"}`}
+										${openTab === 1 ? 'text-white bg-brand-900' : 'text-brand-900 bg-white'}`}
                       onClick={(e) => {
                         e.preventDefault();
                         setOpenTab(1);
@@ -115,7 +97,7 @@ const ViewAllSimulation = (props) => {
                   <li className="simulation-class-list ">
                     <a
                       className={`simulation-class-name
-										${openTab === 2 ? "text-white bg-brand-900" : "text-brand-900 bg-white"}`}
+										${openTab === 2 ? 'text-white bg-brand-900' : 'text-brand-900 bg-white'}`}
                       onClick={(e) => {
                         e.preventDefault();
                         setOpenTab(2);
@@ -130,7 +112,7 @@ const ViewAllSimulation = (props) => {
                   <li className="simulation-class-list ">
                     <a
                       className={`simulation-class-name
-										${openTab === 3 ? "text-white bg-brand-900" : "text-brand-900 bg-white"}`}
+										${openTab === 3 ? 'text-white bg-brand-900' : 'text-brand-900 bg-white'}`}
                       onClick={(e) => {
                         e.preventDefault();
                         setOpenTab(3);
@@ -145,7 +127,7 @@ const ViewAllSimulation = (props) => {
                   <li className="simulation-class-list ">
                     <a
                       className={`simulation-class-name
-										${openTab === 4 ? "text-white bg-brand-900" : "text-brand-900 bg-white"}`}
+										${openTab === 4 ? 'text-white bg-brand-900' : 'text-brand-900 bg-white'}`}
                       onClick={(e) => {
                         e.preventDefault();
                         setOpenTab(4);
@@ -163,7 +145,7 @@ const ViewAllSimulation = (props) => {
                   <div className="px-4 py-5 flex-auto">
                     <div className="tab-content tab-space">
                       <div
-                        className={openTab === 1 ? "block" : "hidden"}
+                        className={openTab === 1 ? 'block' : 'hidden'}
                         id="12"
                       >
                         <div className="simulation-item-outer">
@@ -191,7 +173,7 @@ const ViewAllSimulation = (props) => {
                       </div>
 
                       <div
-                        className={openTab === 2 ? "block" : "hidden"}
+                        className={openTab === 2 ? 'block' : 'hidden'}
                         id="11"
                       >
                         <div className="simulation-item-outer">
@@ -218,7 +200,7 @@ const ViewAllSimulation = (props) => {
                         </div>
                       </div>
                       <div
-                        className={openTab === 3 ? "block" : "hidden"}
+                        className={openTab === 3 ? 'block' : 'hidden'}
                         id="10"
                       >
                         <div className="simulation-item-outer">
@@ -245,7 +227,7 @@ const ViewAllSimulation = (props) => {
                         </div>
                       </div>
                       <div
-                        className={openTab === 4 ? "block" : "hidden"}
+                        className={openTab === 4 ? 'block' : 'hidden'}
                         id="9"
                       >
                         <div className="simulation-item-outer">

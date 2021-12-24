@@ -1,12 +1,13 @@
-import { faLock, faUnlock } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
-import { motion } from "framer-motion";
-import React, { Fragment, useContext, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
-import { useHistory, useParams } from "react-router-dom";
-import { ModalContext } from "../../App";
-import resetPasswordLoader from "../../assets/images/loader/resetPassword.gif";
+import { faLock, faUnlock } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from 'axios';
+import { motion } from 'framer-motion';
+import React, { Fragment, useContext, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+import { useHistory, useParams } from 'react-router-dom';
+import { ModalContext } from '../../App';
+import resetPasswordLoader from '../../assets/images/loader/resetPassword.gif';
+import useWindowDimensions from '../../utils/useWindowDimensions';
 
 const ResetPasswordModal = () => {
   let { jwtToken } = useParams();
@@ -14,28 +15,34 @@ const ResetPasswordModal = () => {
   // modal context value
   const modalData = useContext(ModalContext);
 
+  // get device width from custom hooks
+  const { width } = useWindowDimensions();
+
+  let notificationWidth =
+    width > 500 ? '480px' : width > 400 ? '390px' : '370px';
+
   // for handling modal functionality
   const handleCloseModal = () => {
-    modalData.setShowHeader("block");
+    modalData.setShowHeader('block');
     modalData.setShowResetPasswordModal(false);
-    history.push("/");
+    history.push('/');
   };
 
   const handleStrongPassword = () => {
     toast(
-      "পাসওয়ার্ডটি কমপক্ষে ৮ টি অক্ষরের দীর্ঘ হতে হবে এবং কমপক্ষে একটি ছোট হাতের অক্ষর, একটি বড় হাতের অক্ষর, একটি নম্বর এবং একটি চিহ্ন থাকতে হবে!",
+      'পাসওয়ার্ডটি কমপক্ষে ৮ টি অক্ষরের দীর্ঘ হতে হবে এবং কমপক্ষে একটি ছোট হাতের অক্ষর, একটি বড় হাতের অক্ষর, একটি নম্বর এবং একটি চিহ্ন থাকতে হবে!',
       {
-        icon: "🙏",
+        icon: '🙏',
       }
     );
   };
 
   // set form data states
   const [formData, setFormData] = useState({
-    password1: "",
-    password2: "",
+    password1: '',
+    password2: '',
     token: jwtToken,
-    textChange: "জমা দিন",
+    textChange: 'জমা দিন',
   });
 
   const { password1, password2, textChange, token } = formData;
@@ -50,8 +57,8 @@ const ResetPasswordModal = () => {
 
     if (password1 && password2) {
       if (password1 === password2) {
-        const loading = toast.loading("অনুগ্রহপূর্বক অপেক্ষা করুন...⏳");
-        setFormData({ ...formData, textChange: "জমা দেওয়া হচ্ছে" });
+        const loading = toast.loading('অনুগ্রহপূর্বক অপেক্ষা করুন...⏳');
+        setFormData({ ...formData, textChange: 'জমা দেওয়া হচ্ছে' });
         axios
           .put(`${process.env.REACT_APP_API_URL}/resetpassword`, {
             newPassword: password1,
@@ -60,9 +67,9 @@ const ResetPasswordModal = () => {
           .then((res) => {
             setFormData({
               ...formData,
-              password1: "",
-              password2: "",
-              textChange: "জমা দেওয়া হয়েছে",
+              password1: '',
+              password2: '',
+              textChange: 'জমা দেওয়া হয়েছে',
             });
             toast.dismiss(loading);
             toast.success(res.data.message);
@@ -70,18 +77,18 @@ const ResetPasswordModal = () => {
           .catch((err) => {
             setFormData({
               ...formData,
-              password1: "",
-              password2: "",
-              textChange: "জমা দিন",
+              password1: '',
+              password2: '',
+              textChange: 'জমা দিন',
             });
             toast.dismiss(loading);
-            toast.error(err.response.data.errors);
+            toast.error(err.message);
           });
       } else {
-        toast.error("পাসওয়ার্ড দুটির মধ্যে মিল খুঁজে পাওয়া যায়নি! 🤨");
+        toast.error('পাসওয়ার্ড দুটির মধ্যে মিল খুঁজে পাওয়া যায়নি! 🤨');
       }
     } else {
-      toast.error("অনুগ্রহপূর্বক সবগুলো স্থান তথ্য দিয়ে পূরণ করুন! 😒");
+      toast.error('অনুগ্রহপূর্বক সবগুলো স্থান তথ্য দিয়ে পূরণ করুন! 😒');
     }
   };
 
@@ -91,8 +98,8 @@ const ResetPasswordModal = () => {
         toastOptions={{
           duration: 5000,
           style: {
-            minWidth: "450px",
-            fontFamily: "Hind Siliguri",
+            minWidth: `${notificationWidth}`,
+            fontFamily: 'Hind Siliguri',
           },
         }}
       />
@@ -100,7 +107,7 @@ const ResetPasswordModal = () => {
         initial={{ scale: 0.7 }}
         animate={{ scale: 1 }}
         transition={{
-          type: "spring",
+          type: 'spring',
           stiffness: 260,
           damping: 20,
         }}
@@ -179,7 +186,7 @@ const ResetPasswordModal = () => {
                           type="password"
                           className="login-input"
                           placeholder="আপনার পাসওয়ার্ড প্রদান করুন"
-                          onChange={handleChange("password1")}
+                          onChange={handleChange('password1')}
                           value={password1}
                         />
                       </div>
@@ -207,7 +214,7 @@ const ResetPasswordModal = () => {
                           type="password"
                           className="login-input"
                           placeholder="আপনার পাসওয়ার্ড পুনরায় প্রদান করুন"
-                          onChange={handleChange("password2")}
+                          onChange={handleChange('password2')}
                           value={password2}
                         />
                       </div>

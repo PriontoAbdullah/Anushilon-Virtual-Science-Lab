@@ -1,0 +1,31 @@
+.post {
+  border-radius: 10px;
+  margin: 0 auto 45px;
+  max-width: 600px;
+  background: #fafafa;
+  box-shadow: 5px 5px 10px #e7e7e7, -5px -5px 10px #f5f5f5;
+  border: 1px solid lightgray;
+}
+.post__image {
+  width: 100%;
+  object-fit: contain;
+}
+
+.post__header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+.post__header h3 {
+  margin-left: 10px;
+}
+
+.post_cap {
+  padding: 0 0 15px 25px;
+}
+.comments__box {
+  padding: 20px;
+  overflow: scroll;
+  max-height: 200px;
+  overflow-x: hidden;
+}

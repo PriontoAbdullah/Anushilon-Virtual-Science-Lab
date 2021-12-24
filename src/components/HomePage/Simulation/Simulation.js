@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import Slide from "react-reveal/Slide";
-import bgBannerSimulation from "../../../assets/images/background/features-3.png";
-import studentGIF from "../../../assets/images/banner/student.gif";
-import biology from "../../../assets/images/icon/biology.png";
-import chemistry from "../../../assets/images/icon/chemistry.png";
-import physics from "../../../assets/images/icon/physics.png";
-import useWindowDimensions from "../../../utils/useWindowDimensions";
-import ViewAllSimulation from "./ViewAllSimulation";
+import React, { useState } from 'react';
+import Slide from 'react-reveal/Slide';
+import bgBannerSimulation from '../../../assets/images/background/features-3.png';
+import studentGIF from '../../../assets/images/banner/student.gif';
+import biology from '../../../assets/images/icon/biology.png';
+import chemistry from '../../../assets/images/icon/chemistry.png';
+import physics from '../../../assets/images/icon/physics.png';
+import useWindowDimensions from '../../../utils/useWindowDimensions';
+import ViewAllSimulation from './ViewAllSimulation';
 
 const Simulation = () => {
   const [viewSimulation, setViewSimulation] = useState(false);
@@ -30,7 +30,7 @@ const Simulation = () => {
     window.scroll({
       top: getHeight,
       left: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }
 
@@ -46,7 +46,7 @@ const Simulation = () => {
         <div className="px-8 pb-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pt-16 lg:pb-10">
           <div className="grid sm:gap-8 row-gap-8 grid-cols-1 lg:grid-cols-12">
             {/* Left Side */}
-            <div className="col-span-5 mb-12 py-6 sm:mb-0">
+            <div className="col-span-5 mb-10 py-0 sm:py-6 sm:mb-0">
               <Slide up>
                 <img
                   className="w-4/5 mx-auto sm:w-full sm:h-full rounded-xl shadow-sm"
@@ -79,8 +79,8 @@ const Simulation = () => {
               <div className="grid gap-1 sm:gap-5 row-gap-8 sm:grid-cols-3 font-body">
                 <Slide bottom>
                   <div
-                    className={`shadow-3xl m-3 cursor-pointer ${
-                      selectTab === 1 ? "bg-indigo-50" : "bg-brand-accent-100"
+                    className={`animate-pulse shadow-3xl m-3 cursor-pointer ${
+                      selectTab === 1 ? 'bg-indigo-50' : 'bg-brand-accent-100'
                     }`}
                     onClick={() => {
                       setSelectTab(1);
@@ -94,7 +94,7 @@ const Simulation = () => {
                         src={physics}
                         alt="Science-logo"
                       />
-                      <h6 className="mt-5 font-semibold leading-5 text-2xl text-brand-900">
+                      <h6 className="animate-bounce mt-5 font-semibold leading-5 text-2xl text-brand-900">
                         পদার্থ বিজ্ঞান
                       </h6>
                     </div>
@@ -102,8 +102,8 @@ const Simulation = () => {
                 </Slide>
                 <Slide bottom>
                   <div
-                    className={`shadow-3xl m-3 cursor-pointer ${
-                      selectTab === 2 ? "bg-indigo-50" : "bg-brand-accent-100"
+                    className={`animate-pulse shadow-3xl m-3 cursor-pointer ${
+                      selectTab === 2 ? 'bg-indigo-50' : 'bg-brand-accent-100'
                     }`}
                     onClick={() => {
                       setSelectTab(2);
@@ -117,7 +117,7 @@ const Simulation = () => {
                         src={chemistry}
                         alt="Science-logo"
                       />
-                      <h6 className="mt-5 font-semibold leading-5 text-2xl text-brand-900">
+                      <h6 className="animate-bounce mt-5 font-semibold leading-5 text-2xl text-brand-900">
                         রসায়ন
                       </h6>
                     </div>
@@ -125,8 +125,8 @@ const Simulation = () => {
                 </Slide>
                 <Slide bottom>
                   <div
-                    className={`shadow-3xl m-3 cursor-pointer ${
-                      selectTab === 3 ? "bg-indigo-50" : "bg-brand-accent-100"
+                    className={`animate-pulse shadow-3xl m-3 cursor-pointer ${
+                      selectTab === 3 ? 'bg-indigo-50' : 'bg-brand-accent-100'
                     }`}
                     onClick={() => {
                       setSelectTab(3);
@@ -140,7 +140,7 @@ const Simulation = () => {
                         src={biology}
                         alt="Science-logo"
                       />
-                      <h6 className="mt-5 font-semibold leading-5 text-2xl text-brand-900">
+                      <h6 className="animate-bounce mt-5 font-semibold leading-5 text-2xl text-brand-900">
                         জীব বিজ্ঞান
                       </h6>
                     </div>

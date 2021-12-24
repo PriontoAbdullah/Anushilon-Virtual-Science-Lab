@@ -12,10 +12,16 @@ import Hero from "../components/HomePage/Header/Hero";
 import Nav from "../components/HomePage/Header/Nav";
 import Simulation from "../components/HomePage/Simulation/Simulation";
 import Testimonial from "../components/HomePage/Testimonial/Testimonial";
+import useWindowDimensions from "../utils/useWindowDimensions";
 
 const Home = () => {
   document.title = "অনুশীলন - ভার্চুয়াল সাইন্স ল্যাব";
   const modalData = useContext(ModalContext);
+  // get device width from custom hooks
+  const { width } = useWindowDimensions();
+
+  let notificationWidth =
+    width > 500 ? "480px" : width > 400 ? "390px" : "370px";
 
   return (
     <Fragment>
@@ -24,7 +30,7 @@ const Home = () => {
         toastOptions={{
           duration: 7000,
           style: {
-            minWidth: "480px",
+            minWidth: `${notificationWidth}`,
             fontFamily: "Hind Siliguri",
             zIndex: 999,
           },

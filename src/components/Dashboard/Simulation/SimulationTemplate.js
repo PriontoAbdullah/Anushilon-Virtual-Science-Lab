@@ -4,24 +4,24 @@ import {
   faFlask,
   faPlayCircle,
   faTasks,
-  faVideo,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { NavLink } from "react-router-dom";
-import ObservationTemplate from "./ObservationTemplate";
-import PlaySimulationTemplate from "./PlaySimulationTemplate";
-import ProcedureTemplate from "./ProcedureTemplate";
-import TheoryTemplate from "./TheoryTemplate";
-import VideoTemplate from "./VideoTemplate";
+  faVideo
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import ObservationTemplate from './ObservationTemplate';
+import PlaySimulationTemplate from './PlaySimulationTemplate';
+import ProcedureTemplate from './ProcedureTemplate';
+import TheoryTemplate from './TheoryTemplate';
+import VideoTemplate from './VideoTemplate';
 
 const SimulationTemplate = () => {
   const [openTab, setOpenTab] = React.useState(1);
 
   // YouTube video ID
   const videoSimulationId = {
-    videoId: "0fAqXe1zSUs",
-    animationId: "LA8hYjygyHk",
+    videoId: '0fAqXe1zSUs',
+    animationId: 'LA8hYjygyHk',
   };
 
   return (
@@ -62,7 +62,7 @@ const SimulationTemplate = () => {
             <li className="mb-2 mr-2 last:mr-0 flex-auto text-center">
               <a
                 className={` simulation-template  
-									${openTab === 1 ? "text-white bg-brand-900" : "text-brand-900 bg-white"}`}
+									${openTab === 1 ? 'text-white bg-brand-900' : 'text-brand-900 bg-white'}`}
                 onClick={(e) => {
                   e.preventDefault();
                   setOpenTab(1);
@@ -79,8 +79,8 @@ const SimulationTemplate = () => {
                 className={` simulation-template  
                                 ${
                                   openTab === 2
-                                    ? "text-white bg-brand-900"
-                                    : "text-brand-900 bg-white"
+                                    ? 'text-white bg-brand-900'
+                                    : 'text-brand-900 bg-white'
                                 }`}
                 onClick={(e) => {
                   e.preventDefault();
@@ -96,11 +96,11 @@ const SimulationTemplate = () => {
             <li className="mb-2 mr-2 last:mr-0 flex-auto text-center">
               <a
                 className={`simulation-template  
-                                ${
-                                  openTab === 3
-                                    ? "text-white bg-brand-900"
-                                    : "text-brand-900 bg-white"
-                                }`}
+                  ${
+                    openTab === 3
+                      ? 'text-white bg-brand-900'
+                      : 'text-brand-900 bg-white'
+                  }`}
                 onClick={(e) => {
                   e.preventDefault();
                   setOpenTab(3);
@@ -115,7 +115,7 @@ const SimulationTemplate = () => {
             <li className="mb-2 mr-2 last:mr-0 flex-auto text-center">
               <a
                 className={`simulation-template  
-									${openTab === 4 ? "text-white bg-brand-900" : "text-brand-900 bg-white"}`}
+									${openTab === 4 ? 'text-white bg-brand-900' : 'text-brand-900 bg-white'}`}
                 onClick={(e) => {
                   e.preventDefault();
                   setOpenTab(4);
@@ -124,7 +124,7 @@ const SimulationTemplate = () => {
                 href="#link4"
                 role="tablist"
               >
-                <FontAwesomeIcon icon={faPlayCircle} className="mr-1" />{" "}
+                <FontAwesomeIcon icon={faPlayCircle} className="mr-1" />{' '}
                 অ্যানিমেশন
               </a>
             </li>
@@ -133,8 +133,8 @@ const SimulationTemplate = () => {
                 className={`simulation-template  
                                 ${
                                   openTab === 5
-                                    ? "text-white bg-brand-900"
-                                    : "text-brand-900 bg-white"
+                                    ? 'text-white bg-brand-900'
+                                    : 'text-brand-900 bg-white'
                                 }`}
                 onClick={(e) => {
                   e.preventDefault();
@@ -152,8 +152,8 @@ const SimulationTemplate = () => {
                 className={`simulation-template  
                                 ${
                                   openTab === 6
-                                    ? "text-white bg-brand-900"
-                                    : "text-brand-900 bg-white"
+                                    ? 'text-white bg-brand-900'
+                                    : 'text-brand-900 bg-white'
                                 }`}
                 onClick={(e) => {
                   e.preventDefault();
@@ -172,24 +172,24 @@ const SimulationTemplate = () => {
             <div className="flex-auto">
               <div className="tab-content tab-space">
                 <div
-                  className={`mb-5 ${openTab === 1 ? "block" : "hidden"}`}
+                  className={`mb-5 ${openTab === 1 ? 'block' : 'hidden'}`}
                   id="link1"
                 >
                   <TheoryTemplate />
                 </div>
-                <div className={openTab === 2 ? "block" : "hidden"} id="link2">
+                <div className={openTab === 2 ? 'block' : 'hidden'} id="link2">
                   <ProcedureTemplate />
                 </div>
-                <div className={openTab === 3 ? "block" : "hidden"} id="link3">
+                <div className={openTab === 3 ? 'block' : 'hidden'} id="link3">
                   <VideoTemplate videoId={videoSimulationId.videoId} />
                 </div>
-                <div className={openTab === 4 ? "block" : "hidden"} id="link4">
+                <div className={openTab === 4 ? 'block' : 'hidden'} id="link4">
                   <VideoTemplate videoId={videoSimulationId.animationId} />
                 </div>
-                <div className={openTab === 5 ? "block" : "hidden"} id="link5">
+                <div className={openTab === 5 ? 'block' : 'hidden'} id="link5">
                   <PlaySimulationTemplate />
                 </div>
-                <div className={openTab === 6 ? "block" : "hidden"} id="link6">
+                <div className={openTab === 6 ? 'block' : 'hidden'} id="link6">
                   <ObservationTemplate />
                 </div>
               </div>

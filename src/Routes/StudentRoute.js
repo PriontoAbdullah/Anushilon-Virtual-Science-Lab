@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { useSelector } from "react-redux";
-import { Route, useHistory } from "react-router-dom";
-import { ModalContext } from "../App";
+import React, { useContext } from 'react';
+import { useSelector } from 'react-redux';
+import { Route, useHistory } from 'react-router-dom';
+import { ModalContext } from '../App';
 
 const StudentRoute = ({ children, ...rest }) => {
   const history = useHistory();
@@ -13,14 +13,14 @@ const StudentRoute = ({ children, ...rest }) => {
     window.scrollBy({
       top: 5,
       left: 0,
-      behavior: "smooth",
+      behavior: 'smooth',
     });
   }
 
   const openLoginModal = () => {
-    history.push("/");
+    history.push('/');
     handleScroll();
-    modalData.setShowHeader("hidden");
+    modalData.setShowHeader('hidden');
     modalData.setShowLoginModal(true);
     modalData.setNewUser(false);
   };
@@ -29,7 +29,7 @@ const StudentRoute = ({ children, ...rest }) => {
     <Route
       {...rest}
       render={({ location }) =>
-        auth.user && auth.user.role === "student"
+        auth.user
           ? children
           : // <Redirect
             //   to={{

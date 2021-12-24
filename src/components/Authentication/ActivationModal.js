@@ -1,30 +1,37 @@
-import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
-import { motion } from "framer-motion";
-import jwt from "jsonwebtoken";
-import React, { Fragment, useContext, useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
-import { useHistory, useParams } from "react-router-dom";
-import { ModalContext } from "../../App";
-import activationLoader from "../../assets/images/loader/activationModal.gif";
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from 'axios';
+import { motion } from 'framer-motion';
+import jwt from 'jsonwebtoken';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
+import { useHistory, useParams } from 'react-router-dom';
+import { ModalContext } from '../../App';
+import activationLoader from '../../assets/images/loader/activationModal.gif';
+import useWindowDimensions from '../../utils/useWindowDimensions';
 
 const ActivationModal = () => {
   const history = useHistory();
   // modal context value
   const modalData = useContext(ModalContext);
 
+  // get device width from custom hooks
+  const { width } = useWindowDimensions();
+
+  let notificationWidth =
+    width > 500 ? '480px' : width > 400 ? '390px' : '370px';
+
   // for handling modal functionality
   const handleCloseModal = () => {
-    modalData.setShowHeader("block");
+    modalData.setShowHeader('block');
     modalData.setShowActivationModal(false);
-    history.push("/");
+    history.push('/');
   };
 
   // set form data states
   const [formData, setFormData] = useState({
-    name: "",
-    token: "",
+    name: '',
+    token: '',
     show: true,
   });
 
@@ -43,7 +50,7 @@ const ActivationModal = () => {
   // submit activation token
   const handleSubmit = (e) => {
     e.preventDefault();
-    const loading = toast.loading("অনুগ্রহপূর্বক অপেক্ষা করুন...⏳");
+    const loading = toast.loading('অনুগ্রহপূর্বক অপেক্ষা করুন...⏳');
     axios
       .post(`${process.env.REACT_APP_API_URL}/activation`, {
         token,
@@ -57,15 +64,15 @@ const ActivationModal = () => {
         });
 
         // open login modal
-        history.push("/");
-        modalData.setShowHeader("hidden");
+        history.push('/');
+        modalData.setShowHeader('hidden');
         modalData.setShowRegistrationModal(false);
         modalData.setNewUser(false);
         modalData.setShowLoginModal(true);
       })
       .catch((err) => {
         toast.dismiss(loading);
-        toast.error(err.response.data.errors);
+        toast.error(err.message);
       });
   };
 
@@ -75,8 +82,8 @@ const ActivationModal = () => {
         toastOptions={{
           duration: 5000,
           style: {
-            minWidth: "500px",
-            fontFamily: "Hind Siliguri",
+            minWidth: `${notificationWidth}`,
+            fontFamily: 'Hind Siliguri',
           },
         }}
       />
@@ -84,7 +91,7 @@ const ActivationModal = () => {
         initial={{ scale: 0.7 }}
         animate={{ scale: 1 }}
         transition={{
-          type: "spring",
+          type: 'spring',
           stiffness: 260,
           damping: 20,
         }}

@@ -68,7 +68,7 @@ const Partner = () => {
         backgroundImage: `url(${bgBannerPartner})`,
       }}
     >
-      <div className="px-4 pt-16 pb-12 mx-auto max-w-7xl">
+      <div className="px-4 pt-0 sm:pt-14 pb-14 mx-auto max-w-7xl">
         <SectionTitle
           title="আমাদের প্লাটফর্মে নিবন্ধনকৃত শিক্ষা প্রতিষ্ঠান সমূহ"
           description="আপনার শিক্ষা প্রতিষ্ঠানটি যুক্ত করুন অনুশীলনের সাথে এবং উপভোগ করুন শিক্ষার্থীদের সিমুলেশানের অভিজ্ঞতা। আপনার প্রতিষ্ঠানের শিক্ষাথীদের মনিটরিং এবং শিক্ষদের এক্টিভিটি পর্যাবেক্ষন করতে এখনই রেজিস্ট্রেশন করুন।"

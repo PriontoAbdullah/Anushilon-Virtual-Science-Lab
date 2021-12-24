@@ -4,28 +4,28 @@ import {
   faEyeSlash,
   faLock,
   faUniversity,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
-import React, { Fragment, useContext, useEffect, useState } from "react";
-import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
-import { GoogleLogin } from "react-google-login";
-import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
-import Slide from "react-reveal/Slide";
-import { useHistory, useLocation } from "react-router-dom";
-import { ModalContext } from "../../App";
-import signInLoader from "../../assets/images/loader/signIn.gif";
-import Institution from "../../data/Institution";
-import { authenticate, isAuth } from "../../helpers/auth";
-import { GLOBALTYPES } from "../../redux/actions/globalTypes";
-import RegistrationModal from "./RegistrationModal";
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from 'axios';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
+import { GoogleLogin } from 'react-google-login';
+import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import Slide from 'react-reveal/Slide';
+import { useHistory, useLocation } from 'react-router-dom';
+import { ModalContext } from '../../App';
+import signInLoader from '../../assets/images/loader/signIn.gif';
+import Institution from '../../data/Institution';
+import { authenticate, isAuth } from '../../helpers/auth';
+import { GLOBALTYPES } from '../../redux/actions/globalTypes';
+import RegistrationModal from './RegistrationModal';
 
 const LoginModal = () => {
   const history = useHistory();
   const location = useLocation();
   const dispatch = useDispatch();
-  const { from } = location.state || { from: { pathname: "/" } };
+  const { from } = location.state || { from: { pathname: '/' } };
   const modalData = useContext(ModalContext);
   // initial states
   const [institutionUser, setInstitutionUser] = useState(null);
@@ -33,7 +33,7 @@ const LoginModal = () => {
   const [forgetPassword, setForgetPassword] = useState(false);
   const [showSearchBox, setShowSearchBox] = useState(false);
   const [institutionList, setInstitutionList] = useState(null);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   const [typePass, setTypePass] = useState(false);
 
   // show notification
@@ -42,15 +42,15 @@ const LoginModal = () => {
       toast(
         `অনুগ্রহক করে এই মুহূর্তে "স্বতন্ত্র ভাবে নিবন্ধন করে" পুরো এপ্লিকেশনটি ব্যবহার করতে পারবেন! 😊`,
         {
-          icon: "🙏",
-          position: "bottom-left",
+          icon: '🙏',
+          position: 'bottom-left',
         }
       );
   }, [modalData.newUser]);
 
   // search institution name
   useEffect(() => {
-    searchValue === ""
+    searchValue === ''
       ? setInstitutionList(Institution)
       : setInstitutionList(
           Institution.filter((item) =>
@@ -61,7 +61,7 @@ const LoginModal = () => {
 
   // all modal handlers
   const handleCloseLoginModal = () => {
-    modalData.setShowHeader("block");
+    modalData.setShowHeader('block');
     modalData.setShowLoginModal(false);
   };
 
@@ -74,7 +74,7 @@ const LoginModal = () => {
   };
 
   const handleOpenRegistrationModal = () => {
-    modalData.setShowHeader("hidden");
+    modalData.setShowHeader('hidden');
     modalData.setShowRegistrationModal(true);
   };
 
@@ -91,9 +91,9 @@ const LoginModal = () => {
 
   // login form data states
   const [formData, setFormData] = useState({
-    email: "",
-    password1: "",
-    textChange: "লগ ইন করুন",
+    email: '',
+    password1: '',
+    textChange: 'লগ ইন করুন',
   });
   const { email, password1, textChange } = formData;
   // login from data handler
@@ -113,9 +113,9 @@ const LoginModal = () => {
         },
       });
 
-      isAuth() && isAuth().role === "admin"
-        ? history.push("/admin")
-        : history.push("/");
+      isAuth() && isAuth().role === 'admin'
+        ? history.push('/admin')
+        : history.push('/');
       toast.success(
         `হ্যালো! ${response.data.user.name}, ফিরে আসার জন্য ধন্যবাদ! ❤️`
       );
@@ -124,7 +124,7 @@ const LoginModal = () => {
 
   // google login handler
   const sendGoogleToken = (tokenId) => {
-    const loading = toast.loading("অনুগ্রহপূর্বক অপেক্ষা করুন...⏳");
+    const loading = toast.loading('অনুগ্রহপূর্বক অপেক্ষা করুন...⏳');
     axios
       .post(`${process.env.REACT_APP_API_URL}/googlelogin`, {
         idToken: tokenId,
@@ -143,7 +143,7 @@ const LoginModal = () => {
 
   // facebook login handler
   const sendFacebookToken = (userID, accessToken) => {
-    const loading = toast.loading("অনুগ্রহপূর্বক অপেক্ষা করুন...");
+    const loading = toast.loading('অনুগ্রহপূর্বক অপেক্ষা করুন...');
     axios
       .post(`${process.env.REACT_APP_API_URL}/facebooklogin`, {
         userID,
@@ -178,8 +178,8 @@ const LoginModal = () => {
     e.preventDefault();
 
     if (email && password1) {
-      const loading = toast.loading("অনুগ্রহপূর্বক অপেক্ষা করুন...⏳");
-      setFormData({ ...formData, textChange: "লগ ইন হচ্ছে" });
+      const loading = toast.loading('অনুগ্রহপূর্বক অপেক্ষা করুন...⏳');
+      setFormData({ ...formData, textChange: 'লগ ইন হচ্ছে' });
       axios
         .post(`${process.env.REACT_APP_API_URL}/login`, {
           email,
@@ -189,9 +189,9 @@ const LoginModal = () => {
           authenticate(res, () => {
             setFormData({
               ...formData,
-              email: "",
-              password1: "",
-              textChange: "লগ ইন হয়েছে",
+              email: '',
+              password1: '',
+              textChange: 'লগ ইন হয়েছে',
             });
 
             // dispatch to auth reducer
@@ -207,8 +207,8 @@ const LoginModal = () => {
             // close login modal
             handleCloseLoginModal();
             // redirect for role based user
-            isAuth() && isAuth().role === "admin"
-              ? history.push("/admin")
+            isAuth() && isAuth().role === 'admin'
+              ? history.push('/admin')
               : history.replace(from);
             toast.success(
               `হ্যালো! ${res.data.user.name}, ফিরে আসার জন্য ধন্যবাদ! ❤️`
@@ -219,21 +219,21 @@ const LoginModal = () => {
           setFormData({
             ...formData,
             email,
-            password1: "",
-            textChange: "লগ ইন করুন",
+            password1: '',
+            textChange: 'লগ ইন করুন',
           });
           toast.dismiss(loading);
-          toast.error(err.response.data.errors);
+          toast.error(err.message);
         });
     } else {
-      toast.error("অনুগ্রহপূর্বক সবগুলো স্থান তথ্য দিয়ে পূরণ করুন! 😒");
+      toast.error('অনুগ্রহপূর্বক সবগুলো স্থান তথ্য দিয়ে পূরণ করুন! 😒');
     }
   };
 
   // forget password form data states
   const [forgetPasswordData, setForgetPasswordData] = useState({
-    forgetEmail: "",
-    forgetTextChange: "জমা দিন",
+    forgetEmail: '',
+    forgetTextChange: 'জমা দিন',
   });
   const { forgetEmail, forgetTextChange } = forgetPasswordData;
   // forget password data
@@ -245,11 +245,11 @@ const LoginModal = () => {
   const handleForgetPasswordSubmit = (e) => {
     e.preventDefault();
 
-    const loading = toast.loading("অনুগ্রহপূর্বক অপেক্ষা করুন...⏳");
+    const loading = toast.loading('অনুগ্রহপূর্বক অপেক্ষা করুন...⏳');
     if (forgetEmail) {
       setForgetPasswordData({
         ...forgetPasswordData,
-        forgetTextChange: "জমা দেওয়া হচ্ছে",
+        forgetTextChange: 'জমা দেওয়া হচ্ছে',
       });
 
       axios
@@ -259,8 +259,8 @@ const LoginModal = () => {
         .then((res) => {
           setForgetPasswordData({
             ...forgetPasswordData,
-            forgetEmail: "",
-            textChange: "জমা দেওয়া হয়েছে",
+            forgetEmail: '',
+            textChange: 'জমা দেওয়া হয়েছে',
           });
           // close login modal
           setForgetPassword(false);
@@ -271,14 +271,14 @@ const LoginModal = () => {
         .catch((err) => {
           setForgetPasswordData({
             ...forgetPasswordData,
-            forgetEmail: "",
-            forgetTextChange: "জমা দিন",
+            forgetEmail: '',
+            forgetTextChange: 'জমা দিন',
           });
           toast.dismiss(loading);
-          toast.error(err.response.data.errors);
+          toast.error(err.message);
         });
     } else {
-      toast.error("অনুগ্রহপূর্বক তথ্য দিয়ে পূরণ করুন! 😒");
+      toast.error('অনুগ্রহপূর্বক তথ্য দিয়ে পূরণ করুন! 😒');
     }
   };
 
@@ -291,9 +291,9 @@ const LoginModal = () => {
               className={`relative w-full mt-12 mb-24 sm:mb-4 ${
                 !modalData.newUser
                   ? !forgetPassword
-                    ? "lg:mt-8 2xl:mt-10"
-                    : "lg:mt-18 2xl:mt-20"
-                  : "lg:mt-4 2xl:mt-6"
+                    ? 'lg:mt-8 2xl:mt-10'
+                    : 'lg:mt-18 2xl:mt-20'
+                  : 'lg:mt-4 2xl:mt-6'
               } flex max-w-sm md:max-w-lg lg:max-w-4xl 2xl:max-w-5xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl`}
             >
               {/* Left Side Animations */}
@@ -359,7 +359,7 @@ const LoginModal = () => {
                             clientId={`${process.env.REACT_APP_GOOGLE_CLIENT}`}
                             onSuccess={responseGoogle}
                             onFailure={responseGoogle}
-                            cookiePolicy={"single_host_origin"}
+                            cookiePolicy={'single_host_origin'}
                             render={(renderProps) => (
                               <button
                                 onClick={renderProps.onClick}
@@ -439,7 +439,7 @@ const LoginModal = () => {
                                   type="email"
                                   className="login-input"
                                   placeholder="আপনার ইমেইল প্রদান করুন"
-                                  onChange={handleChange("email")}
+                                  onChange={handleChange('email')}
                                   value={email}
                                 />
                               </div>
@@ -469,10 +469,10 @@ const LoginModal = () => {
                                 <input
                                   id="loggingPassword"
                                   name="password"
-                                  type={typePass ? "text" : "password"}
+                                  type={typePass ? 'text' : 'password'}
                                   className="login-input"
                                   placeholder="আপনার পাসওয়ার্ড প্রদান করুন"
-                                  onChange={handleChange("password1")}
+                                  onChange={handleChange('password1')}
                                   value={password1}
                                 />
                                 <span class="absolute inset-y-0 right-0 pr-3 flex items-center text-base leading-5 cursor-pointer">
@@ -542,7 +542,7 @@ const LoginModal = () => {
                                   type="email"
                                   className="login-input"
                                   placeholder="আপনার ইমেইল প্রদান করুন"
-                                  onChange={handleForgetChange("forgetEmail")}
+                                  onChange={handleForgetChange('forgetEmail')}
                                   value={forgetEmail}
                                 />
                               </div>

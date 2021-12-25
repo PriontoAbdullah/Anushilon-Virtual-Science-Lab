@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 import Community from '../components/Community/Community';
 import HeaderBar from '../components/Dashboard/Header/HeaderBar';
@@ -7,6 +8,8 @@ import SimulationsBio from '../components/Dashboard/Simulation/SimulationsBio';
 import SimulationsChe from '../components/Dashboard/Simulation/SimulationsChe';
 import SimulationsPhy from '../components/Dashboard/Simulation/SimulationsPhy';
 import SimulationTemplate from '../components/Dashboard/Simulation/SimulationTemplate';
+import Labroom from '../components/Labroom/Labroom';
+import useWindowDimensions from '../utils/useWindowDimensions';
 
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -18,9 +21,26 @@ const Dashboard = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // get device width from custom hooks
+  const { width } = useWindowDimensions();
+
+  let notificationWidth =
+    width > 500 ? '480px' : width > 400 ? '390px' : '370px';
+
   return (
     <Fragment>
       <div className="flex h-screen overflow-hidden">
+        {/* For Toast Notification */}
+        <Toaster
+          toastOptions={{
+            duration: 7000,
+            style: {
+              minWidth: `${notificationWidth}`,
+              fontFamily: 'Hind Siliguri',
+              zIndex: 999,
+            },
+          }}
+        />
         {/*  Site Bar*/}
         <SideBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
@@ -40,6 +60,8 @@ const Dashboard = () => {
               <SimulationsBio />
             ) : page === 'community' ? (
               <Community />
+            ) : page === 'labroom' ? (
+              <Labroom />
             ) : page ===
               'মিটার-ব্রিজ-ব্যবহার-করে-কোন-তারের-আপেক্ষিক-রোধ-নির্ণয়।' ? (
               <SimulationTemplate />

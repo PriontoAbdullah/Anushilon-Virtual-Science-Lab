@@ -3,7 +3,7 @@ import {
   faEye,
   faEyeSlash,
   faLock,
-  faUniversity,
+  faUniversity
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import axios from 'axios';
@@ -316,7 +316,7 @@ const LoginModal = () => {
               <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
                 {/* Close Button */}
                 <button
-                  className="close-button "
+                  className="close-button absolute top-0 right-0 m-7"
                   type="button"
                   onClick={handleCloseLoginModal}
                 >

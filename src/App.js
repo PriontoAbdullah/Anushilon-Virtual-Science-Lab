@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Registration from './components/Authentication/Registration';
 import PageNotFound from './components/HomePage/Content/PageNotFound';
+import SingleLabroom from './components/Labroom/SingleLabroom';
 import Landing from './components/Preloader/Landing';
 import Activation from './pages/Activation';
 import Dashboard from './pages/Dashboard';
@@ -74,7 +75,9 @@ const App = () => {
                 <StudentRoute exact path="/:page">
                   <Dashboard />
                 </StudentRoute>
-
+                <StudentRoute exact path="/labroom/:id">
+                  <SingleLabroom />
+                </StudentRoute>
                 <Route path="*">
                   <PageNotFound />
                 </Route>

@@ -35,6 +35,7 @@ const Community = () => {
           username={post.username}
           caption={post.caption}
           imgUrl={post.imgUrl}
+          date={post.date}
         />
       ))}
       {/* ./Looping through posts */}

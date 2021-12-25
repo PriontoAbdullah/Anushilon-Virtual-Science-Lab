@@ -13,6 +13,7 @@ import toast from 'react-hot-toast';
 import Slide from 'react-reveal/Slide';
 import { ModalContext } from '../../App';
 import signInLoader from '../../assets/images/loader/signIn.gif';
+import { db } from '../../configs/firebase';
 
 const RegistrationModal = (props) => {
   // modal context
@@ -96,12 +97,31 @@ const RegistrationModal = (props) => {
   };
 
   // post individual user form data to the server
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (name && email && password1) {
       if (password1 === password2) {
         const loading = toast.loading('অনুগ্রহপূর্বক অপেক্ষা করুন...⏳');
         setFormData({ ...formData, textChange: 'নিবন্ধন হচ্ছে' });
+
+        try {
+          const querySnapshot = await db
+            .collection('users')
+            .where('email', '==', email)
+            .get();
+          if (querySnapshot.docs.length === 0) {
+            // create a new user
+            await db.collection('users').add({
+              email,
+              enrolledClassrooms: [],
+            });
+          }
+        } catch (err) {
+          toast.dismiss();
+          toast.error(err.message);
+        }
+
+        // send data to server
         axios
           .post(`${process.env.REACT_APP_API_URL}/register`, {
             name,
@@ -132,7 +152,7 @@ const RegistrationModal = (props) => {
               textChange: 'নিবন্ধন করুন',
             });
             toast.dismiss(loading);
-            toast.error(err.message);
+            toast.error(err.response.data.errors);
           });
       } else {
         toast.error('পাসওয়ার্ড দুটির মধ্যে মিল খুঁজে পাওয়া যায়নি! 🤨');
@@ -143,13 +163,32 @@ const RegistrationModal = (props) => {
   };
 
   // post institution user form data to the server
-  const handleUserSubmit = (e) => {
+  const handleUserSubmit = async (e) => {
     e.preventDefault();
 
     if (uInstitution && uName && uEmail && uMobile && uPassword1) {
       if (uPassword1 === uPassword2) {
         const loading = toast.loading('অনুগ্রহপূর্বক অপেক্ষা করুন...⏳');
         setFormUserData({ ...formUserData, uTextChange: 'নিবন্ধন হচ্ছে' });
+
+        try {
+          const querySnapshot = await db
+            .collection('users')
+            .where('email', '==', uEmail)
+            .get();
+          if (querySnapshot.docs.length === 0) {
+            // create a new user
+            await db.collection('users').add({
+              uEmail,
+              enrolledClassrooms: [],
+            });
+          }
+        } catch (err) {
+          toast.dismiss();
+          toast.error(err.message);
+        }
+
+        // send data to server
         axios
           .post(`${process.env.REACT_APP_API_URL}/registration`, {
             institution: uInstitution,
@@ -184,7 +223,7 @@ const RegistrationModal = (props) => {
               uTextChange: 'নিবন্ধন করুন',
             });
             toast.dismiss(loading);
-            toast.error(err.message);
+            toast.error(err.response.data.errors);
           });
       } else {
         toast.error('পাসওয়ার্ড দুটির মধ্যে মিল খুঁজে পাওয়া যায়নি! 🤨');
@@ -219,7 +258,7 @@ const RegistrationModal = (props) => {
             <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
               {/* Close Button */}
               <button
-                className="close-button "
+                className="close-button absolute top-0 right-0 m-7"
                 type="button"
                 onClick={handleCloseModal}
               >

@@ -1,6 +1,7 @@
 import Avatar from '@material-ui/core/Avatar';
 import React, { useEffect, useState } from 'react';
 import { db } from '../../configs/firebase';
+import '../Labroom/Announcement.css';
 import Comment from './Comment';
 import CommentField from './CommentField';
 import './Post.css';
@@ -28,14 +29,20 @@ function Post(props) {
 
   return (
     <div className="post">
-      <div className="post__header flex justify-between">
-        <div>
-          <Avatar alt={props.username} src="/static/images/avatar/3.jpg" />
-          <h3 className="font-body text-base text-brand-900 font-semibold tracking-wide">
-            {props.username}
-          </h3>
+      <div className="post__header">
+        <div className="announcement__infoSection">
+          <div className="announcement__imageContainer">
+            <Avatar alt={props.username} src="/static/images/avatar/3.jpg" />
+          </div>
+          <div className="announcement__nameAndDate">
+            <div className="announcement__name text-base font-body font-semibold tracking-wider text-brand-900">
+              {props.username}
+            </div>
+            <div className="announcement__date text-gray-700 font-body tracking-wide">
+              {props.date}
+            </div>
+          </div>
         </div>
-        <p>{props.timestamp.toDate()}</p>
       </div>
 
       <p className="post_cap">{props.caption}</p>
@@ -48,6 +55,7 @@ function Post(props) {
             key={comment.id}
             username={comment.username}
             text={comment.text}
+            date={comment.date}
           />
         ))}
       </div>

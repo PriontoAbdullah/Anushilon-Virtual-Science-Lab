@@ -4,9 +4,12 @@ import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import firebase from 'firebase';
+import moment from 'moment';
+import 'moment/locale/bn-bd';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
 import { db, storage } from '../../configs/firebase';
+
 const useStyles = makeStyles(() => ({
   image__upload: {
     display: 'flex',
@@ -114,30 +117,42 @@ function ImagePost({ displayName }) {
                 caption: caption,
                 imgUrl: url,
                 username: displayName,
+                date: moment().locale('bn-bd').format('LLL'),
               });
 
               setProgress(0);
               setCaption('');
               setImage(null);
               setShowProgressBar(false);
+              setCoverDragEnter(false);
             });
         }
       );
     } else {
-      toast.error('Please select an image');
+      toast.error('অনুগ্রহ করে একটি ছবি নির্বাচন করুন');
     }
   }
 
   return (
     <div className={classes.image__upload}>
       <div className={classes.input__holder}>
+        <p className="text-base font-body font-semibold tracking-wider text-brand-900">
+          কমিউনিটিতে ক্যাপশন লিখে ছবি পোস্ট করুন
+        </p>
+
         {showProgressBar && (
-          <LinearProgress variant="determinate" value={progress} max="100" />
+          <LinearProgress
+            variant="determinate"
+            className="mt-4"
+            value={progress}
+            max="100"
+          />
         )}
         <TextField
           className={classes.caption__upload}
           onChange={handleCaption}
           value={caption}
+          rows={5}
           id="standard-basic"
           label="ক্যাপশন লিখুন"
         />
@@ -146,7 +161,7 @@ function ImagePost({ displayName }) {
         <div className="mb-5 w-128">
           <label
             className={`mt-1 flex justify-center px-6 py-12 border-2 ${
-              coverDragEnter ? 'border-brand-600' : 'border-gray-300'
+              coverDragEnter ? 'border-brand-700' : 'border-gray-300'
             } border-dashed rounded-md`}
             htmlFor="image-cover"
             onDragEnter={handleCoverDragEnter}

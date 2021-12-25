@@ -1,0 +1,46 @@
+.classCard__upper {
+  background-color: #1e293b;
+  height: 90px;
+  position: relative;
+  color: white;
+  padding: 10px;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.classCard {
+  width: 300px;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.classCard__middle {
+  height: 120px;
+  border-bottom: 1px solid #dcdcdc;
+  background-color: #f5f5f5;
+}
+
+.classCard__creatorPhoto {
+  position: absolute;
+  right: 15px;
+  border-radius: 9999px;
+  width: 80px;
+}
+
+.classCard__className {
+  font-weight: 600;
+  font-size: 26px;
+}
+
+.classCard__creatorName {
+  position: absolute;
+  bottom: 12px;
+  font-size: 15px;
+}
+
+.classCard__lower {
+  display: flex;
+  flex-direction: row-reverse;
+  padding: 10px;
+}

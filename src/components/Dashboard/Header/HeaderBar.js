@@ -1,11 +1,34 @@
-import React from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { IconButton, Menu, MenuItem } from '@material-ui/core';
+import { Add } from '@material-ui/icons';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { NavLink, useLocation, useParams } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { createDialogAtom, joinDialogAtom } from '../../../utils/atoms';
+import CreateClass from '../../Labroom/CreateClass';
+import JoinClass from '../../Labroom/JoinClass';
 import NotificationBar from './NotificationBar';
 import SearchBar from './SearchBar';
 import UserMenu from './UserMenu';
 
 function HeaderBar({ sidebarOpen, setSidebarOpen }) {
   const { page } = useParams();
+  const { auth } = useSelector((state) => state);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [createOpened, setCreateOpened] = useRecoilState(createDialogAtom);
+  const [joinOpened, setJoinOpened] = useRecoilState(joinDialogAtom);
+
+  const location = useLocation();
+  const { pathname } = location;
+  const path = pathname.split('/')[1];
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <header className="sticky top-0 bg-indigo-50 border-b border-gray-200 z-30">
@@ -36,7 +59,7 @@ function HeaderBar({ sidebarOpen, setSidebarOpen }) {
               <li>
                 <NavLink
                   exact
-                  to={`/${page}`}
+                  to={`/${page || path}`}
                   className="font-medium text-brand-900"
                 >
                   {page === 'simulation-phy' ||
@@ -45,16 +68,20 @@ function HeaderBar({ sidebarOpen, setSidebarOpen }) {
                     ? 'সিমুলেশন'
                     : page === 'community'
                     ? 'কমিউনিটি '
+                    : page === 'labroom'
+                    ? 'লাবরুম'
+                    : path === 'labroom'
+                    ? 'লাবরুম'
                     : ''}
                 </NavLink>
               </li>
               <li>
                 <span className="mx-2 font-bold">&gt;</span>
               </li>
-              <li>
+              <li className="flex flex-wrap">
                 <NavLink
                   exact
-                  to={`/${page}`}
+                  to={`/${page || path}`}
                   className="font-medium text-brand-900"
                 >
                   {page === 'simulation-phy'
@@ -64,9 +91,53 @@ function HeaderBar({ sidebarOpen, setSidebarOpen }) {
                     : page === 'simulation-bio'
                     ? 'জীব বিজ্ঞান'
                     : page === 'community'
-                    ? 'পোস্ট '
+                    ? 'পোস্ট'
+                    : page === 'labroom'
+                    ? 'জয়েন করুন'
+                    : path === 'labroom'
+                    ? 'এসাইনমেন্ট'
                     : ''}
                 </NavLink>
+                {page === 'labroom' && (
+                  <>
+                    <CreateClass />
+                    <JoinClass />
+                    <IconButton
+                      aria-controls="simple-menu"
+                      aria-haspopup="true"
+                      onClick={handleClick}
+                    >
+                      <Add />
+                    </IconButton>
+                    <Menu
+                      id="simple-menu"
+                      anchorEl={anchorEl}
+                      keepMounted
+                      open={Boolean(anchorEl)}
+                      onClose={handleClose}
+                    >
+                      {auth.user.role === 'student' ? (
+                        <MenuItem
+                          onClick={() => {
+                            setJoinOpened(true);
+                            handleClose();
+                          }}
+                        >
+                          লাবরুমে যোগ দিন
+                        </MenuItem>
+                      ) : auth.user.role === 'teacher' ? (
+                        <MenuItem
+                          onClick={() => {
+                            setCreateOpened(true);
+                            handleClose();
+                          }}
+                        >
+                          লাবরুম তৈরি করুন
+                        </MenuItem>
+                      ) : null}
+                    </Menu>
+                  </>
+                )}
               </li>
               {/* <li>
                 <span className="mx-2 font-bold">&gt;</span>

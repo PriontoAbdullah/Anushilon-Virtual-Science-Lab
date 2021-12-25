@@ -42,7 +42,7 @@ function NotificationBar() {
   });
 
   return (
-    <div className="relative inline-flex ml-3">
+    <div className="relative inline-flex ml-2 sm:ml-3">
       {/* Dropdown Button */}
       <button
         ref={trigger}

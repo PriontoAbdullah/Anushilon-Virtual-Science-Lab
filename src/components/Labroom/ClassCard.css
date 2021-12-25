@@ -13,6 +13,15 @@
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
+  margin-bottom: 40px;
+  margin-right: 35px;
+}
+
+@media screen and (max-width: 768px) {
+  .classCard {
+    margin-right: 0;
+    margin-bottom: 50px;
+  }
 }
 
 .classCard__middle {

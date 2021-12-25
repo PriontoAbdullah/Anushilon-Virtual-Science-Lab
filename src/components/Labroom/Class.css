@@ -3,6 +3,12 @@
   margin: auto;
 }
 
+@media screen and (max-width: 768px) {
+  .class {
+    width: 100%;
+  }
+}
+
 .class__nameBox {
   width: 100%;
   background-color: #1e293b;

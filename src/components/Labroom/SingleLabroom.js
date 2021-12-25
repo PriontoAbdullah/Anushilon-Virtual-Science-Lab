@@ -14,7 +14,6 @@ import Announcement from './Announcement';
 import './Class.css';
 
 const SingleLabroom = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [classData, setClassData] = useState({});
   const [posts, setPosts] = useState([]);
   const { id } = useParams();
@@ -166,14 +165,11 @@ const SingleLabroom = () => {
           }}
         />
         {/*  Site Bar*/}
-        <SideBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <SideBar />
 
         <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
           {/*  Site header */}
-          <HeaderBar
-            sidebarOpen={sidebarOpen}
-            setSidebarOpen={setSidebarOpen}
-          />
+          <HeaderBar />
 
           <main className="px-4 sm:px-6 lg:px-8 py-6 max-w-9xl mx-auto bg-gray-50 h-full w-full comment-scroll overflow-y-scroll">
             <div className="class">

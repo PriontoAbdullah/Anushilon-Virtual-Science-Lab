@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import toast from "react-hot-toast";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
-import { signout } from "../../../helpers/auth";
-import { GLOBALTYPES } from "../../../redux/actions/globalTypes";
-import Transition from "../../../utils/Transition";
+import React, { useEffect, useRef, useState } from 'react';
+import toast from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useHistory } from 'react-router-dom';
+import { signout } from '../../../helpers/auth';
+import { GLOBALTYPES } from '../../../redux/actions/globalTypes';
+import Transition from '../../../utils/Transition';
 
 function UserMenu() {
   const history = useHistory();
@@ -26,8 +26,8 @@ function UserMenu() {
         return;
       setDropdownOpen(false);
     };
-    document.addEventListener("click", clickHandler);
-    return () => document.removeEventListener("click", clickHandler);
+    document.addEventListener('click', clickHandler);
+    return () => document.removeEventListener('click', clickHandler);
   });
 
   return (
@@ -41,13 +41,13 @@ function UserMenu() {
         aria-expanded={dropdownOpen}
       >
         <img
-          className="w-10 h-10 rounded-full border-solid border-2 border-indigo-400"
+          className="w-20 sm:w-10 h-10 rounded-full border-solid border-2 border-indigo-400"
           src={auth.user.avatar}
           width="40"
           height="40"
           alt="User"
         />
-        <div className="flex items-center truncate">
+        <div className="hidden sm:flex items-center truncate">
           <span className="truncate ml-2 font-body text-base font-medium text-brand-900 group-hover:text-gray-800">
             {auth.user.name}
           </span>
@@ -77,7 +77,7 @@ function UserMenu() {
         >
           <div className="py-1 pb-2 px-3 border-b border-gray-200">
             <div className="font-body font-medium ml-1 text-gray-800">
-              {auth.user.role === "student" ? "শিক্ষার্থী" : "শিক্ষক"}
+              {auth.user.role === 'student' ? 'শিক্ষার্থী' : 'শিক্ষক'}
             </div>
           </div>
           <ul>
@@ -119,9 +119,9 @@ function UserMenu() {
                       },
                     });
                     toast.success(
-                      "সফল ভাবে সাইন আউট হয়েছে! আমাদের সাথে থাকার জন্য ধন্যবাদ ❤️"
+                      'সফল ভাবে সাইন আউট হয়েছে! আমাদের সাথে থাকার জন্য ধন্যবাদ ❤️'
                     );
-                    history.push("/");
+                    history.push('/');
                   });
                 }}
               >

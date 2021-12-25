@@ -190,7 +190,7 @@ const Nav = () => {
                 <ul className="items-center hidden space-x-8 lg:flex">
                   <li>
                     <Link
-                      to="/simulation-phy"
+                      to="/dashboard"
                       className={`${
                         scrolled
                           ? 'text-gray-50  hover:text-deep-purple-50 bg-brand-900 hover:bg-deep-purple-accent-700'
@@ -202,7 +202,7 @@ const Nav = () => {
                       offset={0}
                       duration={500}
                       onClick={() => {
-                        history.push('/simulation-phy');
+                        history.push('/dashboard');
                       }}
                     >
                       ড্যাশবোর্ড
@@ -407,7 +407,7 @@ const Nav = () => {
                             <Fragment>
                               <li>
                                 <Link
-                                  to="/simulation-phy"
+                                  to="/dashboard"
                                   className="join-button-mobile"
                                   spy={true}
                                   smooth={true}
@@ -415,7 +415,7 @@ const Nav = () => {
                                   offset={0}
                                   duration={500}
                                   onClick={() => {
-                                    history.push('/simulation-phy');
+                                    history.push('/dashboard');
                                   }}
                                 >
                                   ড্যাশবোর্ড

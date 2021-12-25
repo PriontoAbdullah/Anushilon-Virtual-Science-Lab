@@ -8,26 +8,20 @@ const Labroom = () => {
   const [classes, setClasses] = useState([]);
   const { auth } = useSelector((state) => state);
 
-  const fetchClasses = async () => {
-    try {
-      await db
-        .collection('users')
-        .where('email', '==', auth.user.email)
-        .onSnapshot((snapshot) => {
-          setClasses(snapshot?.docs[0]?.data()?.enrolledClassrooms);
-        });
-      // 👇🏻 below code doesn't update realtime, so updated to snapshot listener
-      // const userData = querySnapshot.docs[0].data();
-      // setClasses(userData.enrolledClassrooms);
-    } catch (error) {
-      console.error(error.message);
-    }
-  };
-
   useEffect(() => {
-    fetchClasses();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    let unsubscribe;
+
+    unsubscribe = db
+      .collection('users')
+      .where('email', '==', auth.user.email)
+      .onSnapshot((snapshot) => {
+        setClasses(snapshot?.docs[0]?.data()?.enrolledClassrooms);
+      });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [auth.user.email]);
 
   return (
     <div>
@@ -57,7 +51,6 @@ const Labroom = () => {
               creatorPhoto={individualClass.creatorPhoto}
               name={individualClass.name}
               id={individualClass.id}
-              style={{ marginRight: 30, marginBottom: 30 }}
               key={individualClass.id}
             />
           ))}

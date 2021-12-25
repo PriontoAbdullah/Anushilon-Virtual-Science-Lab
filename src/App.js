@@ -22,6 +22,7 @@ const App = () => {
   const [showActivationUserModal, setShowActivationUserModal] = useState(false);
   const [showResetPasswordModal, setShowResetPasswordModal] = useState(false);
   const [showHeader, setShowHeader] = useState('block');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // For Pre-Loader Function
   const keyUpTimer = useRef(null);
@@ -48,6 +49,8 @@ const App = () => {
     setShowResetPasswordModal,
     showActivationUserModal,
     setShowActivationUserModal,
+    sidebarOpen,
+    setSidebarOpen,
   };
 
   return (

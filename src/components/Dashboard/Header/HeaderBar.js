@@ -1,9 +1,10 @@
 import { IconButton, Menu, MenuItem } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink, useLocation, useParams } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
+import { ModalContext } from '../../../App';
 import { createDialogAtom, joinDialogAtom } from '../../../utils/atoms';
 import CreateClass from '../../Labroom/CreateClass';
 import JoinClass from '../../Labroom/JoinClass';
@@ -11,9 +12,11 @@ import NotificationBar from './NotificationBar';
 import SearchBar from './SearchBar';
 import UserMenu from './UserMenu';
 
-function HeaderBar({ sidebarOpen, setSidebarOpen }) {
+function HeaderBar() {
   const { page } = useParams();
   const { auth } = useSelector((state) => state);
+  const { sidebarOpen, setSidebarOpen } = useContext(ModalContext);
+
   const [anchorEl, setAnchorEl] = useState(null);
   const [createOpened, setCreateOpened] = useRecoilState(createDialogAtom);
   const [joinOpened, setJoinOpened] = useRecoilState(joinDialogAtom);
@@ -54,7 +57,7 @@ function HeaderBar({ sidebarOpen, setSidebarOpen }) {
           </button>
 
           {/* Header: Left side */}
-          <nav className="hidden md:block rounded font-body w-8/12 ">
+          <nav className="flex rounded font-body w-8/12 ">
             <ol className="list-reset flex flex-wrap tracking-wide text-lg">
               <li>
                 <NavLink
@@ -69,9 +72,15 @@ function HeaderBar({ sidebarOpen, setSidebarOpen }) {
                     : page === 'community'
                     ? 'কমিউনিটি '
                     : page === 'labroom'
-                    ? 'লাবরুম'
+                    ? 'ল্যাবরুম'
                     : path === 'labroom'
-                    ? 'লাবরুম'
+                    ? 'ল্যাবরুম'
+                    : path === 'dashboard'
+                    ? 'ড্যাশবোর্ড'
+                    : path === 'noticeboard'
+                    ? 'নোটিশ বোর্ড'
+                    : path === 'workshop'
+                    ? 'ওয়ার্কশপ'
                     : ''}
                 </NavLink>
               </li>
@@ -96,6 +105,12 @@ function HeaderBar({ sidebarOpen, setSidebarOpen }) {
                     ? 'জয়েন করুন'
                     : path === 'labroom'
                     ? 'এসাইনমেন্ট'
+                    : path === 'dashboard'
+                    ? 'স্বাগতম'
+                    : path === 'noticeboard'
+                    ? 'নোটিশ'
+                    : path === 'workshop'
+                    ? 'যোগ দিন'
                     : ''}
                 </NavLink>
                 {page === 'labroom' && (

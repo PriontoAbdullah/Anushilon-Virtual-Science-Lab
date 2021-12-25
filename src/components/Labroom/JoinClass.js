@@ -60,9 +60,11 @@ function JoinClass() {
           `সফলভাবে ${classData.name} ল্যাব রুমে নথিভুক্ত করা হয়েছে`
         );
 
+        setClassId('');
         handleClose();
       } else {
         toast.error(`ল্যাবরুম খুঁজে পাওয়া যায়নি, সঠিক কোড প্রদান করুন`);
+        setClassId('');
         handleClose();
       }
     } catch (err) {

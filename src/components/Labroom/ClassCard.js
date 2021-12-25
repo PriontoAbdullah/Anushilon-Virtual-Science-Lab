@@ -4,7 +4,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import './ClassCard.css';
 
-function ClassCard({ name, creatorName, creatorPhoto, id, style }) {
+function ClassCard({ name, creatorName, creatorPhoto, id }) {
   const history = useHistory();
 
   const goToClass = () => {
@@ -12,7 +12,7 @@ function ClassCard({ name, creatorName, creatorPhoto, id, style }) {
   };
 
   return (
-    <div className="classCard" style={style} onClick={goToClass}>
+    <div className="classCard" onClick={goToClass}>
       <div className="classCard__upper">
         <div className="classCard__className font-body font-semibold tracking-wider">
           {name}

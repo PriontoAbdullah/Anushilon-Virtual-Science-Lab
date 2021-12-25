@@ -158,7 +158,7 @@ function ImagePost({ displayName }) {
         />
         {/* Cover Photo */}
 
-        <div className="mb-5 w-128">
+        <div className="mb-5 w-80 sm:w-128">
           <label
             className={`mt-1 flex justify-center px-6 py-12 border-2 ${
               coverDragEnter ? 'border-brand-700' : 'border-gray-300'

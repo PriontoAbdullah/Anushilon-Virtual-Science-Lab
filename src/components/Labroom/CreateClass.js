@@ -24,6 +24,11 @@ function CreateClass() {
   };
 
   const createClass = async () => {
+    if (className === undefined || className === '') {
+      toast.error(`ল্যাব রুমের নাম প্রদান করুন`);
+      return;
+    }
+
     try {
       const newClass = await db.collection('classes').add({
         creatorEmail: auth.user.email,
@@ -53,9 +58,13 @@ function CreateClass() {
       await docRef.update({
         enrolledClassrooms: userClasses,
       });
+
+      setClassName('');
       handleClose();
       toast.success('ল্যাবরুম সফলভাবে তৈরি হয়েছে!');
     } catch (err) {
+      setClassName('');
+      handleClose();
       toast.error(`ল্যাবরুম তৈরি করা যাচ্ছে না - ${err.message}`);
     }
   };

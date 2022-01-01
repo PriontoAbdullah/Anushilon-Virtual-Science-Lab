@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  TextField,
+  TextField
 } from '@material-ui/core';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -47,6 +47,7 @@ function JoinClass() {
 
         let tempClassrooms = userData.enrolledClassrooms;
         tempClassrooms.push({
+          creatorEmail: classData.creatorEmail,
           creatorName: classData.creatorName,
           creatorPhoto: classData.creatorPhoto,
           id: classId,

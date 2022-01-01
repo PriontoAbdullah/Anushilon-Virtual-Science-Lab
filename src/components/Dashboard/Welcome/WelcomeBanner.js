@@ -73,7 +73,7 @@ const WelcomeBanner = () => {
       <div className="relative">
         <h1 className="font-display text-2xl md:text-3xl text-brand-900 font-semibold mb-2 tracking-wider">
           {new Date().getHours() > 12 ? 'শুভ অপরাহ্ন' : 'শুভ সকাল'},{' '}
-          {auth.user.name} 👋
+          {auth.user.name} <span className="wave">👋</span>
         </h1>
         <p className="pt-2 font-body text-gray-800 w-full sm:w-7/12">
           নবম থেকে দ্বাদশ শ্রেণির পদার্থবিজ্ঞান, রসায়ন ও জীববিজ্ঞান বিষয়ের সকল

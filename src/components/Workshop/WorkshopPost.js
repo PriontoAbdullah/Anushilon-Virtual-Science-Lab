@@ -1,16 +1,21 @@
 import { LinearProgress } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
-import firebase from 'firebase';
 import moment from 'moment';
 import 'moment/locale/bn-bd';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { useSelector } from 'react-redux';
 import { db, storage } from '../../configs/firebase';
-import './ImageUpload.css';
+import '../Community/ImageUpload.css';
 
-function ImagePost({ displayName }) {
-  const [caption, setCaption] = useState('');
+const WorkshopPost = () => {
+  const { auth } = useSelector((state) => state);
+  const [title, setTitle] = useState('');
+  const [link, setLink] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [details, setDetails] = useState('');
   const [progress, setProgress] = useState(0);
   const [image, setImage] = useState(null);
   const [showProgressBar, setShowProgressBar] = useState(false);
@@ -47,79 +52,121 @@ function ImagePost({ displayName }) {
     }
   }
 
-  function handleCaption(e) {
-    setCaption(e.target.value);
-  }
-
   function handlePost() {
-    if (image) {
-      const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    if (title && details && date && time && link) {
+      if (image) {
+        const uploadTask = storage.ref(`images/${image.name}`).put(image);
 
-      // getting the upload status while the image is uploading
-      uploadTask.on(
-        'state_changed',
-        (snapshot) => {
-          // Progress function
-          const progress = Math.round(
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-          );
-          setProgress(progress);
-        },
-        (error) => {
-          // error function
-          console.log(error);
-        },
-        () => {
-          // completion function
-          storage
-            .ref('images')
-            .child(image.name)
-            .getDownloadURL()
-            .then((url) => {
-              db.collection('posts').add({
-                timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-                caption: caption,
-                imgUrl: url,
-                username: displayName,
-                date: moment().locale('bn-bd').format('LLL'),
+        // getting the upload status while the image is uploading
+        uploadTask.on(
+          'state_changed',
+          (snapshot) => {
+            // Progress function
+            const progress = Math.round(
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+            );
+            setProgress(progress);
+          },
+          (error) => {
+            // error function
+            console.log(error);
+          },
+          () => {
+            // completion function
+            storage
+              .ref('images')
+              .child(image.name)
+              .getDownloadURL()
+              .then((url) => {
+                db.collection('workshop').add({
+                  title: title,
+                  details: details,
+                  link: link,
+                  date: date,
+                  time: time,
+                  imgUrl: url,
+                  creatorEmail: auth.user.email,
+                  createAt: moment().locale('bn-bd').format('LLL'),
+                });
+
+                setProgress(0);
+                setTitle('');
+                setDetails('');
+                setLink('');
+                setDate('');
+                setTime('');
+                setImage(null);
+                setShowProgressBar(false);
+                setCoverDragEnter(false);
               });
-
-              setProgress(0);
-              setCaption('');
-              setImage(null);
-              setShowProgressBar(false);
-              setCoverDragEnter(false);
-            });
-        }
-      );
+          }
+        );
+      } else {
+        toast.error('অনুগ্রহ করে একটি ছবি নির্বাচন করুন');
+      }
     } else {
-      toast.error('অনুগ্রহ করে একটি ছবি নির্বাচন করুন');
+      toast.error('অনুগ্রহ করে সব ক্ষেত্র গুলো পূরণ করুন');
     }
   }
 
   return (
-    <div className="image__upload">
-      <div className="input__holder">
+    <div className="image__upload font-body">
+      <div className="input__holder border border-gray-200 shadow-4xl">
         <p className="text-base font-body font-semibold tracking-wider text-brand-900">
-          কমিউনিটিতে ক্যাপশন লিখে ছবি পোস্ট করুন
+          নতুন ওয়ার্কশপ পোস্ট করুন
         </p>
 
         {showProgressBar && (
           <LinearProgress
             variant="determinate"
-            className="mt-4"
+            className="my-4"
             value={progress}
             max="100"
           />
         )}
         <TextField
           className="caption__upload"
-          onChange={handleCaption}
-          value={caption}
-          rows={5}
+          onChange={(e) => setTitle(e.target.value)}
+          value={title}
           id="standard-basic"
-          label="ক্যাপশন লিখুন"
+          label="ওয়ার্কশপের নাম লিখুন"
         />
+        <TextField
+          className="caption__upload"
+          onChange={(e) => setDetails(e.target.value)}
+          value={details}
+          multiline
+          rows={3}
+          id="standard-basic"
+          label="ওয়ার্কশপ সম্পর্কে সংক্ষিপ্ত বিবরণ লিখুন"
+        />
+        <TextField
+          className="caption__upload"
+          onChange={(e) => setLink(e.target.value)}
+          value={link}
+          id="standard-basic"
+          label="ওয়ার্কশপের লিংক দিন "
+        />
+        <div className="flex flex-row items-center w-full mb-4">
+          <div className="w-1/2 mx-4">
+            <TextField
+              className="caption__upload"
+              onChange={(e) => setDate(e.target.value)}
+              value={date}
+              id="standard-basic"
+              label="ওয়ার্কশপের তারিখ লিখুন"
+            />
+          </div>
+          <div className="w-1/2 mx-4">
+            <TextField
+              className="caption__upload"
+              onChange={(e) => setTime(e.target.value)}
+              value={time}
+              id="standard-basic"
+              label="ওয়ার্কশপের সময় দিন"
+            />
+          </div>
+        </div>
         {/* Cover Photo */}
 
         <div className="mb-5 w-80 sm:w-128">
@@ -179,11 +226,11 @@ function ImagePost({ displayName }) {
           variant="contained"
           color="primary"
         >
-          ছবি পোস্ট করুন
+          ওয়ার্কশপ পোস্ট করুন
         </Button>
       </div>
     </div>
   );
-}
+};
 
-export default ImagePost;
+export default WorkshopPost;

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { IconButton, Menu, MenuItem } from '@material-ui/core';
 import { Add } from '@material-ui/icons';
 import React, { useContext, useState } from 'react';
@@ -81,6 +82,8 @@ function HeaderBar() {
                     ? 'নোটিশ বোর্ড'
                     : path === 'workshop'
                     ? 'ওয়ার্কশপ'
+                    : path === 'messages'
+                    ? 'কথোপকথন'
                     : ''}
                 </NavLink>
               </li>
@@ -111,6 +114,8 @@ function HeaderBar() {
                     ? 'নোটিশ'
                     : path === 'workshop'
                     ? 'যোগ দিন'
+                    : path === 'messages'
+                    ? 'কথাবার্তা'
                     : ''}
                 </NavLink>
                 {page === 'labroom' && (

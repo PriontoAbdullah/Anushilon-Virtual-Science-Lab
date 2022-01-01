@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { db } from '../../configs/firebase';
+import LoaderSkeleton from '../Preloader/LoaderSkeleton';
 import ClassCard from './ClassCard';
 import './Labroom.css';
 
@@ -26,23 +27,7 @@ const Labroom = () => {
   return (
     <div>
       {classes?.length === 0 ? (
-        <div class="bg-white p-2 mx-32 mt-4 sm:p-4 sm:h-64 rounded-2xl shadow-lg flex flex-col sm:flex-row gap-5 select-none ">
-          <div class="h-52 sm:h-full sm:w-72 rounded-xl bg-gray-200 animate-pulse"></div>
-          <div class="flex flex-col flex-1 gap-5 sm:p-2">
-            <div class="flex flex-1 flex-col gap-3">
-              <div class="bg-gray-200 w-full animate-pulse h-14 rounded-2xl"></div>
-              <div class="bg-gray-200 w-full animate-pulse h-3 rounded-2xl"></div>
-              <div class="bg-gray-200 w-full animate-pulse h-3 rounded-2xl"></div>
-              <div class="bg-gray-200 w-full animate-pulse h-3 rounded-2xl"></div>
-              <div class="bg-gray-200 w-full animate-pulse h-3 rounded-2xl"></div>
-            </div>
-            <div class="mt-auto flex gap-3">
-              <div class="bg-gray-200 w-20 h-8 animate-pulse rounded-full"></div>
-              <div class="bg-gray-200 w-20 h-8 animate-pulse rounded-full"></div>
-              <div class="bg-gray-200 w-20 h-8 animate-pulse rounded-full ml-auto"></div>
-            </div>
-          </div>
-        </div>
+        <LoaderSkeleton />
       ) : (
         <div className="dashboard__classContainer">
           {classes?.map((individualClass) => (

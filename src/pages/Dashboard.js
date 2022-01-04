@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 import Community from '../components/Community/Community';
+import Conversession from '../components/Conversession/Conversession';
 import HeaderBar from '../components/Dashboard/Header/HeaderBar';
 import SideBar from '../components/Dashboard/Header/SideBar';
 import SimulationsBio from '../components/Dashboard/Simulation/SimulationsBio';
@@ -66,6 +67,8 @@ const Dashboard = () => {
               <Noticeboard />
             ) : page === 'workshop' ? (
               <Workshop />
+            ) : page === 'messages' ? (
+              <Conversession />
             ) : page ===
               'মিটার-ব্রিজ-ব্যবহার-করে-কোন-তারের-আপেক্ষিক-রোধ-নির্ণয়।' ? (
               <SimulationTemplate />

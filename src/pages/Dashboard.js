@@ -5,6 +5,7 @@ import Community from '../components/Community/Community';
 import Conversession from '../components/Conversession/Conversession';
 import HeaderBar from '../components/Dashboard/Header/HeaderBar';
 import SideBar from '../components/Dashboard/Header/SideBar';
+import Profile from '../components/Dashboard/Profile/Profile';
 import SimulationsBio from '../components/Dashboard/Simulation/SimulationsBio';
 import SimulationsChe from '../components/Dashboard/Simulation/SimulationsChe';
 import SimulationsPhy from '../components/Dashboard/Simulation/SimulationsPhy';
@@ -69,6 +70,8 @@ const Dashboard = () => {
               <Workshop />
             ) : page === 'messages' ? (
               <Conversession />
+            ) : page === 'profile' ? (
+              <Profile />
             ) : page ===
               'মিটার-ব্রিজ-ব্যবহার-করে-কোন-তারের-আপেক্ষিক-রোধ-নির্ণয়।' ? (
               <SimulationTemplate />

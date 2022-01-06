@@ -84,7 +84,7 @@ function UserMenu() {
             <li>
               <Link
                 className="font-body font-medium text-sm text-brand-900 hover:text-indigo-600 flex items-center py-2 px-3"
-                to={`/profile/${auth.user._id}`}
+                to="/profile"
                 onClick={() => setDropdownOpen(!dropdownOpen)}
               >
                 <svg

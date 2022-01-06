@@ -1,4 +1,6 @@
 import firebase from 'firebase';
+import moment from 'moment';
+import 'moment/locale/bn-bd';
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { db } from '../../configs/firebase';
@@ -35,6 +37,7 @@ const Conversession = () => {
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       email,
       avatar,
+      date: moment().locale('bn-bd').format('LLL'),
     });
 
     setFormValue('');
@@ -149,7 +152,7 @@ const Conversession = () => {
               <button
                 type="submit"
                 disabled={!formValue}
-                className="inline-flex items-center justify-center rounded-full h-12 w-12 transition duration-500 ease-in-out text-white bg-blue-500 hover:bg-blue-400 focus:outline-none"
+                className="inline-flex items-center justify-center rounded-full h-12 w-12 transition duration-500 ease-in-out text-white bg-dark-brand-900 hover:bg-purple-900 focus:outline-none"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

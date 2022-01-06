@@ -5,7 +5,7 @@ import './Conversession.css';
 const ChatMessage = (props) => {
   const { auth } = useSelector((state) => state);
 
-  const { text, email, avatar } = props.message;
+  const { text, email, avatar, date } = props.message;
 
   return (
     <section>
@@ -16,7 +16,7 @@ const ChatMessage = (props) => {
         >
           <div className="chat-message">
             <div
-              className={`flex items-end ${
+              className={`flex items-center  ${
                 email === auth.user.email ? 'justify-end' : ''
               } `}
             >
@@ -31,13 +31,16 @@ const ChatMessage = (props) => {
                   <span
                     className={`px-4 py-2 rounded-lg inline-block ${
                       email === auth.user.email
-                        ? 'rounded-br-none bg-blue-600 text-white'
-                        : 'rounded-bl-none bg-gray-300 text-gray-600'
+                        ? 'rounded-br-none bg-brand-900 text-white'
+                        : 'rounded-bl-none bg-gray-300 text-gray-900'
                     }`}
                   >
                     {text}
                   </span>
                 </div>
+                <span className="text-xs text-gray-700 font-body tracking-wide">
+                  {date}
+                </span>
               </div>
               <img
                 src={
@@ -45,7 +48,7 @@ const ChatMessage = (props) => {
                   'https://api.adorable.io/avatars/23/abott@adorable.png'
                 }
                 alt=""
-                className={`w-8 h-8 rounded-full ${
+                className={`w-12 h-12 rounded-full ${
                   email === auth.user.email ? 'order-2' : 'order-1'
                 }`}
               />

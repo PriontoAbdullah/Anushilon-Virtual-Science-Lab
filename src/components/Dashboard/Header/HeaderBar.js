@@ -84,6 +84,8 @@ function HeaderBar() {
                     ? 'ওয়ার্কশপ'
                     : path === 'messages'
                     ? 'কথোপকথন'
+                    : path === 'profile'
+                    ? 'প্রোফাইল'
                     : ''}
                 </NavLink>
               </li>
@@ -116,6 +118,8 @@ function HeaderBar() {
                     ? 'যোগ দিন'
                     : path === 'messages'
                     ? 'কথাবার্তা'
+                    : path === 'profile'
+                    ? 'সম্পাদনা'
                     : ''}
                 </NavLink>
                 {page === 'labroom' && (

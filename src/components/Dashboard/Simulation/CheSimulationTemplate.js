@@ -9,20 +9,21 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import ObservationTemplate from './ObservationTemplate';
+import CheObservationTemplate from './CheObservationTemplate';
+import CheProcedureTemplate from './CheProcedureTemplate';
+import CheTheoryTemplate from './CheTheoryTemplate';
 import PlaySimulationTemplate from './PlaySimulationTemplate';
-import ProcedureTemplate from './ProcedureTemplate';
-import TheoryTemplate from './TheoryTemplate';
 import VideoTemplate from './VideoTemplate';
 
-const SimulationTemplate = () => {
+const CheSimulationTemplate = () => {
   const [openTab, setOpenTab] = React.useState(1);
-  document.title = 'মিটার ব্রিজ ব্যবহার করে কোন তারের আপেক্ষিক রোধ নির্ণয়।';
+  document.title =
+    'KMnO₄ দ্রবন দ্বারা অজানা ঘনমাত্রার দ্রবনে ফেরাস আয়নের পরিমান নির্ণয়।';
 
   // YouTube video ID
   const videoSimulationId = {
-    videoId: '0fAqXe1zSUs',
-    animationId: 'LA8hYjygyHk',
+    videoId: 'MY97TzPVGMs',
+    animationId: 'XWnzUVaQhSY',
   };
 
   return (
@@ -50,7 +51,7 @@ const SimulationTemplate = () => {
                   to="/simulation-phy"
                   className="font-medium text-brand-900"
                 >
-                  পদার্থ বিজ্ঞান
+                  রসায়ন
                 </NavLink>
               </li>
               <li>
@@ -58,7 +59,8 @@ const SimulationTemplate = () => {
               </li>
               <li>
                 <span className="text-base">
-                  মিটার ব্রিজ ব্যবহার করে কোন তারের আপেক্ষিক রোধ নির্ণয়।
+                  KMnO₄ দ্রবন দ্বারা অজানা ঘনমাত্রার দ্রবনে ফেরাস আয়নের পরিমান
+                  নির্ণয়।
                 </span>
               </li>
             </ol>
@@ -184,10 +186,10 @@ const SimulationTemplate = () => {
                   className={`mb-5 ${openTab === 1 ? 'block' : 'hidden'}`}
                   id="link1"
                 >
-                  <TheoryTemplate />
+                  <CheTheoryTemplate />
                 </div>
                 <div className={openTab === 2 ? 'block' : 'hidden'} id="link2">
-                  <ProcedureTemplate />
+                  <CheProcedureTemplate />
                 </div>
                 <div className={openTab === 3 ? 'block' : 'hidden'} id="link3">
                   <VideoTemplate videoId={videoSimulationId.videoId} />
@@ -198,12 +200,12 @@ const SimulationTemplate = () => {
                 <div className={openTab === 5 ? 'block' : 'hidden'} id="link5">
                   <PlaySimulationTemplate
                     videoURL={
-                      'https://priontoabdullah.github.io/Anushilon-Simulations/html5/phy121.html'
+                      'https://priontoabdullah.github.io/Anushilon-Simulations/html5/che121.html'
                     }
                   />
                 </div>
                 <div className={openTab === 6 ? 'block' : 'hidden'} id="link6">
-                  <ObservationTemplate />
+                  <CheObservationTemplate />
                 </div>
               </div>
             </div>
@@ -214,4 +216,4 @@ const SimulationTemplate = () => {
   );
 };
 
-export default SimulationTemplate;
+export default CheSimulationTemplate;

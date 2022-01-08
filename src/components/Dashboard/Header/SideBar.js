@@ -165,6 +165,12 @@ function SideBar() {
             <li
               className={`px-3 py-2 rounded-sm mb-3 last:mb-0 ${
                 page.startsWith('simulation-') && 'bg-dark-brand-900'
+              } ${
+                (page ===
+                  'মিটার-ব্রিজ-ব্যবহার-করে-কোন-তারের-আপেক্ষিক-রোধ-নির্ণয়।' ||
+                  page ===
+                    'KMnO₄-দ্রবন-দ্বারা-অজানা-ঘনমাত্রার-দ্রবনে-ফেরাস-আয়নের-পরিমান-নির্ণয়।') &&
+                'bg-dark-brand-900'
               }`}
             >
               <div
@@ -184,13 +190,13 @@ function SideBar() {
                           page.startsWith('simulation-')
                             ? 'text-indigo-300'
                             : 'text-dark-brand-400'
-                        }`}
+                        } `}
                         d="M13 15l11-7L11.504.136a1 1 0 00-1.019.007L0 7l13 8z"
                       />
                       <path
                         className={`fill-current ${
                           page.startsWith('simulation-')
-                            ? 'text-indigo-600'
+                            ? 'text-indigo-500'
                             : 'text-dark-brand-700 '
                         }`}
                         d="M13 15L0 7v9c0 .355.189.685.496.864L13 24v-9z"
@@ -198,7 +204,7 @@ function SideBar() {
                       <path
                         className={`fill-current  ${
                           page.startsWith('simulation-')
-                            ? 'text-indigo-500'
+                            ? 'text-indigo-400'
                             : 'text-dark-brand-600'
                         }`}
                         d="M13 15.047V24l10.573-7.181A.999.999 0 0024 16V8l-11 7.047z"
@@ -209,6 +215,12 @@ function SideBar() {
                         page.startsWith('simulation-')
                           ? 'text-indigo-200 hover:text-gray-200'
                           : 'text-gray-200 hover:text-indigo-200'
+                      } ${
+                        (page ===
+                          'মিটার-ব্রিজ-ব্যবহার-করে-কোন-তারের-আপেক্ষিক-রোধ-নির্ণয়।' ||
+                          page ===
+                            'KMnO₄-দ্রবন-দ্বারা-অজানা-ঘনমাত্রার-দ্রবনে-ফেরাস-আয়নের-পরিমান-নির্ণয়।') &&
+                        'text-indigo-200 hover:text-gray-200'
                       }`}
                     >
                       সিমুলেশন
@@ -265,7 +277,9 @@ function SideBar() {
                       exact
                       to="/simulation-phy"
                       className={`block text-gray-200 hover:text-indigo-200 transition duration-150 ${
-                        page === 'simulation-phy' &&
+                        (page === 'simulation-phy' ||
+                          page ===
+                            'মিটার-ব্রিজ-ব্যবহার-করে-কোন-তারের-আপেক্ষিক-রোধ-নির্ণয়।') &&
                         'text-indigo-300 hover:text-indigo-400'
                       }`}
                       onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -280,7 +294,9 @@ function SideBar() {
                       exact
                       to="/simulation-che"
                       className={`block text-gray-200  hover:text-indigo-200 transition duration-150" ${
-                        page === 'simulation-che' &&
+                        (page === 'simulation-che' ||
+                          page ===
+                            'KMnO₄-দ্রবন-দ্বারা-অজানা-ঘনমাত্রার-দ্রবনে-ফেরাস-আয়নের-পরিমান-নির্ণয়।') &&
                         'text-indigo-300 hover:text-indigo-400'
                       }`}
                       onClick={() => setSidebarOpen(!sidebarOpen)}

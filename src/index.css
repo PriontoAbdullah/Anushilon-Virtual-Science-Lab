@@ -103,6 +103,10 @@
   @apply px-3 w-32 py-1 text-brand-900 text-base font-normal bg-white border border-gray-300 rounded-md placeholder-gray-400 focus:border-deep-purple-accent-700 focus:shadow-4xl focus:outline-none;
 }
 
+.observation-result {
+  @apply px-3 w-24 py-1 text-brand-900 text-base font-normal bg-white border border-gray-300 rounded-md placeholder-gray-400 focus:border-deep-purple-accent-700 focus:shadow-4xl focus:outline-none;
+}
+
 .dashboard-button {
   @apply bg-brand-900 text-white hover:bg-dark-brand-900 hover:text-gray-50 font-semibold uppercase text-base px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mx-2 my-2 ease-linear transition-all duration-150;
 }

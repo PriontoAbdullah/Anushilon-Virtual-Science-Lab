@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
-import Iframe from "react-iframe";
-import loader from "../../../assets/images/loader/simulation.gif";
-import useWindowDimensions from "../../../utils/useWindowDimensions";
+import React, { useRef, useState } from 'react';
+import Iframe from 'react-iframe';
+import loader from '../../../assets/images/loader/simulation.gif';
+import useWindowDimensions from '../../../utils/useWindowDimensions';
 
-const PlaySimulationTemplate = () => {
+const PlaySimulationTemplate = ({ videoURL }) => {
   const [preLoaderVisibility, setPreLoaderVisibility] = useState(true);
 
   // For Responsive Design
@@ -32,7 +32,7 @@ const PlaySimulationTemplate = () => {
       ) : (
         // Simulation Play Ground
         <Iframe
-          url="https://priontoabdullah.github.io/Anushilon-Simulations/html5/phy121.html"
+          url={videoURL}
           width="100%"
           height={getHeight}
           className="mx-0 sm:mx-auto"

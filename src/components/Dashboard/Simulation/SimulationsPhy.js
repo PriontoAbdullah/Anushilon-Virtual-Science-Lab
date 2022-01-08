@@ -12,7 +12,7 @@ function SimulationsPhy() {
   const [openTab, setOpenTab] = useState(1);
 
   return (
-    <div className="px-2 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-3 lg:px-4 lg:py-8">
+    <div className="px-2 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl lg:py-8">
       <div className="flex flex-wrap flex-row">
         <div className="w-full">
           {/* View Class Name Buttons */}

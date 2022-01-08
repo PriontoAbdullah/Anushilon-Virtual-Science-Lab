@@ -6,6 +6,7 @@ import Conversession from '../components/Conversession/Conversession';
 import HeaderBar from '../components/Dashboard/Header/HeaderBar';
 import SideBar from '../components/Dashboard/Header/SideBar';
 import Profile from '../components/Dashboard/Profile/Profile';
+import CheSimulationTemplate from '../components/Dashboard/Simulation/CheSimulationTemplate';
 import SimulationsBio from '../components/Dashboard/Simulation/SimulationsBio';
 import SimulationsChe from '../components/Dashboard/Simulation/SimulationsChe';
 import SimulationsPhy from '../components/Dashboard/Simulation/SimulationsPhy';
@@ -75,6 +76,9 @@ const Dashboard = () => {
             ) : page ===
               'মিটার-ব্রিজ-ব্যবহার-করে-কোন-তারের-আপেক্ষিক-রোধ-নির্ণয়।' ? (
               <SimulationTemplate />
+            ) : page ===
+              'KMnO₄-দ্রবন-দ্বারা-অজানা-ঘনমাত্রার-দ্রবনে-ফেরাস-আয়নের-পরিমান-নির্ণয়।' ? (
+              <CheSimulationTemplate />
             ) : null}
           </main>
         </div>

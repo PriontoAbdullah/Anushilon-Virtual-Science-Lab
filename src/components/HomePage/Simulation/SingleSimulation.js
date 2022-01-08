@@ -23,10 +23,7 @@ const LabIcon = () => {
 const SingleSimulation = ({ item }) => {
   return (
     <>
-      <Link
-        to="/মিটার-ব্রিজ-ব্যবহার-করে-কোন-তারের-আপেক্ষিক-রোধ-নির্ণয়।"
-        key={item.id}
-      >
+      <Link to={item.route} key={item.id}>
         <div
           className={`grid sm:grid-cols-3 p-5 hover:bg-gray-100 shadow-3xl hover:shadow-xl cursor-pointer rounded-lg`}
         >

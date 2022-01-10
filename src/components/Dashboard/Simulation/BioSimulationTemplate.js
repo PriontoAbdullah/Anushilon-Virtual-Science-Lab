@@ -9,21 +9,20 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import CheObservationTemplate from './CheObservationTemplate';
-import CheProcedureTemplate from './CheProcedureTemplate';
-import CheTheoryTemplate from './CheTheoryTemplate';
-import PlaySimulationTemplate from './PlaySimulationTemplate';
+import BioObservationTemplate from './BioObservationTemplate';
+import BioProcedureTemplate from './BioProcedureTemplate';
+import BioTheoryTemplate from './BioTheoryTemplate';
 import VideoTemplate from './VideoTemplate';
 
-const CheSimulationTemplate = () => {
+const BioSimulationTemplate = () => {
   const [openTab, setOpenTab] = React.useState(1);
   document.title =
-    'KMnO₄ দ্রবন দ্বারা অজানা ঘনমাত্রার দ্রবনে ফেরাস আয়নের পরিমান নির্ণয়।';
+    'সালোকসংশ্লেষণ প্রক্রিয়ায় ক্লোরোফিল ও আলোর অপরিহার্যতার পরীক্ষণ।';
 
   // YouTube video ID
   const videoSimulationId = {
-    videoId: 'MY97TzPVGMs',
-    animationId: 'XWnzUVaQhSY',
+    videoId: 'rjal9V1lOLA',
+    animationId: 'i03qsREpOpc',
   };
 
   return (
@@ -36,7 +35,7 @@ const CheSimulationTemplate = () => {
               <li>
                 <NavLink
                   exact
-                  to="/simulation-che"
+                  to="/simulation-bio"
                   className="font-medium text-brand-900"
                 >
                   সিমুলেশন
@@ -48,10 +47,10 @@ const CheSimulationTemplate = () => {
               <li>
                 <NavLink
                   exact
-                  to="/simulation-che"
+                  to="/simulation-bio"
                   className="font-medium text-brand-900"
                 >
-                  রসায়ন
+                  জীববিজ্ঞান
                 </NavLink>
               </li>
               <li>
@@ -59,8 +58,8 @@ const CheSimulationTemplate = () => {
               </li>
               <li>
                 <span className="text-base">
-                  KMnO₄ দ্রবন দ্বারা অজানা ঘনমাত্রার দ্রবনে ফেরাস আয়নের পরিমান
-                  নির্ণয়।
+                  সালোকসংশ্লেষণ প্রক্রিয়ায় ক্লোরোফিল ও আলোর অপরিহার্যতার
+                  পরীক্ষণ।
                 </span>
               </li>
             </ol>
@@ -186,10 +185,10 @@ const CheSimulationTemplate = () => {
                   className={`mb-5 ${openTab === 1 ? 'block' : 'hidden'}`}
                   id="link1"
                 >
-                  <CheTheoryTemplate />
+                  <BioTheoryTemplate />
                 </div>
                 <div className={openTab === 2 ? 'block' : 'hidden'} id="link2">
-                  <CheProcedureTemplate />
+                  <BioProcedureTemplate />
                 </div>
                 <div className={openTab === 3 ? 'block' : 'hidden'} id="link3">
                   <VideoTemplate videoId={videoSimulationId.videoId} />
@@ -198,14 +197,10 @@ const CheSimulationTemplate = () => {
                   <VideoTemplate videoId={videoSimulationId.animationId} />
                 </div>
                 <div className={openTab === 5 ? 'block' : 'hidden'} id="link5">
-                  <PlaySimulationTemplate
-                    videoURL={
-                      'https://priontoabdullah.github.io/Anushilon-Simulations/html5/che121.html'
-                    }
-                  />
+                  simulation
                 </div>
                 <div className={openTab === 6 ? 'block' : 'hidden'} id="link6">
-                  <CheObservationTemplate />
+                  <BioObservationTemplate />
                 </div>
               </div>
             </div>
@@ -216,4 +211,4 @@ const CheSimulationTemplate = () => {
   );
 };
 
-export default CheSimulationTemplate;
+export default BioSimulationTemplate;

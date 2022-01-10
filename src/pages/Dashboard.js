@@ -6,6 +6,7 @@ import Conversession from '../components/Conversession/Conversession';
 import HeaderBar from '../components/Dashboard/Header/HeaderBar';
 import SideBar from '../components/Dashboard/Header/SideBar';
 import Profile from '../components/Dashboard/Profile/Profile';
+import BioSimulationTemplate from '../components/Dashboard/Simulation/BioSimulationTemplate';
 import CheSimulationTemplate from '../components/Dashboard/Simulation/CheSimulationTemplate';
 import SimulationsBio from '../components/Dashboard/Simulation/SimulationsBio';
 import SimulationsChe from '../components/Dashboard/Simulation/SimulationsChe';
@@ -79,6 +80,9 @@ const Dashboard = () => {
             ) : page ===
               'KMnO₄-দ্রবন-দ্বারা-অজানা-ঘনমাত্রার-দ্রবনে-ফেরাস-আয়নের-পরিমান-নির্ণয়।' ? (
               <CheSimulationTemplate />
+            ) : page ===
+              'সালোকসংশ্লেষণ-প্রক্রিয়ায়-ক্লোরোফিল-ও-আলোর-অপরিহার্যতার-পরীক্ষণ।' ? (
+              <BioSimulationTemplate />
             ) : null}
           </main>
         </div>

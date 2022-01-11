@@ -12,6 +12,7 @@ import { NavLink } from 'react-router-dom';
 import BioObservationTemplate from './BioObservationTemplate';
 import BioProcedureTemplate from './BioProcedureTemplate';
 import BioTheoryTemplate from './BioTheoryTemplate';
+import PlaySimulationTemplate from './PlaySimulationTemplate';
 import VideoTemplate from './VideoTemplate';
 
 const BioSimulationTemplate = () => {
@@ -197,7 +198,11 @@ const BioSimulationTemplate = () => {
                   <VideoTemplate videoId={videoSimulationId.animationId} />
                 </div>
                 <div className={openTab === 5 ? 'block' : 'hidden'} id="link5">
-                  simulation
+                  <PlaySimulationTemplate
+                    videoURL={
+                      'https://priontoabdullah.github.io/Anushilon-Simulations/html5/bio121.html'
+                    }
+                  />
                 </div>
                 <div className={openTab === 6 ? 'block' : 'hidden'} id="link6">
                   <BioObservationTemplate />

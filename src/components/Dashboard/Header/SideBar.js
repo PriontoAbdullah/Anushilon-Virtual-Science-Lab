@@ -233,7 +233,7 @@ function SideBar() {
                   {/* Badge */}
                   <div className="flex flex-shrink-0 ml-2">
                     <span className="inline-flex items-center justify-center h-5 text-sm font-body font-medium text-gray-50 tracking-wider bg-indigo-600 px-2 rounded-sm">
-                      ৪২
+                    ৩+
                     </span>
                   </div>
                   {/* Icon */}

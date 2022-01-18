@@ -82,7 +82,7 @@ const Conversession = () => {
               type="text"
               value={formValue}
               onChange={(e) => setFormValue(e.target.value)}
-              placeholder="Write Something"
+              placeholder="এখানে কিছু লিখুন..."
               className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-full py-3"
             />
             <div className="absolute right-0 items-center inset-y-0 hidden sm:flex">

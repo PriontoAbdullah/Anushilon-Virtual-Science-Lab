@@ -43,6 +43,10 @@ const Nav = () => {
         user: null,
       },
     });
+
+    // remove token from local storage
+    localStorage.removeItem('jwtToken');
+
     setIsAuthenticated(new Date());
     toast.success('সফল ভাবে সাইন আউট হয়েছে! আমাদের সাথে থাকার জন্য ধন্যবাদ ❤️');
   };

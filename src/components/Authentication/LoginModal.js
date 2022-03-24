@@ -113,6 +113,10 @@ const LoginModal = () => {
         },
       });
 
+      // set token to localStorage
+      localStorage.setItem('jwtToken', response.data.token);
+
+      // redirect for role based user
       isAuth() && isAuth().role === 'admin'
         ? history.push('/admin')
         : history.push('/');
@@ -137,7 +141,7 @@ const LoginModal = () => {
       .catch((error) => {
         // console.log("GOOGLE SIGNIN ERROR", error.response);
         toast.dismiss(loading);
-        toast.error(error.response.data.error);
+        toast.error(error.data.error);
       });
   };
 
@@ -158,7 +162,7 @@ const LoginModal = () => {
       .catch((error) => {
         toast.dismiss(loading);
         // console.log("GOOGLE SIGNIN ERROR", error.response);
-        toast.error(error.response.data.error);
+        toast.error(error.data.error);
       });
   };
 
@@ -203,6 +207,9 @@ const LoginModal = () => {
               },
             });
 
+            // set token to localStorage
+            localStorage.setItem('jwtToken', res.data.token);
+
             toast.dismiss(loading);
             // close login modal
             handleCloseLoginModal();
@@ -219,7 +226,7 @@ const LoginModal = () => {
           setFormData({
             ...formData,
             email,
-            password1: '',
+            password1: password1,
             textChange: 'লগ ইন করুন',
           });
           toast.dismiss(loading);

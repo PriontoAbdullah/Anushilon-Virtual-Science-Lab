@@ -3,8 +3,8 @@ import React from 'react';
 function Comment(props) {
   return (
     <div className="py-3 px-1 flex justify-between items-center">
-      <p className="font-body text-base text-gray-900 font-medium tracking-wide">
-        <strong className="font-body text-base text-gray-800 font-semibold tracking-wide">
+      <p className="font-body text-sm text-gray-800 font-medium tracking-wide">
+        <strong className="font-body text-base text-gray-900 font-semibold tracking-wide">
           {props.username} :{' '}
         </strong>
         {props.text}

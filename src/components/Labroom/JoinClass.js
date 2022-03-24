@@ -5,7 +5,7 @@ import {
   DialogContent,
   DialogContentText,
   DialogTitle,
-  TextField
+  TextField,
 } from '@material-ui/core';
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -89,7 +89,7 @@ function JoinClass() {
           <TextField
             autoFocus
             margin="dense"
-            label="ল্যাবরুমের নাম"
+            label="ল্যাবরুমের কোড"
             type="text"
             fullWidth
             value={classId}

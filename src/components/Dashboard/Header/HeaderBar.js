@@ -114,7 +114,7 @@ function HeaderBar() {
                     : page === 'community'
                     ? 'পোস্ট'
                     : page === 'labroom'
-                    ? auth.role === 'student'
+                    ? auth.user.role === 'student'
                       ? 'জয়েন করুন'
                       : 'তৈরী করুন'
                     : path === 'labroom'

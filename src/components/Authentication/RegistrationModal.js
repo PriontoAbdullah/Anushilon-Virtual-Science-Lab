@@ -113,7 +113,15 @@ const RegistrationModal = (props) => {
             // create a new user
             await db.collection('users').add({
               email,
-              enrolledClassrooms: [],
+              enrolledClassrooms: [
+                {
+                  creatorEmail: 'priontosoft@gmail.com',
+                  creatorName: 'বিজ্ঞান শিক্ষক',
+                  creatorPhoto: 'https://i.imgur.com/R5o51PR.png',
+                  id: 'wcFNfK9blVmh3Y9s8x4A',
+                  name: 'পদার্থ বিজ্ঞান',
+                },
+              ],
             });
           }
         } catch (err) {
@@ -147,12 +155,12 @@ const RegistrationModal = (props) => {
               ...formData,
               name: name,
               email: email,
-              password1: '',
-              password2: '',
+              password1: password1,
+              password2: password2,
               textChange: 'নিবন্ধন করুন',
             });
             toast.dismiss(loading);
-            toast.error(err.response.data.errors);
+            toast.error(err.data.errors);
           });
       } else {
         toast.error('পাসওয়ার্ড দুটির মধ্যে মিল খুঁজে পাওয়া যায়নি! 🤨');
@@ -180,7 +188,15 @@ const RegistrationModal = (props) => {
             // create a new user
             await db.collection('users').add({
               uEmail,
-              enrolledClassrooms: [],
+              enrolledClassrooms: [
+                {
+                  creatorEmail: 'priontosoft@gmail.com',
+                  creatorName: 'বিজ্ঞান শিক্ষক',
+                  creatorPhoto: 'https://i.imgur.com/R5o51PR.png',
+                  id: 'wcFNfK9blVmh3Y9s8x4A',
+                  name: 'পদার্থ বিজ্ঞান',
+                },
+              ],
             });
           }
         } catch (err) {
@@ -217,13 +233,13 @@ const RegistrationModal = (props) => {
               ...formUserData,
               uName: uName,
               uEmail: uEmail,
-              uMobile: '',
-              uPassword1: '',
-              uPassword2: '',
+              uMobile: uMobile,
+              uPassword1: uPassword1,
+              uPassword2: uPassword2,
               uTextChange: 'নিবন্ধন করুন',
             });
             toast.dismiss(loading);
-            toast.error(err.response.data.errors);
+            toast.error(err.data.errors);
           });
       } else {
         toast.error('পাসওয়ার্ড দুটির মধ্যে মিল খুঁজে পাওয়া যায়নি! 🤨');

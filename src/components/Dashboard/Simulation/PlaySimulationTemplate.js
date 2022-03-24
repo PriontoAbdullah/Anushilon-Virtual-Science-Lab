@@ -31,14 +31,27 @@ const PlaySimulationTemplate = ({ videoURL }) => {
         </div>
       ) : (
         // Simulation Play Ground
-        <Iframe
-          url={videoURL}
-          width="100%"
-          height={getHeight}
-          className="mx-0 sm:mx-auto"
-          display="initial"
-          position="relative"
-        />
+        <>
+          <Iframe
+            url={videoURL}
+            width="100%"
+            height={getHeight}
+            className="mx-0 sm:mx-auto"
+            display="initial"
+            position="relative"
+          />
+
+          <div className="flex align-center justify-end mx-4 sm:mx-36">
+            <a
+              href="http://www.olabs.edu.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-brand-900 text-right pt-4 text-sm sm:text-base tracking-wider"
+            >
+              সোর্স
+            </a>
+          </div>
+        </>
       )}
     </div>
   );

@@ -1,6 +1,6 @@
-import { motion } from "framer-motion";
-import React, { Fragment, useContext } from "react";
-import { ModalContext } from "../../App";
+import { motion } from 'framer-motion';
+import React, { Fragment, useContext } from 'react';
+import { ModalContext } from '../../App';
 
 const ActivationInstitutionModal = () => {
   // modal context value
@@ -8,13 +8,13 @@ const ActivationInstitutionModal = () => {
 
   // for handling modal functionality
   const handleCloseModal = () => {
-    modalData.setShowHeader("block");
+    modalData.setShowHeader('block');
     modalData.setShowActivationUserModal(false);
   };
 
   const handleRegistrationModal = () => {
     handleCloseModal();
-    modalData.setShowHeader("hidden");
+    modalData.setShowHeader('hidden');
     modalData.setShowLoginModal(true);
     modalData.setNewUser(true);
     modalData.setShowRegistrationModal(true);
@@ -26,7 +26,7 @@ const ActivationInstitutionModal = () => {
         initial={{ scale: 0.7 }}
         animate={{ scale: 1 }}
         transition={{
-          type: "spring",
+          type: 'spring',
           stiffness: 260,
           damping: 20,
         }}
@@ -70,13 +70,15 @@ const ActivationInstitutionModal = () => {
                 </div>
                 <div className="mt-8 flex flex-col items-center">
                   <p className="text-base lg:text-lg font-body text-gray-800 font-normal px-8 -mb-2 leading-normal tracking-wide">
-                    আপনার অ্যাকাউন্টটি যাচাই করার জন্য আপনার তথ্য গুলি আপনার
-                    শিক্ষাপ্রতিষ্ঠানের কাছে পাঠানো হয়েছে। আপনাকে ফোন করে ভেরিফাই
-                    হওয়ার পর আপনার একাউন্টটি একটিভ করার জন্য আপনাকে ইমেইল পাঠানো
-                    হবে। অনুগ্রহ করে কিছু সময় অপেক্ষা করুন সম্পূর্ণ প্রক্রিয়া
-                    সম্পন্ন হওয়ার জন্যে। অথবা আপনি এই মুহূর্তে শিক্ষা প্রতিষ্ঠান
-                    ছাড়া স্বতন্ত্র ভাবে নিবন্ধন করে সকল সুযোগ সুবিধা ভোগ করতে
-                    পারবেন।
+                    আপনার অ্যাকাউন্টটি সচল করার জন্য আপনার তথ্য গুলি{' '}
+                    <span className="line-through">
+                      {' '}
+                      আপনার শিক্ষাপ্রতিষ্ঠানের কাছে পাঠানো হয়েছে। আপনাকে ফোন করে{' '}
+                    </span>{' '}
+                    যাচাই হওয়ার পর আপনার একাউন্টটি একটিভ করার জন্য আপনাকে ইমেইল
+                    পাঠানো হবে। অনুগ্রহ করে আপনার ইমেইল চেক করুন। অথবা আপনি এই
+                    মুহূর্তে শিক্ষা প্রতিষ্ঠান ছাড়া স্বতন্ত্র ভাবে নিবন্ধন করে
+                    সকল সুযোগ সুবিধা ভোগ করতে পারবেন।
                   </p>
 
                   <div className="w-full flex-1 my-3 text-indigo-500">

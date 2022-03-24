@@ -29,7 +29,7 @@ const StudentRoute = ({ children, ...rest }) => {
     <Route
       {...rest}
       render={({ location }) =>
-        auth?.user
+        auth?.user || localStorage.getItem('jwtToken')
           ? children
           : // <Redirect
             //   to={{

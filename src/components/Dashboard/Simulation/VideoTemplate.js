@@ -1,6 +1,6 @@
-import React from "react";
-import YouTube from "react-youtube";
-import useWindowDimensions from "../../../utils/useWindowDimensions";
+import React from 'react';
+import YouTube from 'react-youtube';
+import useWindowDimensions from '../../../utils/useWindowDimensions';
 
 const VideoTemplate = (props) => {
   const { width } = useWindowDimensions();
@@ -63,6 +63,16 @@ const VideoTemplate = (props) => {
         onReady={onReady}
         className="mx-auto shadow-3xl cursor-pointer"
       />
+      <div className="flex align-center justify-end mx-4 sm:mx-40">
+        <a
+          href="https://www.youtube.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-brand-900 text-right pt-4 text-sm sm:text-base tracking-wider"
+        >
+          সোর্স
+        </a>
+      </div>
     </div>
   );
 };

@@ -138,10 +138,10 @@ const LoginModal = () => {
         informParent(res);
         handleCloseLoginModal();
       })
-      .catch((error) => {
+      .catch((err) => {
         // console.log("GOOGLE SIGNIN ERROR", error.response);
         toast.dismiss(loading);
-        toast.error(error.data.error);
+        toast.error(err?.response?.data?.errors);
       });
   };
 
@@ -159,10 +159,10 @@ const LoginModal = () => {
         informParent(res);
         handleCloseLoginModal();
       })
-      .catch((error) => {
+      .catch((err) => {
         toast.dismiss(loading);
         // console.log("GOOGLE SIGNIN ERROR", error.response);
-        toast.error(error.data.error);
+        toast.error(err?.response?.data?.errors);
       });
   };
 
@@ -230,7 +230,7 @@ const LoginModal = () => {
             textChange: 'লগ ইন করুন',
           });
           toast.dismiss(loading);
-          toast.error(err.message);
+          toast.error(err?.response?.data?.errors);
         });
     } else {
       toast.error('অনুগ্রহপূর্বক সবগুলো স্থান তথ্য দিয়ে পূরণ করুন! 😒');
@@ -282,7 +282,7 @@ const LoginModal = () => {
             forgetTextChange: 'জমা দিন',
           });
           toast.dismiss(loading);
-          toast.error(err.message);
+          toast.error(err?.response?.data?.errors);
         });
     } else {
       toast.error('অনুগ্রহপূর্বক তথ্য দিয়ে পূরণ করুন! 😒');

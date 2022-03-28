@@ -1,6 +1,9 @@
-import { GLOBALTYPES } from "../actions/globalTypes";
+import { GLOBALTYPES } from '../actions/globalTypes';
 
-const initialState = {};
+const initialState = {
+  user: JSON.parse(localStorage.getItem('user')),
+  jwtToken: localStorage.getItem('jwtToken'),
+};
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {

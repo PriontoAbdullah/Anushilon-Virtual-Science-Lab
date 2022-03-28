@@ -17,7 +17,7 @@ const Workshop = () => {
 
     unsubscribe = db
       .collection('users')
-      .where('email', '==', auth.user.email)
+      .where('email', '==', auth?.user?.email)
       .onSnapshot((snapshot) => {
         setClasses(snapshot?.docs[0]?.data()?.enrolledClassrooms);
       });
@@ -25,7 +25,7 @@ const Workshop = () => {
     return () => {
       unsubscribe();
     };
-  }, [auth.user.email]);
+  }, [auth?.user?.email]);
 
   // get notices from noticeboard
   useEffect(() => {
@@ -46,11 +46,11 @@ const Workshop = () => {
   return (
     <section>
       <div className="container mx-auto mb-16">
-        {auth.user.role === 'teacher' && <WorkshopPost />}
+        {auth?.user?.role === 'teacher' && <WorkshopPost />}
         {/* Teacher workshop */}
         <section className="flex flex-wrap -m-4 mt-4">
           {workshop
-            .filter((workshop) => workshop.creatorEmail === auth.user.email)
+            .filter((workshop) => workshop.creatorEmail === auth?.user?.email)
             .map((post) => (
               <WorkshopCard
                 title={post.title}

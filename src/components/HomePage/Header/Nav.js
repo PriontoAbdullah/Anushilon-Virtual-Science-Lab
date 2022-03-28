@@ -1,12 +1,12 @@
 import { motion } from 'framer-motion';
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { animateScroll as scroll, Link } from 'react-scroll';
 import { ModalContext } from '../../../App';
 import textLogo from '../../../assets/images/text-logo.png';
-import { isAuth, signout } from '../../../helpers/auth';
+import { signout } from '../../../helpers/auth';
 import { GLOBALTYPES } from '../../../redux/actions/globalTypes';
 import LoginModal from '../../Authentication/LoginModal';
 import classes from './Navbar.module.css';
@@ -16,7 +16,6 @@ const Nav = () => {
   const dispatch = useDispatch();
   // modal context value
   const modalData = useContext(ModalContext);
-  const { auth } = useSelector((state) => state);
 
   // initial states
   const [isAuthenticated, setIsAuthenticated] = useState(new Date());
@@ -46,6 +45,7 @@ const Nav = () => {
 
     // remove token from local storage
     localStorage.removeItem('jwtToken');
+    localStorage.removeItem('user');
 
     setIsAuthenticated(new Date());
     toast.success('সফল ভাবে সাইন আউট হয়েছে! আমাদের সাথে থাকার জন্য ধন্যবাদ ❤️');
@@ -189,7 +189,7 @@ const Nav = () => {
                 </ul>
               </div>
 
-              {auth.user ? (
+              {localStorage.getItem('jwtToken') ? (
                 // for LoggedIn user
                 <ul className="items-center hidden space-x-8 lg:flex">
                   <li>
@@ -406,7 +406,7 @@ const Nav = () => {
                               আমাদের সম্পর্কে
                             </Link>
                           </li>
-                          {isAuth() ? (
+                          {localStorage.getItem('jwtToken') ? (
                             // For loggedIn user
                             <Fragment>
                               <li>

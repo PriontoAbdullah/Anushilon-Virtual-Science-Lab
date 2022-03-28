@@ -14,6 +14,7 @@ import Slide from 'react-reveal/Slide';
 import { ModalContext } from '../../App';
 import signInLoader from '../../assets/images/loader/signIn.gif';
 import { db } from '../../configs/firebase';
+import defaultLabroom from '../../data/defaultLabroom';
 
 const RegistrationModal = (props) => {
   // modal context
@@ -113,20 +114,12 @@ const RegistrationModal = (props) => {
             // create a new user
             await db.collection('users').add({
               email,
-              enrolledClassrooms: [
-                {
-                  creatorEmail: 'priontosoft@gmail.com',
-                  creatorName: 'বিজ্ঞান শিক্ষক',
-                  creatorPhoto: 'https://i.imgur.com/R5o51PR.png',
-                  id: 'wcFNfK9blVmh3Y9s8x4A',
-                  name: 'পদার্থ বিজ্ঞান',
-                },
-              ],
+              enrolledClassrooms: defaultLabroom,
             });
           }
         } catch (err) {
           toast.dismiss();
-          toast.error(err.message);
+          toast.error(err?.message);
         }
 
         // send data to server
@@ -160,7 +153,7 @@ const RegistrationModal = (props) => {
               textChange: 'নিবন্ধন করুন',
             });
             toast.dismiss(loading);
-            toast.error(err.data.errors);
+            toast.error(err?.response?.data?.errors);
           });
       } else {
         toast.error('পাসওয়ার্ড দুটির মধ্যে মিল খুঁজে পাওয়া যায়নি! 🤨');
@@ -187,21 +180,13 @@ const RegistrationModal = (props) => {
           if (querySnapshot.docs.length === 0) {
             // create a new user
             await db.collection('users').add({
-              uEmail,
-              enrolledClassrooms: [
-                {
-                  creatorEmail: 'priontosoft@gmail.com',
-                  creatorName: 'বিজ্ঞান শিক্ষক',
-                  creatorPhoto: 'https://i.imgur.com/R5o51PR.png',
-                  id: 'wcFNfK9blVmh3Y9s8x4A',
-                  name: 'পদার্থ বিজ্ঞান',
-                },
-              ],
+              email: uEmail,
+              enrolledClassrooms: defaultLabroom,
             });
           }
         } catch (err) {
           toast.dismiss();
-          toast.error(err.message);
+          toast.error(err?.message);
         }
 
         // send data to server
@@ -239,7 +224,7 @@ const RegistrationModal = (props) => {
               uTextChange: 'নিবন্ধন করুন',
             });
             toast.dismiss(loading);
-            toast.error(err.data.errors);
+            toast.error(err?.response?.data?.errors);
           });
       } else {
         toast.error('পাসওয়ার্ড দুটির মধ্যে মিল খুঁজে পাওয়া যায়নি! 🤨');

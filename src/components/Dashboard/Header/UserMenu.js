@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { signout } from '../../../helpers/auth';
 import { GLOBALTYPES } from '../../../redux/actions/globalTypes';
@@ -10,7 +10,7 @@ function UserMenu() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const { auth } = useSelector((state) => state);
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
@@ -42,14 +42,14 @@ function UserMenu() {
       >
         <img
           className="w-20 sm:w-10 h-10 rounded-full border-solid border-2 border-indigo-400"
-          src={auth.user.avatar}
+          src={user?.avatar || 'https://i.ibb.co/1Ks65g5/avatar.png'}
           width="40"
           height="40"
           alt="User"
         />
         <div className="hidden sm:flex items-center truncate">
           <span className="truncate ml-2 font-body text-base font-medium text-brand-900 group-hover:text-gray-800">
-            {auth.user.name}
+            {user?.name}
           </span>
           <svg
             className="w-3 h-3 flex-shrink-0 ml-2 fill-current text-gray-500"
@@ -77,7 +77,7 @@ function UserMenu() {
         >
           <div className="py-1 pb-2 px-3 border-b border-gray-200">
             <div className="font-body font-medium ml-1 text-gray-800">
-              {auth.user.role === 'student' ? 'শিক্ষার্থী' : 'শিক্ষক'}
+              {user?.role === 'student' ? 'শিক্ষার্থী' : 'শিক্ষক'}
             </div>
           </div>
           <ul>
@@ -121,6 +121,7 @@ function UserMenu() {
 
                     // remove token from local storage
                     localStorage.removeItem('jwtToken');
+                    localStorage.removeItem('user');
 
                     toast.success(
                       'সফল ভাবে সাইন আউট হয়েছে! আমাদের সাথে থাকার জন্য ধন্যবাদ ❤️'

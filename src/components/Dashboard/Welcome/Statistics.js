@@ -39,7 +39,7 @@ const Statistics = () => {
             </svg>
           </div>
           <div className="flex items-center justify-around flex-1 p-3">
-            <p className="text-2xl font-semibold">৫+</p>
+            <p className="text-2xl font-semibold">২৫+</p>
             <p className="font-body font-medium text-xl">শিক্ষার্থী</p>
           </div>
         </div>
@@ -93,7 +93,7 @@ const Statistics = () => {
             </svg>
           </div>
           <div className="flex items-center justify-around flex-1 p-3">
-            <p className="text-2xl font-semibold">৭+</p>
+            <p className="text-2xl font-semibold">৯+</p>
             <p className="font-body font-medium text-xl">পোস্ট</p>
           </div>
         </div>

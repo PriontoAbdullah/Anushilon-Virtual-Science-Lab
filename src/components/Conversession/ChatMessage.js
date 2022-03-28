@@ -17,12 +17,12 @@ const ChatMessage = (props) => {
           <div className="chat-message">
             <div
               className={`flex items-center  ${
-                email === auth.user.email ? 'justify-end' : ''
+                email === auth?.user?.email ? 'justify-end' : ''
               } `}
             >
               <div
                 className={`flex flex-col space-y-2 text-base max-w-xs mx-2 ${
-                  email === auth.user.email
+                  email === auth?.user?.email
                     ? 'order-1 items-end'
                     : 'order-2 items-start'
                 } `}
@@ -30,7 +30,7 @@ const ChatMessage = (props) => {
                 <div>
                   <span
                     className={`px-4 py-2 rounded-lg inline-block ${
-                      email === auth.user.email
+                      email === auth?.user?.email
                         ? 'rounded-br-none bg-brand-900 text-white'
                         : 'rounded-bl-none bg-gray-300 text-gray-900'
                     }`}
@@ -43,13 +43,10 @@ const ChatMessage = (props) => {
                 </span>
               </div>
               <img
-                src={
-                  avatar ||
-                  'https://api.adorable.io/avatars/23/abott@adorable.png'
-                }
+                src={avatar || 'https://i.ibb.co/1Ks65g5/avatar.png'}
                 alt=""
                 className={`w-12 h-12 rounded-full ${
-                  email === auth.user.email ? 'order-2' : 'order-1'
+                  email === auth?.user?.email ? 'order-2' : 'order-1'
                 }`}
               />
             </div>

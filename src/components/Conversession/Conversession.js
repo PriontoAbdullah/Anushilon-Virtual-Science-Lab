@@ -4,6 +4,7 @@ import 'moment/locale/bn-bd';
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { db } from '../../configs/firebase';
+import LoaderSkeleton from '../Preloader/LoaderSkeleton';
 import ChatMessage from './ChatMessage';
 import './Conversession.css';
 
@@ -30,11 +31,12 @@ const Conversession = () => {
   const sendMessage = async (e) => {
     e.preventDefault();
 
-    const { email, avatar } = auth.user;
+    const { email, avatar, name } = auth.user;
 
     await db.collection('messages').add({
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      name,
       email,
       avatar,
       date: moment().locale('bn-bd').format('LLL'),
@@ -46,13 +48,17 @@ const Conversession = () => {
 
   return (
     <>
-      <section className="max-h-128">
-        {messages?.map(({ id, message }) => (
-          <ChatMessage key={id} message={message} />
-        ))}
+      {messages?.length === 0 ? (
+        <LoaderSkeleton />
+      ) : (
+        <section className="max-h-128">
+          {messages?.map(({ id, message }) => (
+            <ChatMessage key={id} message={message} />
+          ))}
 
-        <span ref={dummy}></span>
-      </section>
+          <span ref={dummy}></span>
+        </section>
+      )}
 
       <form onSubmit={sendMessage} className="bottom-0 sticky">
         <div className="mt-2 px-4 pt-4 mb-2 sm:mb-0">
@@ -82,7 +88,7 @@ const Conversession = () => {
               type="text"
               value={formValue}
               onChange={(e) => setFormValue(e.target.value)}
-              placeholder="এখানে কিছু লিখুন..."
+              placeholder="এখানে আপনার মতামত লিখুন..."
               className="w-full focus:outline-none focus:placeholder-gray-400 text-gray-600 placeholder-gray-600 pl-12 bg-gray-200 rounded-full py-3"
             />
             <div className="absolute right-0 items-center inset-y-0 hidden sm:flex">

@@ -5,7 +5,7 @@ import './Conversession.css';
 const ChatMessage = (props) => {
   const { auth } = useSelector((state) => state);
 
-  const { text, email, avatar, date } = props.message;
+  const { text, name, email, avatar, date } = props.message;
 
   return (
     <section>
@@ -27,6 +27,9 @@ const ChatMessage = (props) => {
                     : 'order-2 items-start'
                 } `}
               >
+                <span className="text-sm text-gray-700 font-body tracking-wide">
+                  {name}
+                </span>
                 <div>
                   <span
                     className={`px-4 py-2 rounded-lg inline-block ${

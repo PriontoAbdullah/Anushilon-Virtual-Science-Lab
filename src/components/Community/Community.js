@@ -25,10 +25,10 @@ const Community = () => {
 
   return (
     <div>
-      <ImagePost displayName={auth.user.name} />
+      <ImagePost displayName={auth?.user?.name} />
 
       {/* Looping through posts */}
-      {posts.map(({ id, post }) => (
+      {posts?.map(({ id, post }) => (
         <Post
           key={id}
           postID={id}

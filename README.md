@@ -92,7 +92,7 @@ So the only solution to these kinds of problems is Virtual labs.
 
 ### 📱 User Interface
 
-![Anushilon-UI](https://i.imgur.com/Oze0RSF.png)
+![Anushilon-UI](https://i.ibb.co/rc8wNNF/Oze0RSF.png)
 
 ---
 

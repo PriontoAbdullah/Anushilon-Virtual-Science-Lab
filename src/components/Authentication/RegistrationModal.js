@@ -1,5 +1,7 @@
 import {
   faEnvelope,
+  faEye,
+  faEyeSlash,
   faLock,
   faMobileAlt,
   faUniversity,
@@ -19,6 +21,7 @@ import defaultLabroom from '../../data/defaultLabroom';
 const RegistrationModal = (props) => {
   // modal context
   const modalData = useContext(ModalContext);
+  const [typePass, setTypePass] = useState(false);
   // form data initial states
   const [formData, setFormData] = useState({
     name: '',
@@ -241,7 +244,7 @@ const RegistrationModal = (props) => {
           <div className="relative w-full mt-16 mb-4 lg:mt-4 2xl:mt-6 flex max-w-sm md:max-w-lg lg:max-w-4xl 2xl:max-w-5xl mx-auto overflow-hidden bg-white rounded-lg shadow-xl">
             {/* Left Side Animations */}
             <div className="hidden lg:block lg:w-1/2 bg-brand-900">
-              {!props.institutionUser ? (
+              {!props?.institutionUser ? (
                 <img
                   src="https://cdn.dribbble.com/users/535360/screenshots/2583480/scientists_2.gif"
                   alt="login-loader"
@@ -281,7 +284,7 @@ const RegistrationModal = (props) => {
                 </svg>
               </button>
 
-              {props.institutionUser ? (
+              {props?.institutionUser ? (
                 // Registration For Institution
                 <Fragment>
                   <form onSubmit={handleUserSubmit}>
@@ -465,12 +468,19 @@ const RegistrationModal = (props) => {
                           <input
                             id="SignInPassword"
                             name="password"
-                            type="password"
+                            type={typePass ? 'text' : 'password'}
                             className="login-input"
                             placeholder="আপনার পাসওয়ার্ড প্রদান করুন"
                             onChange={handleUserChange('uPassword1')}
                             value={uPassword1}
                           />
+                          <span class="absolute inset-y-0 right-0 pr-3 flex items-center text-base leading-5 cursor-pointer">
+                            <FontAwesomeIcon
+                              icon={typePass ? faEyeSlash : faEye}
+                              className="text-gray-500"
+                              onClick={() => setTypePass(!typePass)}
+                            />
+                          </span>
                         </div>
                       </div>
 
@@ -493,12 +503,19 @@ const RegistrationModal = (props) => {
                           <input
                             id="SignInPasswordAgain"
                             name="password"
-                            type="password"
+                            type={typePass ? 'text' : 'password'}
                             className="login-input"
                             placeholder="আপনার পাসওয়ার্ড পুনরায় প্রদান করুন"
                             onChange={handleUserChange('uPassword2')}
                             value={uPassword2}
                           />
+                          <span class="absolute inset-y-0 right-0 pr-3 flex items-center text-base leading-5 cursor-pointer">
+                            <FontAwesomeIcon
+                              icon={typePass ? faEyeSlash : faEye}
+                              className="text-gray-500"
+                              onClick={() => setTypePass(!typePass)}
+                            />
+                          </span>
                         </div>
                       </div>
 
@@ -651,12 +668,19 @@ const RegistrationModal = (props) => {
                           <input
                             id="SignInPassword"
                             name="password"
-                            type="password"
+                            type={typePass ? 'text' : 'password'}
                             className="login-input"
                             placeholder="আপনার পাসওয়ার্ড প্রদান করুন"
                             onChange={handleChange('password1')}
                             value={password1}
                           />
+                          <span class="absolute inset-y-0 right-0 pr-3 flex items-center text-base leading-5 cursor-pointer">
+                            <FontAwesomeIcon
+                              icon={typePass ? faEyeSlash : faEye}
+                              className="text-gray-500"
+                              onClick={() => setTypePass(!typePass)}
+                            />
+                          </span>
                         </div>
                       </div>
 
@@ -679,12 +703,19 @@ const RegistrationModal = (props) => {
                           <input
                             id="SignInPasswordAgain"
                             name="password"
-                            type="password"
+                            type={typePass ? 'text' : 'password'}
                             className="login-input"
                             placeholder="আপনার পাসওয়ার্ড পুনরায় প্রদান করুন"
                             onChange={handleChange('password2')}
                             value={password2}
                           />
+                          <span class="absolute inset-y-0 right-0 pr-3 flex items-center text-base leading-5 cursor-pointer">
+                            <FontAwesomeIcon
+                              icon={typePass ? faEyeSlash : faEye}
+                              className="text-gray-500"
+                              onClick={() => setTypePass(!typePass)}
+                            />
+                          </span>
                         </div>
                       </div>
 

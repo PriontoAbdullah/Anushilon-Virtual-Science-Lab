@@ -1,7 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { db } from '../../../configs/firebase';
 
 const WelcomeBanner = () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const { auth } = useSelector((state) => state);
+  const [user, setUser] = useState('');
+  // get users data
+  useEffect(() => {
+    let unsubscribe;
+
+    unsubscribe = db
+      .collection('users')
+      .where('email', '==', auth?.user?.email)
+      .onSnapshot((snapshot) => {
+        setUser(snapshot?.docs[0]?.data());
+      });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [auth?.user?.email]);
 
   return (
     <div className="relative bg-indigo-50 p-4 sm:p-6 rounded-sm overflow-hidden mb-8 mt-2">

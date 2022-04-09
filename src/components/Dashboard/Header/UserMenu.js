@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
+import { db } from '../../../configs/firebase';
 import { signout } from '../../../helpers/auth';
 import { GLOBALTYPES } from '../../../redux/actions/globalTypes';
 import Transition from '../../../utils/Transition';
@@ -10,10 +11,27 @@ function UserMenu() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const user = JSON.parse(localStorage.getItem('user'));
+  const { auth } = useSelector((state) => state);
+  const [user, setUser] = useState('');
 
   const trigger = useRef(null);
   const dropdown = useRef(null);
+
+  // get users data
+  useEffect(() => {
+    let unsubscribe;
+
+    unsubscribe = db
+      .collection('users')
+      .where('email', '==', auth?.user?.email)
+      .onSnapshot((snapshot) => {
+        setUser(snapshot?.docs[0]?.data());
+      });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [auth?.user?.email]);
 
   // close on click outside
   useEffect(() => {

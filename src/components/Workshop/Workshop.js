@@ -2,7 +2,7 @@ import 'moment/locale/bn-bd';
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { db } from '../../configs/firebase';
-import LoaderSkeleton from '../Preloader/LoaderSkeleton';
+import WorkshopSkeleton from '../Preloader/WorkshopSkeleton';
 import WorkshopCard from './WorkshopCard';
 import WorkshopPost from './WorkshopPost';
 
@@ -69,9 +69,7 @@ const Workshop = () => {
       <section className="flex flex-wrap -m-4 -mt-16">
         <>
           {workshop.length === 0 ? (
-            <div className="w-full flex justify-center items-center">
-              <LoaderSkeleton />
-            </div>
+            <WorkshopSkeleton />
           ) : (
             <>
               {/* get user enrolled labroom teachers notices */}

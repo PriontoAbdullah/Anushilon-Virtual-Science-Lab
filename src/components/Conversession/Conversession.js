@@ -4,7 +4,7 @@ import 'moment/locale/bn-bd';
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { db } from '../../configs/firebase';
-import LoaderSkeleton from '../Preloader/LoaderSkeleton';
+import ChatSkeleton from '../Preloader/ChatSkeleton';
 import ChatMessage from './ChatMessage';
 import './Conversession.css';
 
@@ -49,7 +49,11 @@ const Conversession = () => {
   return (
     <>
       {messages?.length === 0 ? (
-        <LoaderSkeleton />
+        <>
+          <ChatSkeleton />
+          <ChatSkeleton />
+          <ChatSkeleton />
+        </>
       ) : (
         <section className="max-h-128">
           {messages?.map(({ id, message }) => (

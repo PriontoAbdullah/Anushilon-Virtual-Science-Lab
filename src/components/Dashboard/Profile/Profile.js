@@ -1,9 +1,16 @@
-import React from 'react';
+import { LinearProgress } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
+import { db, storage } from '../../../configs/firebase';
 
 const Profile = () => {
   const { auth } = useSelector((state) => state);
+  const [user, setUser] = useState({});
+  const [userId, setUserId] = useState('');
+  const [progress, setProgress] = useState(0);
+  const [showProgressBar, setShowProgressBar] = useState(false);
 
   const {
     register: registerProfile,
@@ -11,8 +18,75 @@ const Profile = () => {
     formState: { errors },
   } = useForm();
 
+  // get users data
+  useEffect(() => {
+    let unsubscribe;
+
+    unsubscribe = db
+      .collection('users')
+      .where('email', '==', auth?.user?.email)
+      .onSnapshot((snapshot) => {
+        setUser(snapshot?.docs[0]?.data());
+        setUserId(snapshot?.docs[0].id);
+      });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [auth?.user?.email]);
+
+  const onFileChange = (e) => {
+    const image = e.target.files[0];
+
+    if (image) {
+      setShowProgressBar(true);
+      const uploadTask = storage.ref(`users/${image.name}`).put(image);
+
+      // getting the upload status while the image is uploading
+      uploadTask.on(
+        'state_changed',
+        (snapshot) => {
+          // Progress function
+          const progress = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+          setProgress(progress);
+        },
+        (error) => {
+          // error function
+          console.log(error);
+        },
+        () => {
+          // completion function
+          storage
+            .ref('users')
+            .child(image.name)
+            .getDownloadURL()
+            .then((url) => {
+              db.collection('users').doc(userId).update({
+                avatar: url,
+              });
+              setProgress(0);
+              setShowProgressBar(false);
+            });
+        }
+      );
+    } else {
+      toast.error('অনুগ্রহ করে একটি ছবি নির্বাচন করুন');
+    }
+  };
+
   const onSubmit = (data) => {
-    console.log(data);
+    const payload = {
+      ...data,
+    };
+
+    try {
+      db.collection('users').doc(userId).update(payload);
+      toast.success('আপনার প্রোফাইল সফলভাবে আপডেট করা হয়েছে');
+    } catch (err) {
+      toast.error(err);
+    }
   };
 
   return (
@@ -40,10 +114,18 @@ const Profile = () => {
               >
                 ছবি
               </label>
+              {showProgressBar && (
+                <LinearProgress
+                  variant="determinate"
+                  className="mt-4"
+                  value={progress}
+                  max="100"
+                />
+              )}
               <div className="mt-2 flex items-center">
                 <img
                   className="inline-block object-cover object-center w-36 h-36 rounded-full"
-                  src={auth?.user?.avatar}
+                  src={user?.avatar}
                   alt=""
                 />
                 <div className="ml-4 flex  cursor-pointer ">
@@ -60,7 +142,7 @@ const Profile = () => {
                       id="user-photo"
                       name="user-photo"
                       type="file"
-                      //   onChange={onFileChange}
+                      onChange={onFileChange}
                       className="absolute inset-0 w-full h-full opacity-0 cursor-pointer border-gray-300 rounded-md"
                     />
                   </div>
@@ -80,7 +162,7 @@ const Profile = () => {
                 name="name"
                 id="name"
                 placeholder="আপনার পূর্ণ নাম"
-                defaultValue={auth?.user?.name}
+                defaultValue={user?.name}
                 {...registerProfile('name', {
                   required: 'নাম দেয়া আবশ্যক',
                   minLength: {
@@ -111,6 +193,7 @@ const Profile = () => {
                 <textarea
                   id="description"
                   name="description"
+                  defaultValue={user?.description}
                   placeholder="আপনার সম্পর্কে কিছু লিখুন ...."
                   {...registerProfile('description')}
                   rows={3}
@@ -124,18 +207,18 @@ const Profile = () => {
 
             <div className="sm:col-span-3">
               <label
-                htmlFor="website"
+                htmlFor="institution"
                 className="block text-sm sm:text-base font-medium text-blue-gray-900"
               >
-                ওয়েবসাইট
+                শিক্ষা প্রতিষ্ঠান
               </label>
               <input
                 type="text"
-                name="website"
-                id="website"
-                placeholder="আপনার ওয়েবসাইট"
-                {...registerProfile('website')}
-                defaultValue={auth?.user?.website}
+                name="institution"
+                id="institution"
+                placeholder="আপনার শিক্ষা প্রতিষ্ঠান"
+                {...registerProfile('institution')}
+                defaultValue={user?.institution}
                 className="mt-2 block w-full border-gray-300 rounded-md shadow-sm text-blue-gray-900 sm:text-sm focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
@@ -164,7 +247,7 @@ const Profile = () => {
                 name="email"
                 id="email"
                 placeholder="আপনার ইমেইল"
-                defaultValue={auth?.user?.name}
+                defaultValue={user?.email}
                 disabled
                 className="mt-2 block w-full border-gray-300 rounded-md shadow-sm text-blue-gray-900 sm:text-sm focus:ring-blue-500 focus:border-blue-500"
               />
@@ -182,7 +265,7 @@ const Profile = () => {
                 name="phone"
                 id="phone"
                 placeholder="আপনার ফোন নম্বর"
-                defaultValue={auth?.user?.phone}
+                defaultValue={user?.phone}
                 {...registerProfile('phone', {
                   required: 'ফোন নম্বর দেয়া আবশ্যক',
                   minLength: {
@@ -218,7 +301,7 @@ const Profile = () => {
                 name="address"
                 id="address"
                 placeholder="আপনার বর্তমান ঠিকানা"
-                defaultValue={auth?.user?.address}
+                defaultValue={user?.address}
                 {...registerProfile('address', {
                   required: 'বর্তমান ঠিকানা দেয়া আবশ্যক',
                   minLength: {

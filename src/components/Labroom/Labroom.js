@@ -27,7 +27,11 @@ const Labroom = () => {
   return (
     <div>
       {classes?.length === 0 ? (
-        <LoaderSkeleton />
+        <div className="grid grid-cols-1 sm:grid-cols-3">
+          <LoaderSkeleton />
+          <LoaderSkeleton />
+          <LoaderSkeleton />
+        </div>
       ) : (
         <div className="dashboard__classContainer">
           {classes?.map((individualClass) => (

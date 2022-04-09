@@ -116,7 +116,13 @@ const RegistrationModal = (props) => {
           if (querySnapshot.docs.length === 0) {
             // create a new user
             await db.collection('users').add({
-              email,
+              email: email,
+              name: name,
+              institution: '',
+              mobile: '',
+              avatar: 'https://i.ibb.co/1Ks65g5/avatar.png',
+              address: '',
+              description: '',
               enrolledClassrooms: defaultLabroom,
             });
           }
@@ -184,6 +190,12 @@ const RegistrationModal = (props) => {
             // create a new user
             await db.collection('users').add({
               email: uEmail,
+              name: uName,
+              institution: uInstitution,
+              mobile: uMobile,
+              avatar: 'https://i.ibb.co/1Ks65g5/avatar.png',
+              address: '',
+              description: '',
               enrolledClassrooms: defaultLabroom,
             });
           }

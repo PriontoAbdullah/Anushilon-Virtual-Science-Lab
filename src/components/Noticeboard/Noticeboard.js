@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 import { db } from '../../configs/firebase';
 import '../Labroom/Class.css';
-import LoaderSkeleton from '../Preloader/LoaderSkeleton';
+import NoticeSkeleton from '../Preloader/NoticeSkeleton';
 import Notice from './Notice';
 
 const Noticeboard = () => {
@@ -103,9 +103,11 @@ const Noticeboard = () => {
 
       <>
         {notices.length === 0 ? (
-          <div className="w-full flex justify-center items-center">
-            <LoaderSkeleton />
-          </div>
+          <>
+            <NoticeSkeleton />
+            <NoticeSkeleton />
+            <NoticeSkeleton />
+          </>
         ) : (
           <>
             {/* get user enrolled labroom teachers notices */}

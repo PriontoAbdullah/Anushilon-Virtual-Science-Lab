@@ -14,7 +14,6 @@ import React, { Fragment, useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import Slide from 'react-reveal/Slide';
 import { ModalContext } from '../../App';
-import signInLoader from '../../assets/images/loader/signIn.gif';
 import { db } from '../../configs/firebase';
 import defaultLabroom from '../../data/defaultLabroom';
 
@@ -264,7 +263,7 @@ const RegistrationModal = (props) => {
                 />
               ) : (
                 <img
-                  src={signInLoader}
+                  src="https://i.ibb.co/GWdPsJ9/signIn.gif"
                   alt="signIn-loader"
                   className="min-h-auto md:min-h-full bg-cover bg-no-repeat bg-center"
                 />

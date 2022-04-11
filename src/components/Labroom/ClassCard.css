@@ -14,7 +14,7 @@
   overflow: hidden;
   cursor: pointer;
   margin-bottom: 40px;
-  margin-right: 35px;
+  margin-right: 0px;
 }
 
 @media screen and (max-width: 768px) {

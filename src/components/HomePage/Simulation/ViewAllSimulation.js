@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import bgViewSimulation from '../../../assets/images/background/biography-bg.png';
 import {
   biology09,
   biology10,
@@ -30,7 +29,7 @@ const ViewAllSimulation = (props) => {
         <section
           className="min-h-auto md:min-h-full bg-cover bg-no-repeat bg-center"
           style={{
-            backgroundImage: `url(${bgViewSimulation})`,
+            backgroundImage: `url(https://i.ibb.co/T0RLPg6/biography-bg.png)`,
           }}
           ref={props.compRef}
         >

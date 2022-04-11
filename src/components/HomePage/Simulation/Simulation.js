@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import Slide from 'react-reveal/Slide';
-import bgBannerSimulation from '../../../assets/images/background/features-3.png';
-import studentGIF from '../../../assets/images/banner/student.gif';
 import biology from '../../../assets/images/icon/biology.png';
 import chemistry from '../../../assets/images/icon/chemistry.png';
 import physics from '../../../assets/images/icon/physics.png';
@@ -40,7 +38,7 @@ const Simulation = () => {
         className="min-h-auto md:min-h-full bg-cover bg-no-repeat bg-center"
         id="simulation"
         style={{
-          backgroundImage: `url(${bgBannerSimulation})`,
+          backgroundImage: `url(https://i.ibb.co/NtJMXt8/features-3.png)`,
         }}
       >
         <div className="px-8 pb-12 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pt-16 lg:pb-10">
@@ -50,7 +48,7 @@ const Simulation = () => {
               <Slide up>
                 <img
                   className="w-4/5 mx-auto sm:w-full sm:h-full rounded-xl shadow-sm"
-                  src={studentGIF}
+                  src="https://i.ibb.co/YffvYk9/student.gif"
                   alt="Student-gif"
                 />
               </Slide>

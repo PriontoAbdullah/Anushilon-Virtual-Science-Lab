@@ -1,6 +1,5 @@
-import React from "react";
-import Fade from "react-reveal/Fade";
-import logoBanner from "../../../assets/images/banner/logo-banner.png";
+import React from 'react';
+import Fade from 'react-reveal/Fade';
 
 const About = () => {
   return (
@@ -93,7 +92,7 @@ const About = () => {
             <Fade bottom>
               <img
                 className="object-cover w-4/5 h-34 mx-auto sm:w-full sm:h-full rounded shadow-lg "
-                src={logoBanner}
+                src="https://i.ibb.co/LtcWyvR/logo-banner.png"
                 alt="logo-banner"
               />
             </Fade>

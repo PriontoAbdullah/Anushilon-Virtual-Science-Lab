@@ -1,15 +1,14 @@
-import React from "react";
-import Fade from "react-reveal/Fade";
-import Slide from "react-reveal/Slide";
-import Zoom from "react-reveal/Zoom";
-import bgBannerFeature from "../../../assets/images/background/features-2.png";
-import FeaturesImage1 from "../../../assets/images/features/features-img-1.png";
-import FeaturesImage2 from "../../../assets/images/features/features-img-2.png";
-import FeaturesImage3 from "../../../assets/images/features/features-img-3.png";
-import FeaturesImage4 from "../../../assets/images/features/features-img-4.png";
-import PathImage from "../../../assets/images/features/path.png";
-import Card from "../MicroComponent/Card";
-import SectionTitle from "../MicroComponent/SectionTitle";
+import React from 'react';
+import Fade from 'react-reveal/Fade';
+import Slide from 'react-reveal/Slide';
+import Zoom from 'react-reveal/Zoom';
+import FeaturesImage1 from '../../../assets/images/features/features-img-1.png';
+import FeaturesImage2 from '../../../assets/images/features/features-img-2.png';
+import FeaturesImage3 from '../../../assets/images/features/features-img-3.png';
+import FeaturesImage4 from '../../../assets/images/features/features-img-4.png';
+import PathImage from '../../../assets/images/features/path.png';
+import Card from '../MicroComponent/Card';
+import SectionTitle from '../MicroComponent/SectionTitle';
 
 function Features() {
   return (
@@ -18,7 +17,7 @@ function Features() {
       id="features"
       data-aos="fade-up"
       style={{
-        backgroundImage: `url(${bgBannerFeature})`,
+        backgroundImage: `url(https://i.ibb.co/vmk1BBv/features-2.png)`,
       }}
     >
       <div className="px-4 py-12 sm:py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -32,7 +31,7 @@ function Features() {
         </Fade>
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-10 relative font-body">
           <div
-            style={{ zIndex: "-1" }}
+            style={{ zIndex: '-1' }}
             className="hidden xl:block 2xl:hidden path absolute w-full"
           >
             <Zoom bottom>

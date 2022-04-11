@@ -15,7 +15,6 @@ import { useDispatch } from 'react-redux';
 import Slide from 'react-reveal/Slide';
 import { useHistory, useLocation } from 'react-router-dom';
 import { ModalContext } from '../../App';
-import signInLoader from '../../assets/images/loader/signIn.gif';
 import Institution from '../../data/Institution';
 import { authenticate, isAuth } from '../../helpers/auth';
 import { GLOBALTYPES } from '../../redux/actions/globalTypes';
@@ -313,7 +312,7 @@ const LoginModal = () => {
                   />
                 ) : (
                   <img
-                    src={signInLoader}
+                    src="https://i.ibb.co/GWdPsJ9/signIn.gif"
                     alt="signIn-loader"
                     className="min-h-auto md:min-h-full bg-cover bg-no-repeat bg-center"
                   />

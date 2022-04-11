@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import Iframe from 'react-iframe';
-import loader from '../../../assets/images/loader/simulation.gif';
 import useWindowDimensions from '../../../utils/useWindowDimensions';
 
 const PlaySimulationTemplate = ({ videoURL }) => {
@@ -24,7 +23,11 @@ const PlaySimulationTemplate = ({ videoURL }) => {
       {/* Pre Loader */}
       {preLoaderVisibility ? (
         <div>
-          <img src={loader} alt="loading-gif" className="w-96 mx-auto" />
+          <img
+            src="https://i.ibb.co/YyN5Ypk/simulation.gif"
+            alt="loading-gif"
+            className="w-96 mx-auto"
+          />
           <p className="text-2xl py-8 font-body font-medium text-center">
             অনুগ্রহ করে কিছুক্ষণ অপেক্ষা করুন
           </p>

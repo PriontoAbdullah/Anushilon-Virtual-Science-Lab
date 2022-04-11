@@ -27,13 +27,13 @@ const Labroom = () => {
   return (
     <div>
       {classes?.length === 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           <LoaderSkeleton />
           <LoaderSkeleton />
           <LoaderSkeleton />
         </div>
       ) : (
-        <div className="dashboard__classContainer">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-2 mx-auto">
           {classes?.map((individualClass) => (
             <ClassCard
               creatorName={individualClass.creatorName}

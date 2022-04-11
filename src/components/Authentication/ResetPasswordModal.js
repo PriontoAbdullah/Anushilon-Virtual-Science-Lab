@@ -6,7 +6,6 @@ import React, { Fragment, useContext, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useHistory, useParams } from 'react-router-dom';
 import { ModalContext } from '../../App';
-import resetPasswordLoader from '../../assets/images/loader/resetPassword.gif';
 import useWindowDimensions from '../../utils/useWindowDimensions';
 
 const ResetPasswordModal = () => {
@@ -117,7 +116,7 @@ const ResetPasswordModal = () => {
             <div className="flex flex-col items-center justify-center mx-auto">
               <div className="w-full min-h-auto bg-cover bg-no-repeat bg-center rounded-lg shadow-xl">
                 <img
-                  src={resetPasswordLoader}
+                  src="https://i.ibb.co/8dFcDTc/reset-Password.gif"
                   alt="activation-loader"
                   className="rounded-lg"
                 />

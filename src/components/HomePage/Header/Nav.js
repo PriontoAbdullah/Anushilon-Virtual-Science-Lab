@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { animateScroll as scroll, Link } from 'react-scroll';
 import { ModalContext } from '../../../App';
-import textLogo from '../../../assets/images/text-logo.png';
 import { signout } from '../../../helpers/auth';
 import { GLOBALTYPES } from '../../../redux/actions/globalTypes';
 import LoginModal from '../../Authentication/LoginModal';
@@ -323,7 +322,7 @@ const Nav = () => {
                           >
                             <img
                               className="h-10"
-                              src={textLogo}
+                              src="https://i.ibb.co/2Z1XFtY/text-logo.png"
                               alt="Text Logo"
                             />
                           </Link>

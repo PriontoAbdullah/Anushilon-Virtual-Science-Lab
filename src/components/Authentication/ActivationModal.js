@@ -7,7 +7,6 @@ import React, { Fragment, useContext, useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { useHistory, useParams } from 'react-router-dom';
 import { ModalContext } from '../../App';
-import activationLoader from '../../assets/images/loader/activationModal.gif';
 import useWindowDimensions from '../../utils/useWindowDimensions';
 
 const ActivationModal = () => {
@@ -101,7 +100,7 @@ const ActivationModal = () => {
             <div className="flex flex-col items-center justify-center mx-auto">
               <div className="w-full min-h-auto bg-cover bg-no-repeat bg-center rounded-lg shadow-xl">
                 <img
-                  src={activationLoader}
+                  src="https://i.ibb.co/hfBXbwP/activation-Modal.gif"
                   alt="activation-loader"
                   className="rounded-lg"
                 />

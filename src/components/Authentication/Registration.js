@@ -7,22 +7,21 @@ import {
   faUniversity,
   faUnlock,
   faUser,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import toast from "react-hot-toast";
-import Slide from "react-reveal/Slide";
-import { useHistory } from "react-router-dom";
-import bgBannerFeature from "../../assets/images/background/astronaut.jpg";
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import toast from 'react-hot-toast';
+import Slide from 'react-reveal/Slide';
+import { useHistory } from 'react-router-dom';
 
 const Registration = () => {
   const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    history.push("/");
+    history.push('/');
     toast.error(
-      "দুঃখিত, এই মুহূর্তে শিক্ষা প্রতিষ্ঠানের নিবন্ধনকরণ বন্ধ রয়েছে! 😓"
+      'দুঃখিত, এই মুহূর্তে শিক্ষা প্রতিষ্ঠানের নিবন্ধনকরণ বন্ধ রয়েছে! 😓'
     );
   };
 
@@ -30,7 +29,7 @@ const Registration = () => {
     <section
       className="min-h-auto lg:min-h-screen bg-cover bg-no-repeat bg-center"
       style={{
-        backgroundImage: ` linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${bgBannerFeature})`,
+        backgroundImage: ` linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(https://i.ibb.co/Dk3Yr9N/astronaut.jpg)`,
       }}
     >
       <div className="w-full h-screen font-sans bg-cover bg-landscape">

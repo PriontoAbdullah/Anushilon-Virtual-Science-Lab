@@ -10,10 +10,10 @@ const WorkshopCard = ({
   createAt,
 }) => {
   return (
-    <div className="px-4 md:w-1/3 font-body mb-8">
+    <div className="px-4 max-w-sm font-body mb-8">
       <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden shadow-3xl">
         <img
-          className="lg:h-48 md:h-36 w-full object-cover object-center"
+          className="lg:h-48 sm:h-36 w-full object-cover object-center"
           src={imgUrl}
           alt="blog"
         />

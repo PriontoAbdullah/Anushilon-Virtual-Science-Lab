@@ -1,7 +1,6 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
 import { Link } from 'react-scroll';
-import bgFooter from '../../../assets/images/background/footer-bg.png';
 
 const Footer = () => {
   return (
@@ -9,7 +8,7 @@ const Footer = () => {
       className="min-h-auto bg-cover bg-no-repeat bg-center"
       data-aos="fade-up"
       style={{
-        backgroundImage: `url(${bgFooter})`,
+        backgroundImage: `url(https://i.ibb.co/rckt4Tv/footer-bg.png)`,
       }}
     >
       <div className="px-4 pt-20 pb-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">

@@ -1,15 +1,12 @@
-import React from "react";
-import Fade from "react-reveal/Fade";
-import bgBannerFeature from "../../../assets/images/background/features-1.png";
-import bgFeatureOverlay from "../../../assets/images/background/features-overlay.png";
-import mobileMockup from "../../../assets/images/features/mobile-mockup.png";
+import React from 'react';
+import Fade from 'react-reveal/Fade';
 
 const MobileResponsive = () => {
   return (
     <section
       className="min-h-full lg:pt-10 bg-cover bg-no-repeat bg-center"
       style={{
-        backgroundImage: `url(${bgBannerFeature})`,
+        backgroundImage: `url(https://i.ibb.co/QMKRNPL/features-1.png)`,
       }}
     >
       <Fade up>
@@ -18,7 +15,7 @@ const MobileResponsive = () => {
           <div
             className="min-h-screen sm:min-h-full bg-cover sm:bg-contain bg-no-repeat bg-center"
             style={{
-              backgroundImage: `url(${bgFeatureOverlay})`,
+              backgroundImage: `url(https://i.ibb.co/vY6ShYW/features-overlay.png)`,
             }}
           >
             <div className="xl:px-32">
@@ -27,7 +24,7 @@ const MobileResponsive = () => {
                   {/* Mobile Mockup */}
                   <div className="lg:-top-24 relative pt-8 lg:pt-0">
                     <img
-                      src={mobileMockup}
+                      src="https://i.ibb.co/F5zQbHq/mobile-mockup.png"
                       alt="mobile-mockup"
                       className="object-cover mx-auto lg:mx-0 w-52 lg:w-64"
                     />
@@ -40,11 +37,11 @@ const MobileResponsive = () => {
                   </h1>
                   <p className="font-body pt-6 font-medium text-lg text-indigo-50 sm:text-gray-800 lg:text-indigo-50 xl:text-xl text-center lg:text-left">
                     <span className="block pb-1">
-                      সকল স্মার্ট ফোনের মাধ্যমে উপভোগ করুন{" "}
+                      সকল স্মার্ট ফোনের মাধ্যমে উপভোগ করুন{' '}
                     </span>
                     <span className="block pb-1">
-                      {" "}
-                      অনুশীলন এর সকল সিমুলেশন{" "}
+                      {' '}
+                      অনুশীলন এর সকল সিমুলেশন{' '}
                     </span>
                     <span className="block pb-1"> সর্বত্র বিনামূল্যে! </span>
                   </p>

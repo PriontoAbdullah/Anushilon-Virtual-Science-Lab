@@ -8,20 +8,12 @@
 }
 
 .classCard {
-  width: 300px;
+  width: 100%;
   border: 1px solid #dcdcdc;
   border-radius: 5px;
   overflow: hidden;
   cursor: pointer;
-  margin-bottom: 40px;
-  margin-right: 0px;
-}
-
-@media screen and (max-width: 768px) {
-  .classCard {
-    margin-right: 0;
-    margin-bottom: 50px;
-  }
+  margin-bottom: 10px;
 }
 
 .classCard__middle {

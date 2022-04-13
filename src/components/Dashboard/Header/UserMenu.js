@@ -65,17 +65,21 @@ function UserMenu() {
           height="40"
           alt="User"
         />
-        <div className="hidden sm:flex items-center truncate">
-          <span className="truncate ml-2 font-body text-base font-medium text-brand-900 group-hover:text-gray-800">
-            {user?.name}
-          </span>
-          <svg
-            className="w-3 h-3 flex-shrink-0 ml-2 fill-current text-gray-500"
-            viewBox="0 0 12 12"
-          >
-            <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
-          </svg>
-        </div>
+        {user === '' ? (
+          <div className="bg-indigo-100 w-40 h-6 animate-pulse rounded-2xl mx-2"></div>
+        ) : (
+          <div className="hidden sm:flex items-center truncate">
+            <span className="truncate ml-2 font-body text-base font-medium text-brand-900 group-hover:text-gray-800">
+              {user?.name}
+            </span>
+            <svg
+              className="w-3 h-3 flex-shrink-0 ml-2 fill-current text-gray-500"
+              viewBox="0 0 12 12"
+            >
+              <path d="M5.9 11.4L.5 6l1.4-1.4 4 4 4-4L11.3 6z" />
+            </svg>
+          </div>
+        )}
       </button>
       {/* Profile Menu Dropdown */}
       <Transition

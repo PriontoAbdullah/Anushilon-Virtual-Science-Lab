@@ -53,7 +53,7 @@ const Dashboard = () => {
           {/*  Site header */}
           <HeaderBar />
 
-          <main className="px-4 sm:px-6 lg:px-8 py-6 max-w-9xl mx-auto bg-gray-50 h-full w-full comment-scroll overflow-y-scroll">
+          <main className="px-4 sm:px-6 py-6 max-w-9xl mx-auto bg-gray-50 h-full w-full comment-scroll overflow-y-scroll">
             {page === 'simulation-phy' ? (
               <SimulationsPhy />
             ) : page === 'simulation-che' ? (

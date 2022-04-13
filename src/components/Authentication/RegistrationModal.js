@@ -81,15 +81,6 @@ const RegistrationModal = (props) => {
     setFormUserData({ ...formUserData, [text]: e.target.value });
   };
 
-  const handleCountryCode = () => {
-    toast(
-      'মোবাইল নম্বর অবশ্যই বৈধ বাংলাদেশী মোবাইল নম্বর হতে হবে। (+880) কান্ট্রি কোড ব্যবহার করুন।',
-      {
-        icon: '🙏',
-      }
-    );
-  };
-
   const handleStrongPassword = () => {
     toast(
       'পাসওয়ার্ডটি কমপক্ষে ৮ টি অক্ষরের দীর্ঘ হতে হবে এবং কমপক্ষে একটি ছোট হাতের অক্ষর, একটি বড় হাতের অক্ষর, একটি নম্বর এবং একটি চিহ্ন থাকতে হবে!',
@@ -209,7 +200,7 @@ const RegistrationModal = (props) => {
             institution: uInstitution,
             name: uName,
             email: uEmail,
-            mobile: uMobile,
+            mobile: `+88${uMobile}`,
             password: uPassword1,
             role,
           })
@@ -428,12 +419,6 @@ const RegistrationModal = (props) => {
                           >
                             যোগাযোগের নম্বর
                           </label>
-                          <span
-                            className="text-sm text-gray-700 cursor-pointer hover:text-deep-purple-accent-700 tracking-wide"
-                            onClick={handleCountryCode}
-                          >
-                            কান্ট্রি কোড ব্যবহার করুন
-                          </span>
                         </div>
                         <div className="relative flex w-full flex-wrap items-stretch mb-3">
                           <span className="login-icon">

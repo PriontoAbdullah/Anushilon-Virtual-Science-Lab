@@ -14,7 +14,7 @@ const Labroom = () => {
 
     unsubscribe = db
       .collection('users')
-      .where('email', '==', auth.user.email)
+      .where('email', '==', auth?.user?.email)
       .onSnapshot((snapshot) => {
         setClasses(snapshot?.docs[0]?.data()?.enrolledClassrooms);
       });
@@ -27,13 +27,13 @@ const Labroom = () => {
   return (
     <div>
       {classes?.length === 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-20 mx-auto">
           <LoaderSkeleton />
           <LoaderSkeleton />
           <LoaderSkeleton />
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-2 mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-20 pt-2 px-0 sm:px-8 mx-auto">
           {classes?.map((individualClass) => (
             <ClassCard
               creatorName={individualClass.creatorName}

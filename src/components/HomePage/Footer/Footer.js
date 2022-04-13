@@ -143,11 +143,7 @@ const Footer = () => {
           {/* Down Footer */}
           <div className="flex flex-col-reverse justify-between pt-5 pb-10 border-t border-gray-50 lg:flex-row font-body">
             <p className="text-sm font-medium text-gray-400 tracking-wide">
-              &copy; কপিরাইট{' '}
-              <span className="font-display font-medium text-gray-200">
-                ২০২২
-              </span>{' '}
-              অনুশীলন কতৃক সমস্ত অধিকার সংরক্ষিত।
+              &copy; কপিরাইট ২০২২ অনুশীলন কতৃক সমস্ত অধিকার সংরক্ষিত।
             </p>
             <ul className="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
               <li>

@@ -41,7 +41,7 @@ function CommentField({ postID }) {
           text: comment,
           username: auth.user.name,
           timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-          date: moment().locale('bn-bd').calendar(),
+          date: moment().locale('bn-bd').format('LT'),
         });
     setComment('');
   }

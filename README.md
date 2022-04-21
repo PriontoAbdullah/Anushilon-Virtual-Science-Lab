@@ -12,6 +12,7 @@ ANUSIHLON is based on the idea that lab experiments can be taught using the inte
 - [Simulation Repository](https://github.com/PriontoAbdullah/Anushilon-Simulations)
 - [Project Proposal](https://docs.google.com/document/d/1dRNe0lboYRz5FtkDCwzMn4U7d8dcPxRaE5bc0S-pFKE/edit?usp=sharing)
 - [Project Presentation](https://docs.google.com/presentation/d/1ZZl3t_hAsnq53eLVLowDTmgE9oMpwY1AZWzPglrltes/edit?usp=sharing)
+- [Project Report](https://docs.google.com/document/d/1JbwkoL1kT-UO1xlBIvYmuX9_aLhJyEYbSALFZM2MU14/edit?usp=sharing)
 
 ---
 
